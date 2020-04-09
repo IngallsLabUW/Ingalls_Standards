@@ -32,7 +32,7 @@
 "31","New2","RP","B-ionine",NA,NA,NA,NA,NA,NA,"C13H20O",9.71,"193.15924","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,"CHEBI:32325",NA
 "32","New2","RP","B-ionylidene-acetaldehyde",NA,NA,NA,NA,NA,NA,"C15H22O",10.85,"219.17489","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,NA,NA
 "33","New2","RP","Butyryl-L-carnitine",NA,NA,NA,NA,NA,NA,"C11H21NO4",1.34,"232.154884","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,180130,"CHEBI:21949",NA
-"34","Quorum sensing","RP","C10-HSL","5 - >10000","0.596","2.9","<0.5 - >10000","0.608","4.9","C14H25NO3",9.21,"256.191269","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,160401,NA,NA
+"34","Quorum sensing","RP","N-Decanoyl-L-Homoserine Lactone","5 - >10000","0.596","2.9","<0.5 - >10000","0.608","4.9","C14H25NO3",9.21,"256.191269","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,160401,NA,NA
 "35","Quorum sensing","RP","C12-HSL","5 - >10000","0.489","3.9","<0.5 - >10000","0.774","3.8","C16H29NO3",10.35,"284.222569","[M+H]",1,"cpd:C21201","CyanoAq","CyanoDCM",0.25,NA,160401,NA,"N-3-Oxo-dodecanoyl-L-homoserine lactone; 3-Oxo-C12-HSL; 3-Oxo-N-[(3S)-tetrahydro-2-oxo-3-furanyl]-dodecanamide"
 "36","Quorum sensing","RP","C14-HSL","50 - >10000","0.566","11","<0.5 - >10000","0.639","9.2","C18H33NO3",11.4,"312.253869","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,160401,NA,NA
 "37","Quorum sensing","RP","C4-HSL","50 - >10000","0.347","5.4","5 - >10000","0.367","3.4","C8H13NO3",1.47,"172.097369","[M+H]",1,"cpd:C11837","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:29643","N-Butyryl-L-homoserine lactone"
