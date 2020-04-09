@@ -27,7 +27,7 @@
 "26","Fatty Acid","RP","Arachidonic Acid","2500 - >10000","2.621","25.5","50 - >10000","2.864","19.4","C20H32O2",12.15,"305.248055","[M+H]",1,"cpd:C00219","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:15843","Arachidonate; Arachidonic acid; (5Z,8Z,11Z,14Z)-Icosatetraenoic acid; cis-5,8,11,14-Eicosatetraenoic acid"
 "27","Internal Standard","RP","Arachidonic acid, 2H8",NA,NA,NA,NA,NA,NA,"C20D8H24O2",12.15,"313.2977","[M+H]",1,NA,"CyanoAq","CyanoDCM",20,NA,160401,NA,NA
 "28","New2","RP","beta-Citraurin",NA,NA,NA,NA,NA,NA,"C30H40O",14.56,"417.31574","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,NA,NA
-"29","New2","RP","B-cyclocitral",NA,NA,NA,NA,NA,NA,"C10H16O",8.39,"153.12794","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,"CHEBI:53177",NA
+"29","New2","RP","beta-Cyclocitral",NA,NA,NA,NA,NA,NA,"C10H16O",8.39,"153.12794","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,"CHEBI:53177",NA
 "30","Amino Acid derivative","RP","Betaine","50 - >10000","-0.411","7.9","500 - 5000","-0.436","2.7","C5H11NO2",0.71,"118.086804","[M+H]",1,"cpd:C00719","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:17750","Betaine; Trimethylaminoacetate; Glycine betaine; N,N,N-Trimethylglycine; Trimethylammonioacetate"
 "31","New2","RP","B-ionine",NA,NA,NA,NA,NA,NA,"C13H20O",9.71,"193.15924","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,"CHEBI:32325",NA
 "32","New2","RP","B-ionylidene-acetaldehyde",NA,NA,NA,NA,NA,NA,"C15H22O",10.85,"219.17489","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,NA,NA
