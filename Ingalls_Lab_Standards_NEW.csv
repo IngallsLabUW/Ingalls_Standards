@@ -23,7 +23,7 @@
 "22","Amino Acid synthesis","RP","Adenosyl Methionine","500 - >10000","0.064","7","50 - >10000","0.091","4.4","C15H22N6O5S",0.71,"399.145066","[M+H]",1,"cpd:C00019","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:15414","S-Adenosyl-L-methionine; S-Adenosylmethionine; AdoMet; SAM"
 "23","New2","RP","Agmatine",NA,NA,NA,NA,NA,NA,"C5H14N4",0.62,"131.129671","[M+H]",1,"cpd:C00179","CyanoAq","CyanoDCM",0.5,NA,180130,"CHEBI:17431","Agmatine; (4-Aminobutyl) guanidine"
 "24","Internal Standard","RP","alpha-Tocopherol, 2H6",NA,NA,NA,NA,NA,NA,"C29D6H44O2",14.725,"436.4182","[M+H]",1,NA,"CyanoAq","CyanoDCM",5,NA,170301,NA,NA
-"25","Lignin","RP","Aminobenzoic Acid","<0.5 - >10000","0.784","3.7","5 - >10000","0.502","1.6","C7H7NO2",2,"138.055503","[M+H]",1,"cpd:C00568","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:30753","4-Aminobenzoate; ABEE; 4-Aminobenzoic acid; p-Aminobenzoate"
+"25","Lignin","RP","4-Aminobenzoic acid","<0.5 - >10000","0.784","3.7","5 - >10000","0.502","1.6","C7H7NO2",2,"138.055503","[M+H]",1,"cpd:C00568","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:30753","4-Aminobenzoate; ABEE; 4-Aminobenzoic acid; p-Aminobenzoate"
 "26","Fatty Acid","RP","Arachidonic Acid","2500 - >10000","2.621","25.5","50 - >10000","2.864","19.4","C20H32O2",12.15,"305.248055","[M+H]",1,"cpd:C00219","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:15843","Arachidonate; Arachidonic acid; (5Z,8Z,11Z,14Z)-Icosatetraenoic acid; cis-5,8,11,14-Eicosatetraenoic acid"
 "27","Internal Standard","RP","Arachidonic acid, 2H8",NA,NA,NA,NA,NA,NA,"C20D8H24O2",12.15,"313.2977","[M+H]",1,NA,"CyanoAq","CyanoDCM",20,NA,160401,NA,NA
 "28","New2","RP","B-apo-8'-carotenal",NA,NA,NA,NA,NA,NA,"C30H40O",14.56,"417.31574","[M+H]",1,NA,"CyanoDCM","CyanoAq",NA,NA,NA,NA,NA
