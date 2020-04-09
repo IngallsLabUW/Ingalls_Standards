@@ -18,7 +18,7 @@
 "17","Phytohormone","RP","Abscisic Acid","5 - >10000","1","4.3","50 - >10000","0.828","1.8","C15H20O4",6.7,"247.13342","[M-OH]",1,"cpd:C06082","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:2365","Abscisate; Abscisic acid; (+)-Abscisic acid; ABA"
 "18","Lignin","RP","Acetosyringone","50 - >10000","1.044","12.1","500 - >10000","0.905","6.5","C10H12O4",5.765,"197.081385","[M+H]",1,"cpd:C10664","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:2404","Acetosyringone"
 "19","Lignin","RP","Acetovanillone","50 - >10000","1.03","12.2","50 - >10000","0.792","3.6","C9H10O3",5.38,"167.07082","[M+H]",1,"cpd:C11380","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:2781","Apocynin; Acetovanillone"
-"20","New2","RP","Acetyl-L-carnitine",NA,NA,NA,NA,NA,NA,"C9H17NO4",0.82,"204.123584","[M+H]",1,"cpd:C02571","CyanoAq","CyanoDCM",0.25,NA,180130,"CHEBI:57589","O-Acetylcarnitine; O-Acetyl-L-carnitine"
+"20","New2","RP","O-Acetyl-L-carnitine",NA,NA,NA,NA,NA,NA,"C9H17NO4",0.82,"204.123584","[M+H]",1,"cpd:C02571","CyanoAq","CyanoDCM",0.25,NA,180130,"CHEBI:57589","O-Acetylcarnitine; O-Acetyl-L-carnitine"
 "21","Amino Acid synthesis","RP","Adenosyl Homocysteine","50 - >10000","0.245","35.9","May-00","0.118","2.2","C14H20N6O5S",0.96,"385.129416","[M+H]",1,"cpd:C00021","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:16680","S-Adenosyl-L-homocysteine; S-Adenosylhomocysteine"
 "22","Amino Acid synthesis","RP","Adenosyl Methionine","500 - >10000","0.064","7","50 - >10000","0.091","4.4","C15H22N6O5S",0.71,"399.145066","[M+H]",1,"cpd:C00019","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:15414","S-Adenosyl-L-methionine; S-Adenosylmethionine; AdoMet; SAM"
 "23","New2","RP","Agmatine",NA,NA,NA,NA,NA,NA,"C5H14N4",0.62,"131.129671","[M+H]",1,"cpd:C00179","CyanoAq","CyanoDCM",0.5,NA,180130,"CHEBI:17431","Agmatine; (4-Aminobutyl) guanidine"
@@ -142,7 +142,7 @@
 "141","Co-enzyme A","HILIC","Acetoacetyl CoA","100 - >10000","dl","dl","100 - >10000","0.055","69.1","C25H40N7O18P3S",10.6,"850.128524","[M-H]",-1,"cpd:C00332","HILICNeg",NA,4,"Mix1",160401,"CHEBI:15345","Acetoacetyl-CoA; Acetoacetyl coenzyme A; 3-Acetoacetyl-CoA"
 "142","Co-enzyme A","HILIC","Acetyl CoA","20 - >10000","0.692","17.5","<10 - >10000","0.955","17.6","C23H38N7O17P3S",10.84,"808.117959","[M-H]",-1,"cpd:C00024","HILICNeg",NA,4,"Mix1",160401,"CHEBI:15351","Acetyl-CoA; Acetyl coenzyme A"
 "143","Internal Standard","HILIC","Acetyl-CoA, 13C2",NA,NA,NA,NA,NA,NA,"C21C(13)2H38N7O17P3S",10.84,"810.1252","[M-H]",-1,NA,"HILICNeg",NA,1,NA,160401,NA,NA
-"144","New2","HILIC","Acetyl-L-carnitine",NA,NA,NA,NA,NA,NA,"C9H17NO4",7.22,"204.123584","[M+H]",1,"cpd:C02571","HILICPos",NA,4,"Mix1",180130,"CHEBI:57589","O-Acetylcarnitine; O-Acetyl-L-carnitine"
+"144","New2","HILIC","O-Acetyl-L-carnitine",NA,NA,NA,NA,NA,NA,"C9H17NO4",7.22,"204.123584","[M+H]",1,"cpd:C02571","HILICPos",NA,4,"Mix1",180130,"CHEBI:57589","O-Acetylcarnitine; O-Acetyl-L-carnitine"
 "145","Organic Acid","HILIC","Aconitic Acid","500 - 1000","1.196","22.6","<10 - 1000","1.175","15.5","C6H6O6",14.21,"173.008615","[M-H]",-1,"cpd:C00417","HILICNeg",NA,4,"Mix1",160401,"CHEBI:32805","cis-Aconitate; cis-Aconitic acid"
 "146","Nucleic Acid","HILIC","Adenine",NA,NA,NA,NA,NA,NA,"C5H5N5",4.72,"136.06232","[M+H]",1,"cpd:C00147","HILICPos",NA,4,"Mix1",160401,"CHEBI:16708","Adenine; 6-Aminopurine"
 "147","Nucleic Acid","HILIC","Adenine","100 - >10000","0.952","22.9","<10 - 1000","1.107","6.1","C5H5N5",4.72,"134.0462","[M-H]",-1,"cpd:C00147","HILICNeg",NA,4,"Mix1",160401,"CHEBI:16708","Adenine; 6-Aminopurine"
