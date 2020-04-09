@@ -372,7 +372,7 @@
 "371","New6","HILIC","Propionylglycine",NA,NA,NA,NA,NA,NA,"C5H9NO3",5.52,"130.050419","[M-H]",-1,NA,"HILICNeg",NA,5,"Mix1",190715,"CHEBI:89836",NA
 "372","New6","HILIC","Succinylglycine",NA,NA,NA,NA,NA,NA,"C6H9NO5",12.58,"176.055899","[M+H]",1,NA,"HILICPos",NA,4,"Mix1",190715,NA,NA
 "373","New6","HILIC","N-AcetylGlycine",NA,NA,NA,NA,NA,NA,"C4H7NO3",7.81,"116.034769","[M-H]",-1,NA,"HILICNeg",NA,5,"Mix1",190715,"CHEBI:40410",NA
-"374","New6","HILIC","Butyrylglycine",NA,NA,NA,NA,NA,NA,"C6H11NO3",2.92,"144.066069","[M-H]",-1,NA,"HILICNeg",NA,4,"Mix1",190715,"CHEBI:89963",NA
+"374","New6","HILIC","N-Butyrylglycine",NA,NA,NA,NA,NA,NA,"C6H11NO3",2.92,"144.066069","[M-H]",-1,NA,"HILICNeg",NA,4,"Mix1",190715,"CHEBI:89963",NA
 "375","New6","HILIC","Ergothioneine",NA,NA,NA,NA,NA,NA,"C9H15N3O2S",11.29,"230.096324","[M+H]",1,"cpd:C05570","HILICPos",NA,4,"Mix1",190715,"CHEBI:4828","Ergothioneine"
 "376","New6","HILIC","Pyridinedicarboxylic acid",NA,NA,NA,NA,NA,NA,"C7H5NO4",10.17,"168.029684","[M+H]",1,"cpd:C03722","HILICPos",NA,5,"Mix1",190715,"CHEBI:36112","Quinolinate; Pyridine-2,3-dicarboxylate; Quinolinic acid; 2,3-Pyridinedicarboxylic acid"
 "377","New6","HILIC","Glutamylphenylalanine",NA,NA,NA,NA,NA,NA,"C14H18N2O5",9.55,"295.129398","[M+H]",1,NA,"HILICNeg",NA,4,"Mix1",190715,"CHEBI:82966",NA
