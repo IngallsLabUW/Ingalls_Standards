@@ -350,7 +350,7 @@
 "349","New4","HILIC","Cysteinesulfinic acid",NA,NA,NA,NA,NA,NA,"C3H7NO4S",10.74,"152.001756","[M-H]",-1,"cpd:C00606","HILICNeg",NA,5,"Mix2",190514,"CHEBI:16345","3-Sulfino-L-alanine; L-Cysteinesulfinic acid; 3-Sulphino-L-alanine; 3-Sulfinoalanine"
 "350","New4","HILIC","Trimethylammonium Propionate (TMAP)",NA,NA,NA,NA,NA,NA,"C6H13NO2",9.38,"132.1018","[M+H]",1,"cpd:C08263","HILICPos",NA,4,"Mix2",190514,"CHEBI:28825","beta-Alaninebetaine; beta-Alanine betaine; Propiobetaine; Trimethylalanine"
 "351","New5","HILIC","5-Methylcytosine",NA,NA,NA,NA,NA,NA,"C5H7N3O",5.53,"126.066737","[M+H]",1,"cpd:C02376","HILICPos",NA,4,"Mix2",190514,"CHEBI:27551","5-Methylcytosine"
-"352","New5","HILIC","6-Methyladenine",NA,NA,NA,NA,NA,NA,"C6H7N5",3.97,"150.07797","[M+H]",1,"cpd:C08434","HILICPos",NA,4,"Mix2",190514,"CHEBI:28871","6-Methylaminopurine; N6-Methyladenine"
+"352","New5","HILIC","N6-Methyladenine",NA,NA,NA,NA,NA,NA,"C6H7N5",3.97,"150.07797","[M+H]",1,"cpd:C08434","HILICPos",NA,4,"Mix2",190514,"CHEBI:28871","6-Methylaminopurine; N6-Methyladenine"
 "353","New5","HILIC","Carnosine",NA,NA,NA,NA,NA,NA,"C9H14N4O3",10.47,"227.114416","[M+H]",1,"cpd:C00386","HILICPos",NA,4,"Mix2",190514,"CHEBI:15727","Carnosine; Nalpha-(beta-alanyl)-L-histidine"
 "354","New5","HILIC","Carnosine",NA,NA,NA,NA,NA,NA,"C9H14N4O3",10.47,"225.098766","[M-H]",-1,"cpd:C00386","HILICNeg",NA,4,"Mix2",190514,"CHEBI:15727","Carnosine; Nalpha-(beta-alanyl)-L-histidine"
 "355","New5","HILIC","N-Acetylglucosamine",NA,NA,NA,NA,NA,NA,"C8H15NO6",8.55,"222.097764","[M+H]",1,"cpd:C00140","HILICPos",NA,6,"Mix2",190514,"CHEBI:506227","N-Acetyl-D-glucosamine; N-Acetylchitosamine; 2-Acetamido-2-deoxy-D-glucose; GlcNAc"
