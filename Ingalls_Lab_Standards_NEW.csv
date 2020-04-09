@@ -377,7 +377,7 @@
 "376","New6","HILIC","Pyridinedicarboxylic acid",NA,NA,NA,NA,NA,NA,"C7H5NO4",10.17,"168.029684","[M+H]",1,"cpd:C03722","HILICPos",NA,5,"Mix1",190715,"CHEBI:36112","Quinolinate; Pyridine-2,3-dicarboxylate; Quinolinic acid; 2,3-Pyridinedicarboxylic acid"
 "377","New6","HILIC","Glutamylphenylalanine",NA,NA,NA,NA,NA,NA,"C14H18N2O5",9.55,"295.129398","[M+H]",1,NA,"HILICNeg",NA,4,"Mix1",190715,"CHEBI:82966",NA
 "378","New6","HILIC","Glutamylphenylalanine",NA,NA,NA,NA,NA,NA,"C14H18N2O5",9.55,"293.113748","[M-H]",-1,NA,"HILICPos",NA,4,"Mix1",190715,"CHEBI:82966",NA
-"379","New6","HILIC","Acetylglutamic acid",NA,NA,NA,NA,NA,NA,"C7H11NO5",11.84,"188.055899Â ","[M-H]",-1,"cpd:C00624","HILICNeg",NA,4,"Mix1",190715,"CHEBI:17533","N-Acetyl-L-glutamate; N-Acetyl-L-glutamic acid"
-"380","New6","HILIC","Acetylglutamic acid",NA,NA,NA,NA,NA,NA,"C7H11NO5",11.84,"190.071549","[M+H]",1,"cpd:C00624","HILICPos",NA,4,"Mix1",190715,"CHEBI:17533","N-Acetyl-L-glutamate; N-Acetyl-L-glutamic acid"
+"379","New6","HILIC","N-Acetyl-L-Glutamic Acid",NA,NA,NA,NA,NA,NA,"C7H11NO5",11.84,"188.055899Â ","[M-H]",-1,"cpd:C00624","HILICNeg",NA,4,"Mix1",190715,"CHEBI:17533","N-Acetyl-L-glutamate; N-Acetyl-L-glutamic acid"
+"380","New6","HILIC","N-Acetyl-L-Glutamic Acid",NA,NA,NA,NA,NA,NA,"C7H11NO5",11.84,"190.071549","[M+H]",1,"cpd:C00624","HILICPos",NA,4,"Mix1",190715,"CHEBI:17533","N-Acetyl-L-glutamate; N-Acetyl-L-glutamic acid"
 "381","New6","HILIC","(3-Carboxypropyl)trimethylammonium (TMAB)",NA,NA,NA,NA,NA,NA,"C7H16NO2",9.91,"146.118104","[M]",1,NA,"HILICPos",NA,4,"Mix1",190715,"CHEBI:1941",NA
 "382","Internal Standard","HILIC","Arsenobetaine, 13C2",NA,NA,NA,NA,NA,NA,"C(13)2C3H12AsO2",7.24,"181.0114","[M+H]",1,NA,"HILICPos",NA,1,NA,190715,NA,NA
