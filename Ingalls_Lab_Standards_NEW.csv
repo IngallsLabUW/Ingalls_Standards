@@ -249,7 +249,7 @@
 "248","Co-enzyme A","HILIC","Malonyl CoA","100 - >10000","0.441","50","100 - >10000","0.281","10.7","C24H38N7O19P3S",13.525,"852.107789","[M-H]",-1,"cpd:C00083","HILICNeg",NA,4,"Mix1",160401,"CHEBI:15531","Malonyl-CoA; Malonyl coenzyme A"
 "249","New2","HILIC","Maltotetraose",NA,NA,NA,NA,NA,NA,"C24H42O21",13.78,"665.21404","[M-H]",-1,"cpd:C02052","HILICNeg",NA,NA,NA,NA,"CHEBI:28460","Maltotetraose"
 "250","New2","HILIC","Maltotriose",NA,NA,NA,NA,NA,NA,"C18H32O16",13.03,"503.161215","[M-H]",-1,"cpd:C01835","HILICNeg",NA,NA,NA,NA,"CHEBI:61993","Maltotriose; Amylotriose"
-"251","Sulfur","HILIC","MESNA (Sodium 2-mercaptoethanesulfonate)","<10 - 1000","0.266","20.6","<10 - 1000","0.953","7.8","C2H5O3S2",2.67,"140.968013","[M]",-1,NA,"HILICNeg",NA,4,"Mix2",160401,"CHEBI:31824",NA
+"251","Sulfur","HILIC","Coenzyme M","<10 - 1000","0.266","20.6","<10 - 1000","0.953","7.8","C2H5O3S2",2.67,"140.968013","[M]",-1,NA,"HILICNeg",NA,4,"Mix2",160401,"CHEBI:31824",NA
 "252","Amino Acid","HILIC","Methionine","1000 - >10000","0.85","12","<10 - 1000","1.021","18.5","C5H11NO2S",7.96,"150.058876","[M+H]",1,"cpd:C00073","HILICPos",NA,4,"Mix1",160401,"CHEBI:16811","L-Methionine; Methionine; L-2-Amino-4methylthiobutyric acid"
 "253","New","HILIC","Methionine Sulfoxide",NA,NA,NA,NA,NA,NA,"C5H11NO3S",9.73,"166.053791","[M+H]",1,"cpd:C02989","HILICPos",NA,4,"Mix1",170331,"CHEBI:17016","L-Methionine S-oxide"
 "254","Co-enzyme A","HILIC","Methyl Malonyl CoA","100 - >10000","0.625","17.5","20 - >10000","0.759","8.5","C25H40N7O19P3S",13.18,"866.123439","[M-H]",-1,"cpd:C00683","HILICNeg",NA,4,"Mix1",160401,"CHEBI:15466","(S)-Methylmalonyl-CoA; (S)-Methylmalonyl-coenzyme A; (2S)-Methylmalonyl-CoA; D-Methylmalonyl-CoA"
