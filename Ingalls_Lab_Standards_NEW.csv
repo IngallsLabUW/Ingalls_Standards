@@ -334,8 +334,8 @@
 "333","New3","HILIC","Allopurinol",NA,NA,NA,NA,NA,NA,"C5H4N4O",4.16,"137.046336","[M+H]",1,NA,"HILICPos",NA,4,"Mix2",180701,"CHEBI:40279",NA
 "334","New3","HILIC","Allopurinol",NA,NA,NA,NA,NA,NA,"C5H4N4O",4.16,"135.030686","[M-H]",-1,NA,"HILICNeg",NA,4,"Mix2",180701,"CHEBI:40279",NA
 "335","New3","RP","Allopurinol",NA,NA,NA,NA,NA,NA,"C5H4N4O",1.27,"137.046336","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,180701,"CHEBI:40279",NA
-"336","New3","HILIC","Imidazoleacrylic Acid",NA,NA,NA,NA,NA,NA,"C6H6N2O2",8.16,"139.050753","[M+H]",1,"cpd:C00785","HILICPos",NA,4,"Mix2",180701,"CHEBI:27248","Urocanate; Urocanic acid"
-"337","New3","HILIC","Imidazoleacrylic Acid",NA,NA,NA,NA,NA,NA,"C6H6N2O2",8.16,"137.035103","[M-H]",-1,"cpd:C00785","HILICNeg",NA,4,"Mix2",180701,"CHEBI:27248","Urocanate; Urocanic acid"
+"336","New3","HILIC","Urocanic Acid",NA,NA,NA,NA,NA,NA,"C6H6N2O2",8.16,"139.050753","[M+H]",1,"cpd:C00785","HILICPos",NA,4,"Mix2",180701,"CHEBI:27248","Urocanate; Urocanic acid"
+"337","New3","HILIC","Urocanic Acid",NA,NA,NA,NA,NA,NA,"C6H6N2O2",8.16,"137.035103","[M-H]",-1,"cpd:C00785","HILICNeg",NA,4,"Mix2",180701,"CHEBI:27248","Urocanate; Urocanic acid"
 "338","New3","HILIC","4-Hydroxyisoleucine",NA,NA,NA,NA,NA,NA,"C6H13NO3",8.34,"148.097369","[M+H]",1,"cpd:C20802","HILICPos",NA,4,"Mix2",180701,"CHEBI:79079","(4S)-4-Hydroxy-L-isoleucine; Hydroxyisoleucine"
 "339","New3","HILIC","4-Hydroxyisoleucine",NA,NA,NA,NA,NA,NA,"C6H13NO3",8.34,"146.081719","[M-H]",-1,"cpd:C20802","HILICNeg",NA,4,"Mix2",180701,"CHEBI:79079","(4S)-4-Hydroxy-L-isoleucine; Hydroxyisoleucine"
 "340","New3","HILIC","Deoxyadenosine",NA,NA,NA,NA,NA,NA,"C10H13N5O3",3.44,"252.109665","[M+H]",1,"cpd:C00559","HILICPos",NA,4,"Mix2",180701,"CHEBI:17256","Deoxyadenosine; 2'-Deoxyadenosine"
