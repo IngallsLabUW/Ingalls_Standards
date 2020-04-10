@@ -49,7 +49,7 @@
 "48","Quinone","RP","Coenzyme Q","50 - >10000","1.283","2.9","<0.5 - >10000","1.029","3.8","C14H18O4",9.35,"251.128335","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:46234",NA
 "49","Quinone","RP","Coenzyme Q10","50 - >10000","13.29","15.3","5 - >10000","0.933","5.1","C59H90O4",16.61,"863.691735","[M+H]",1,"cpd:C11378","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:46245","Ubiquinone-10; Ubidecarenone; Coenzyme Q10"
 "50","New","RP","L-Cysteinylglycine",NA,NA,NA,NA,NA,NA,"C5H10N2O3S",0.72,"179.04904","[M+H]",1,"cpd:C01419","CyanoAq","CyanoDCM",0.25,NA,170331,"CHEBI:4047","Cys-Gly; L-Cysteinylglycine"
-"51","New2","RP","Decarboxylated S-Adenosylmethionine",NA,NA,NA,NA,NA,NA,"C14H23N6O3S",0.68,"355.155236","[M]",1,NA,"CyanoAq","CyanoDCM",0.5,NA,180130,NA,NA
+"51","New2","RP","S-Adenosyl-L-Methioninamine",NA,NA,NA,NA,NA,NA,"C14H23N6O3S",0.68,"355.155236","[M]",1,NA,"CyanoAq","CyanoDCM",0.5,NA,180130,NA,NA
 "52","Vitamin","RP","Desthiobiotin","5 - >10000","0.894","2.4","May-00","0.757","2.4","C10H18N2O3",4.5,"215.139568","[M+H]",1,"cpd:C01909","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:16691","Dethiobiotin; Desthiobiotin"
 "53","Fatty Acid","RP","DHA","5000 - >10000","2.031","31.8","50 - >10000","2.077","17.4","C22H32O2",12.23,"329.248055","[M+H]",1,"cpd:C06429","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:36005","(4Z,7Z,10Z,13Z,16Z,19Z)-Docosahexaenoic acid; 4,7,10,13,16,19-Docosahexaenoic acid; Docosahexaenoic acid; Docosahexaenoate"
 "54","Phytohormone","RP","DHZ","nd","nd","nd","50 - 50","0.147","54.5","C10H15N5O",2.01,NA,NA,-1,"cpd:C02029","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:17874","Dihydrozeatin; 2-Methyl-4-(1H-purin-6-ylamino)butan-1-ol; N6-(4-Hydroxyisopentanyl)adenine"
