@@ -84,7 +84,7 @@
 "83","Internal Standard","RP","L-Phenylalanine, 2H8",NA,NA,NA,NA,NA,NA,"C9D8H3O2",1.15,"174.1365","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.1,NA,160401,NA,NA
 "84","Internal Standard","RP","L-Tryptophan, 2H3",NA,NA,NA,NA,NA,NA,"C11D3H9N2O2",2.23,"208.1161","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.1,NA,160401,NA,NA
 "85","Circadian","RP","Melatonin","5 - >10000","1.492","3.3","<0.5 - 500","1.121","1","C13H16N2O2",6.51,"233.129003","[M+H]",1,"cpd:C01598","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:16796","Melatonin; N-Acetyl-5-methoxytryptamine"
-"86","Vitamin B12","RP","Methyl B12","50 - >10000","1.216","5.8","May-00","0.706","3.9","C63H91CoN13O14P",6.29,"672.8011","[2M+H]",2,"cpd:C06453","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:28115","Methylcobalamin; Methylcob(III)alamin"
+"86","Vitamin B12","RP","Methylcobalamin","50 - >10000","1.216","5.8","May-00","0.706","3.9","C63H91CoN13O14P",6.29,"672.8011","[2M+H]",2,"cpd:C06453","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:28115","Methylcobalamin; Methylcob(III)alamin"
 "87","Phytohormone","RP","Methyl indole 3 carboxylate","5 - >10000","0.953","8.9","<0.5 - >10000","0.918","1.8","C10H9NO2",7.25,"176.071154","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,160401,NA,NA
 "88","Sulfur","RP","Methylthioadenosine",NA,NA,NA,NA,NA,NA,"C11H15N5O3S",2.1,"298.097387","[M+H]",1,"cpd:C00170","CyanoAq","CyanoDCM",0.25,NA,160401,"CHEBI:17509","5'-Methylthioadenosine; Methylthioadenosine; S-Methyl-5'-thioadenosine; 5-Methylthioadenosine; 5'-Deoxy-5'-(methylthio)adenosine; Thiomethyladenosine; MTA"
 "89","Antibiotic","RP","Monesin","50 - >10000","1.97","4.7","<0.5 - >10000","3.839","6.3","C36H61NaO11",11.79,"693.418985","[M+H]",1,NA,"CyanoAq","CyanoDCM",0.25,NA,160401,NA,NA
