@@ -1,0 +1,4 @@
+
+Quick checklist of changes made for the summer 2021 tidy
+
+- Change the original and "NEW" csvs to "old" and just normal Ingalls_Lab_Standards.csv
