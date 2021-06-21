@@ -37,22 +37,15 @@ This markdown document controls the original large structural changes initiated 
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
 ------
 
-```{r Source Primary ID code, include=TRUE}
-matching.variable = "Ingalls"
-filenames <- RemoveCsv(list.files(path = "data_raw", pattern = matching.variable))
+The below code blocks represent the order in which large structural changes were made. Running these code blocks *WILL NOT* replace any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting.
 
-for (i in filenames) {
-  filepath <- file.path("data_raw", paste(i, ".csv", sep = ""))
-  assign(make.names(i), read.csv(filepath, stringsAsFactors = FALSE, fileEncoding = "latin1"))
-}
-
+### Primary ID (column: Compound_Name)
+```{r Primary ID code, include=TRUE}
 source("src/Primary_ID.R")
-
-write.csv(Ingalls_Lab_Standards_Extras, "Ingalls_Lab_Standards_NEW.csv")
-
 ```
 
-```{r Source Figures Names code, include=TRUE}
+### Shortened names (column: Compound_Name.figure)
+```{r Figures Names code, include=TRUE}
 
 source("src/Figure_Names.R")
 

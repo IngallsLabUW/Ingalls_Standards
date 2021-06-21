@@ -1,11 +1,10 @@
+## Script to rename primary ID column on the Ingalls Standards sheet.
+Ingalls_Lab_Standards <- read.csv("data_old/Ingalls_Lab_Standards_old.csv") %>%
+  mutate(m.z = as.numeric(m.z))
 
-## First script to rename primary ID column on the Ingalls Standards sheet.
-
-# Renaming of typos/specific issues.
-LauraEditsIS <- Ingalls_Lab_Standards_LauraEdit %>%
-  select(Compound.Type,Compound.Name_new, Compound.Name_old) %>%
-  filter(Compound.Type == "Internal Standard") %>%
-  filter(!Compound.Name_new == Compound.Name_old) # Remove compounds that don't change
+Ingalls_Lab_Standards_LauraEdit <- read.csv("data_old/Ingalls_Lab_Standards_LauraEdit.csv", 
+                                            header = TRUE, stringsAsFactors = FALSE, fileEncoding = "latin1") %>%
+  mutate(m.z = as.numeric(m.z))
 
 Ingalls_Lab_Standards_LauraEdit[Ingalls_Lab_Standards_LauraEdit == "O-Propanoylcarnitine"] <- "O-Propionylcarnitine"
 Ingalls_Lab_Standards_LauraEdit[Ingalls_Lab_Standards_LauraEdit == "O-Acetyl-L-carnitine"] <- "O-Acetylcarnitine"
@@ -13,11 +12,8 @@ Ingalls_Lab_Standards_LauraEdit[Ingalls_Lab_Standards_LauraEdit == "Propanoyl-Co
 Ingalls_Lab_Standards_LauraEdit <- Ingalls_Lab_Standards_LauraEdit %>%
   mutate(Compound.Name_new = ifelse(Compound.Name_old == "Tryptamine", "Tryptamine", Compound.Name_new))
 
-print(LauraEditsIS)
-#ggsave(path = "intermediate_tables/", filename = "LauraEdits_IS")
-
-## Renaming of Internal Standards
-Ingalls_Lab_Standards_IS <- Ingalls_Lab_Standards %>%
+# Renaming of Internal Standards
+Internal_Standards <- Ingalls_Lab_Standards %>%
   left_join(Ingalls_Lab_Standards_LauraEdit %>% rename(Compound.Name = Compound.Name_old)) %>%
   rename(Compound.Name_old = Compound.Name,
          Compound.Name = Compound.Name_new) %>%
@@ -27,10 +23,8 @@ Ingalls_Lab_Standards_IS <- Ingalls_Lab_Standards %>%
                   Compound.Name, Compound.Name_old)) %>%
   mutate(Compound.Name = ifelse(Compound.Type == "Internal Standard", Compound.Name, NA))
 
-#write.csv(Ingalls_Lab_Standards_IS, "Ingalls_Lab_Standards_NEW.csv")
 
-
-## Abbreviations
+# Remove abbreviations for primary_ID column.
 Abbreviations <- Ingalls_Lab_Standards_LauraEdit %>%
   select(Compound.Name_new, Compound.Name_old, Compound.Type) %>% 
   mutate(Compound.Name_new = recode(Compound.Name_new,
@@ -54,17 +48,14 @@ Abbreviations <- Ingalls_Lab_Standards_LauraEdit %>%
   filter(nchar(Compound.Name_old) < 10 | Compound.Name_old == "(3-Carboxypropyl)trimethylammonium (TMAB)",
          nchar(Compound.Name_old) < 7 | str_detect(Compound.Name_old, "-"))
 
-### Show list of abbreviated compounds to be changed
-print(Abbreviations)
-
-### Finalize changes of abbreviated compounds
-Ingalls_Lab_Standards_Abbr <- Ingalls_Lab_Standards_IS %>%
+# Finalize changes of abbreviated compounds
+Ingalls_Lab_Standards_Abbr <- Internal_Standards %>%
   left_join(Abbreviations %>% select(Compound.Name_new, Compound.Name_old) %>% unique()) %>%
   select(Compound.Name, Compound.Name_new, Compound.Name_old, Compound.Type, everything()) %>%
   mutate(Compound.Name = ifelse(is.na(Compound.Name), Compound.Name_new, Compound.Name)) %>%
   select(Compound.Type, Column, everything(), -Compound.Name_new) 
 
-## Isolate different capitalizations of compounds
+# Isolate different capitalizations of compounds
 Capitalizations <- Ingalls_Lab_Standards_LauraEdit %>%
   select(Compound.Name_new, Compound.Name_old) %>%
   filter(!Compound.Name_new %in% Ingalls_Lab_Standards_Abbr$Compound.Name, 
@@ -87,9 +78,8 @@ Just.Capitals <- Capitalizations %>%
 Complete.Caps <- Acid.Capitals %>%
   rbind(Beta.Capitals) %>%
   rbind(Just.Capitals)
-print(Complete.Caps)
 
-### Finalize changes of capitalized compounds
+# Finalize changes of capitalized compounds
 Ingalls_Lab_Standards_Caps <- Ingalls_Lab_Standards_Abbr %>%
   left_join(Complete.Caps) %>%
   select(Compound.Name, Compound.Name_new, Compound.Name_old, Compound.Type, everything()) %>%
@@ -107,8 +97,6 @@ Symbols <- Ingalls_Lab_Standards_Caps %>%
   filter_all(any_vars(str_detect(., "[^[:alnum:] ]"))) %>%
   unique()
 
-print(Symbols)
-
 # Finalize changes of compounds with symbols
 Ingalls_Lab_Standards_Symbols <- Ingalls_Lab_Standards_Caps %>%
   left_join(Symbols) %>%
@@ -117,9 +105,7 @@ Ingalls_Lab_Standards_Symbols <- Ingalls_Lab_Standards_Caps %>%
   select(Compound.Type, Column, everything(), -Compound.Name_new) %>%
   unique()
 
-#write.csv(Ingalls_Lab_Standards_Symbols, "Ingalls_Lab_Standards_NEW.csv")
-
-## Adjust Vitamins to descriptive names
+# Adjust Vitamins to descriptive names
 Ingalls_Lab_Standards_Vitamins <- Ingalls_Lab_Standards_Symbols %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "Methyl indole 3 carboxylate", "Methyl indole-3-carboxylate", Compound.Name)) %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "Vitamin B1", "Thiamine", Compound.Name)) %>%
@@ -134,23 +120,5 @@ Ingalls_Lab_Standards_Vitamins <- Ingalls_Lab_Standards_Symbols %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "AMP, 15N5", "Adenosine monophosphate, 15N5", Compound.Name)) %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "Indole 3 methyl acetate", "Indole-3-methyl acetate", Compound.Name))
 
-#write.csv(Ingalls_Lab_Standards_Vitamins, "Ingalls_Lab_Standards_NEW.csv")
+Ingalls_Lab_Standards_PrimaryID <- Ingalls_Lab_Standards_Vitamins
 
-## All other compounds not yet changed
-Unchanged <- Ingalls_Lab_Standards_Vitamins %>%
-  left_join(Ingalls_Lab_Standards_LauraEdit) %>%
-  select(Compound.Name, Compound.Name_new, Compound.Name_old) %>%
-  filter(is.na(Compound.Name)) %>%
-  filter(Compound.Name_new != Compound.Name_old)
-
-
-### Add changes of still-unedited compounds - Including those that remain as the original name.
-Ingalls_Lab_Standards_Extras <- Ingalls_Lab_Standards_Vitamins %>%
-  left_join(Unchanged) %>%
-  select(Compound.Name, Compound.Name_new, Compound.Name_old, Compound.Type, everything()) %>%
-  mutate(Compound.Name = ifelse(is.na(Compound.Name), Compound.Name_new, Compound.Name)) %>%
-  mutate(Compound.Name = ifelse(is.na(Compound.Name), Compound.Name_old, Compound.Name)) %>%
-  select(Compound.Type, Column, everything(), -Compound.Name_new) %>%
-  unique()
-
-#write.csv(Ingalls_Lab_Standards_Extras, "Ingalls_Lab_Standards_NEW.csv")
