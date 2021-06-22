@@ -8,11 +8,12 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-source("src/Functions.R")
-
+library(httr) 
 library(stringr)
 library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+
+source("src/Functions.R")
 ```
 
 This markdown document controls the original large structural changes initiated at the beginning of the repository (March 2020). "Large Structural Changes" include the creation of new columns, multi-group name changes of compounds, etc.
@@ -51,11 +52,8 @@ source("src/Figure_Names.R")
 
 -----
 
-```{r Source ChEBI code, include=TRUE}
-
+```{r ChEBI code, include=TRUE}
 source("src/CHEBI_check.R")
-
-write.csv(Ingalls_Lab_Standards_ChEBI, "Ingalls_Lab_Standards_NEW.csv")
 ```
 
 -----
