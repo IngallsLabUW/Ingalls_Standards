@@ -69,7 +69,7 @@ The source code for creating the ClassyFire IDs commented out: *DO NOT RUN THE H
 
 ```{r Source Classyfire code, include=TRUE}
 ### source("src/High_Class_Function_062220.R") ###
-source("src/Classyfire_column.R")
+source("src/Classyfire.R")
 ```
 
 -----
