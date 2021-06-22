@@ -46,10 +46,7 @@ source("src/Primary_ID.R")
 
 ### Shortened names (column: Compound_Name.figure)
 ```{r Figures Names code, include=TRUE}
-
 source("src/Figure_Names.R")
-
-write.csv(Ingalls_Lab_Standards_FigNames, "Ingalls_Lab_Standards_NEW.csv")
 ```
 
 -----

@@ -2,19 +2,19 @@
 Ingalls_Lab_Standards <- read.csv("data_old/Ingalls_Lab_Standards_old.csv") %>%
   mutate(m.z = as.numeric(m.z))
 
-Ingalls_Lab_Standards_LauraEdit <- read.csv("data_old/Ingalls_Lab_Standards_LauraEdit.csv", 
+LauraEdit <- read.csv("data_old/Ingalls_Lab_Standards_LauraEdit.csv", 
                                             header = TRUE, stringsAsFactors = FALSE, fileEncoding = "latin1") %>%
   mutate(m.z = as.numeric(m.z))
 
-Ingalls_Lab_Standards_LauraEdit[Ingalls_Lab_Standards_LauraEdit == "O-Propanoylcarnitine"] <- "O-Propionylcarnitine"
-Ingalls_Lab_Standards_LauraEdit[Ingalls_Lab_Standards_LauraEdit == "O-Acetyl-L-carnitine"] <- "O-Acetylcarnitine"
-Ingalls_Lab_Standards_LauraEdit[Ingalls_Lab_Standards_LauraEdit == "Propanoyl-CoA"] <- "Propionyl-CoA"
-Ingalls_Lab_Standards_LauraEdit <- Ingalls_Lab_Standards_LauraEdit %>%
+LauraEdit[LauraEdit == "O-Propanoylcarnitine"] <- "O-Propionylcarnitine"
+LauraEdit[LauraEdit == "O-Acetyl-L-carnitine"] <- "O-Acetylcarnitine"
+LauraEdit[LauraEdit == "Propanoyl-CoA"] <- "Propionyl-CoA"
+LauraEdit <- LauraEdit %>%
   mutate(Compound.Name_new = ifelse(Compound.Name_old == "Tryptamine", "Tryptamine", Compound.Name_new))
 
 # Renaming of Internal Standards
 Internal_Standards <- Ingalls_Lab_Standards %>%
-  left_join(Ingalls_Lab_Standards_LauraEdit %>% rename(Compound.Name = Compound.Name_old)) %>%
+  left_join(LauraEdit %>% rename(Compound.Name = Compound.Name_old)) %>%
   rename(Compound.Name_old = Compound.Name,
          Compound.Name = Compound.Name_new) %>%
   select(Compound.Type, Column, Compound.Name, Compound.Name_old, everything()) %>%
@@ -23,9 +23,8 @@ Internal_Standards <- Ingalls_Lab_Standards %>%
                   Compound.Name, Compound.Name_old)) %>%
   mutate(Compound.Name = ifelse(Compound.Type == "Internal Standard", Compound.Name, NA))
 
-
 # Remove abbreviations for primary_ID column.
-Abbreviations <- Ingalls_Lab_Standards_LauraEdit %>%
+Abbreviations <- LauraEdit %>%
   select(Compound.Name_new, Compound.Name_old, Compound.Type) %>% 
   mutate(Compound.Name_new = recode(Compound.Name_new,
                                     "DMSP" = "Dimethylsulfoniopropionate",
@@ -49,16 +48,16 @@ Abbreviations <- Ingalls_Lab_Standards_LauraEdit %>%
          nchar(Compound.Name_old) < 7 | str_detect(Compound.Name_old, "-"))
 
 # Finalize changes of abbreviated compounds
-Ingalls_Lab_Standards_Abbr <- Internal_Standards %>%
+Abbreviations_final <- Internal_Standards %>%
   left_join(Abbreviations %>% select(Compound.Name_new, Compound.Name_old) %>% unique()) %>%
   select(Compound.Name, Compound.Name_new, Compound.Name_old, Compound.Type, everything()) %>%
   mutate(Compound.Name = ifelse(is.na(Compound.Name), Compound.Name_new, Compound.Name)) %>%
   select(Compound.Type, Column, everything(), -Compound.Name_new) 
 
 # Isolate different capitalizations of compounds
-Capitalizations <- Ingalls_Lab_Standards_LauraEdit %>%
+Capitalizations <- LauraEdit %>%
   select(Compound.Name_new, Compound.Name_old) %>%
-  filter(!Compound.Name_new %in% Ingalls_Lab_Standards_Abbr$Compound.Name, 
+  filter(!Compound.Name_new %in% Abbreviations_final$Compound.Name, 
          Compound.Name_new != Compound.Name_old) # drop commpounds already reassigned or matching originals
 
 # View different capitalization sections.
@@ -80,7 +79,7 @@ Complete.Caps <- Acid.Capitals %>%
   rbind(Just.Capitals)
 
 # Finalize changes of capitalized compounds
-Ingalls_Lab_Standards_Caps <- Ingalls_Lab_Standards_Abbr %>%
+Capitalizations_final <- Abbreviations_final %>%
   left_join(Complete.Caps) %>%
   select(Compound.Name, Compound.Name_new, Compound.Name_old, Compound.Type, everything()) %>%
   mutate(Compound.Name = ifelse(is.na(Compound.Name), Compound.Name_new, Compound.Name)) %>%
@@ -88,8 +87,8 @@ Ingalls_Lab_Standards_Caps <- Ingalls_Lab_Standards_Abbr %>%
   unique()
 
 # Isolate Symbols  
-Symbols <- Ingalls_Lab_Standards_Caps %>%
-  left_join(Ingalls_Lab_Standards_LauraEdit) %>%
+Symbols <- Capitalizations_final %>%
+  left_join(LauraEdit) %>%
   select(Compound.Name, Compound.Name_new, Compound.Name_old, Compound.Type) %>%
   filter(is.na(Compound.Name)) %>%
   filter(Compound.Name_new != Compound.Name_old) %>%
@@ -98,7 +97,7 @@ Symbols <- Ingalls_Lab_Standards_Caps %>%
   unique()
 
 # Finalize changes of compounds with symbols
-Ingalls_Lab_Standards_Symbols <- Ingalls_Lab_Standards_Caps %>%
+Symbols_final <- Capitalizations_final %>%
   left_join(Symbols) %>%
   select(Compound.Name, Compound.Name_new, Compound.Name_old, Compound.Type, everything()) %>%
   mutate(Compound.Name = ifelse(is.na(Compound.Name), Compound.Name_new, Compound.Name)) %>%
@@ -106,7 +105,7 @@ Ingalls_Lab_Standards_Symbols <- Ingalls_Lab_Standards_Caps %>%
   unique()
 
 # Adjust Vitamins to descriptive names
-Ingalls_Lab_Standards_Vitamins <- Ingalls_Lab_Standards_Symbols %>%
+Vitamins <- Symbols_final %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "Methyl indole 3 carboxylate", "Methyl indole-3-carboxylate", Compound.Name)) %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "Vitamin B1", "Thiamine", Compound.Name)) %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "Vitamin B2, 13C4, 15N2", "Riboflavin-dioxopyrimidine, 13C4, 15N2", Compound.Name)) %>%
@@ -120,5 +119,5 @@ Ingalls_Lab_Standards_Vitamins <- Ingalls_Lab_Standards_Symbols %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "AMP, 15N5", "Adenosine monophosphate, 15N5", Compound.Name)) %>%
   mutate(Compound.Name = ifelse(Compound.Name_old == "Indole 3 methyl acetate", "Indole-3-methyl acetate", Compound.Name))
 
-Ingalls_Lab_Standards_PrimaryID <- Ingalls_Lab_Standards_Vitamins
+Ingalls_Lab_Standards_PrimaryID <- Vitamins
 
