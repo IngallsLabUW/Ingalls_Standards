@@ -1,6 +1,8 @@
 # Script for Figure Names
 
-complete.standards <- Ingalls_Lab_Standards_Extras %>%
+All_Standards <- Ingalls_Lab_Standards_PrimaryID
+
+complete.standards <- All_Standards %>%
   mutate(Compound.Name_figure = Compound.Name_old) %>%
   select(Compound.Type, Compound.Name, Compound.Name_old, Compound.Name_figure) %>%
   mutate(old.letter.count = nchar(Compound.Name_old)) %>%
@@ -11,7 +13,7 @@ complete.standards$Compound.Name_figure <- str_replace(complete.standards$Compou
 Internal.Standards <- complete.standards %>%
   filter(Compound.Type == "Internal Standard")
 
-figure.names <- complete.standards %>%
+Figure.Names <- complete.standards %>%
   filter(Compound.Type != "Internal Standard") %>%
   mutate(Compound.Name_figure = ifelse(old.letter.count <= 14, Compound.Name, Compound.Name_figure)) %>%
   mutate(Compound.Name_figure = ifelse(old.letter.count <= 7, Compound.Name_old, Compound.Name_figure)) %>%
@@ -28,16 +30,10 @@ figure.names <- complete.standards %>%
                                        "RP B12" = "Cyano B12",
                                        ###### Abbreviations ######
                                        "(3-Carboxypropyl)trimethylammonium (TMAB)" = "TMAB",
-                                       #"3-Indoleacetonitrile" = "3-IAN",
-                                       #"3 Indolepropionic acid" = "3-IPA",
                                        "3 Indolebutyric acid" = "Indolebutyric acid",
-                                       #"4-hydroxybenzaldehyde" = "4-HBZ",
                                        "5-(2-Hydroxyethyl)-4-methylthiazole" = "Sulfurol",
-                                       #"5-Methylcytosine" = "5-mC",
                                        "6-Methyladenine" = "N6-Methyladenine",
                                        "7-dehydrocholesterol" = "7-DHC",
-                                       #"Acetyl-L-carnitine" = "ALC",
-                                       #"Acetylglutamic acid" = "NAG",
                                        "Adenosyl Methionine" = "SAM",
                                        "Adenosyl Homocysteine" = "SAH",
                                        "Aminobenzoic acid" = "PABA",
@@ -53,15 +49,11 @@ figure.names <- complete.standards %>%
                                        "Dimethyl glycine" = "DMG",
                                        "Dimethylsulfonioacetate (DMS-Ac)" = "DMS-Ac",
                                        "Ethyl 3 aminobenzoate" = "Ethyl aminobenzoate",
-                                       #"Glucose 1 phosphate" = "G1P",
-                                       #"Glucose 6 phosphate" = "G6P",
-                                       #"Glucosylglycerol" = "GG", 
                                        "Glutathione Disulfide" = "GSSG",
                                        "Glutamylphenylalanine" = "GMPA",
                                        "Glycerophosphocholine" = "GPP",
                                        "Homocysteine Thiolactone" = "Homocysteine thiolactone",
                                        "Homoserine lactone" = "AHL", 
-                                       #"Indole 3 acetamide" = "I3A",
                                        "Indoleacrylic acid" = "IAA",
                                        "Isobutyryl-carnitine" = "IBC",
                                        "Riboflavin Monophosphate" = "RMP",
@@ -71,13 +63,7 @@ figure.names <- complete.standards %>%
                                        "Methylmalonyl carnitine" = "MMC",
                                        "Methylphosphonic acid" = "MPA",
                                        "Methylthioadenosine" = "MTA",
-                                       #"N-Acetylglucosamine" = "GlcNAc",
-                                       #"N-Acetyl-Serine" = "NAS",
                                        "N-Acetyl-Serine" = "N-Acetylserine",
-                                       #"N-acetyltaurine" = "NAT",
-                                       #"N-methyltaurine" = "NMT",
-                                       #"p-Coumaric acid" = "p-CA",
-                                       #"p-Coumoroyl-HSL" = "p-CHSL",
                                        "Propionyl-L-carnitine" = "O-Propionylcarnitine",
                                        "Pyridoxal Phosphate" = "PLP",
                                        "Succinic semialdehyde" = "SSA",
@@ -89,18 +75,14 @@ figure.names <- complete.standards %>%
                                        "Trimethylamine N-oxide" = "TMAO",
                                        "Trimethylammonium Propionate (TMAP)" = "TMAP",
                                        "Tropodithietic acid" = "Thiotropocin",
-                                       #"UDP-glucosamine" = "UDPG",
                                        ###### Shorten ######
                                        "1-stearoyl-2-oleoyl-sn-glycero-3-phosphoethanolamine" = "1,2,3-phosphoethanolamine",
                                        "1-palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine" = "1,2,3-phosphocholine",
                                        "2-(3,5-Dichlorophenylcarbamoyl)-1,2-dimethylcyclopropane-1-carboxylic acid" = "cinnamoyl-HSL",
-                                       #"3-Sulfopyruvic acid" = "3-SP acid",
                                        "3',5'-Cyclic diGMP" = "Cyclic diGMP",
-                                       #"4-Hydroxyisoleucine" = "4-OHIle",
                                        "5-Hydroxyectoine" = "Hydroxyectoine",
                                        "Adenosylcobalamin" = "Adenosyl B12",
                                        "alpha-Tocotrienol" = "a-Tocotrienol",
-                                       #"beta-Glutamic acid" = "b-Glu",
                                        "beta-Carotene" = "b-Carotene",
                                        "beta-Cyclocitral" = "b-Cyclocitral",
                                        "beta-Ionine" = "b-Ionine",
@@ -125,13 +107,12 @@ figure.names <- complete.standards %>%
                                        "N-(3-Oxohexanoyl)homoserine lactone" = "3OC6-HSL",
                                        "N-(3-Oxooctanoyl)homoserine lactone" = "3OC8-HSL",
                                        "N-Acetylmuramic acid" = "MurNAc",
-                                       #"N(e)-Acetyl-Lysine" = "N6-AL",
                                        "Phosphoglyceric acid" = "3-Phosphoglycerate",
                                        "Stachydrine hydrochloride" = "Proline betaine",
                                        "Tocopherol (Vit E)" = "Vit E",
                                        ###### Different name ######
-                                       "B-apo-8'-carotenal" = "Apocarotenal", ###
-                                       "Ethanesulfonic acid" = "Esylic acid", ###
+                                       "B-apo-8'-carotenal" = "Apocarotenal",
+                                       "Ethanesulfonic acid" = "Esylic acid", 
                                        "Imidazoleacrylic acid" = "Urocanate",
                                        "Ophthalmic acid" = "Ophthalmate",
                                        "L-Pyroglutamic acid" = "Pidolic acid",
@@ -152,8 +133,8 @@ figure.names <- complete.standards %>%
   unique() %>%
   mutate(new.letter.count = nchar(Compound.Name_figure))
 
-Ingalls_Lab_Standards_FigNames <- Ingalls_Lab_Standards_Extras %>%
-  left_join(figure.names) %>%
+Ingalls_Lab_Standards_FigNames <- All_Standards %>%
+  left_join(Figure.Names) %>%
   mutate(Compound.Name_figure = ifelse(Compound.Type == "Internal Standard", Compound.Name, Compound.Name_figure)) %>%
   select(Compound.Type, Column, Compound.Name, Compound.Name_old, Compound.Name_figure, everything()) %>%
   select(-old.letter.count, -new.letter.count) 
