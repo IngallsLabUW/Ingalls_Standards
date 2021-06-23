@@ -28,7 +28,7 @@ Figure.Names <- complete.standards %>%
                                        "Betaine" = "Glycine betaine",
                                        "N-Acetylserine" = "N-acetylserine",
                                        "RP B12" = "Cyano B12",
-                                       "4-hydroxybenzaldehyde" = "4-Hydroxybenzaldehyde"
+                                       "4-hydroxybenzaldehyde" = "4-Hydroxybenzaldehyde",
                                        ###### Abbreviations ######
                                        "(3-Carboxypropyl)trimethylammonium (TMAB)" = "TMAB",
                                        "3 Indolebutyric acid" = "Indolebutyric acid",
