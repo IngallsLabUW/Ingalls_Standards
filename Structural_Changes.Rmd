@@ -13,12 +13,11 @@ library(stringr)
 library(tidyverse)
 knitr::opts_chunk$set(echo = TRUE)
 
-source("src/Functions.R")
 ```
 
-This markdown document controls the original large structural changes initiated at the beginning of the repository (March 2020). "Large Structural Changes" include the creation of new columns, multi-group name changes of compounds, etc.
+## This markdown document controls the original large structural changes made in 2020. 
 
-## Change Log
+#### Change Log
 4/8/20: Internal standards updated to reflect consistent naming scheme.  
 4/20/20: Abbreviated compounds switched to full-length KEGG names.  
 4/20/20: Adjusted compounds with incorrect capitalization.  
@@ -38,20 +37,21 @@ This markdown document controls the original large structural changes initiated 
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
 ------
 
-The below code blocks represent the order in which large structural changes were made. Running these code blocks *WILL NOT* replace any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting.
+The below code blocks represent **the order** in which large structural changes were made. Running these code blocks *WILL NOT* replace any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting. 
 
-### Primary ID (column: Compound_Name)
+#### Primary ID (column: Compound_Name)
 ```{r Primary ID code, include=TRUE}
 source("src/Primary_ID.R")
 ```
 
-### Shortened names (column: Compound_Name.figure)
+#### Shortened names (column: Compound_Name.figure)
 ```{r Figures Names code, include=TRUE}
 source("src/Figure_Names.R")
 ```
 
 -----
 
+#### ChEBI and KEGG columns
 ```{r ChEBI code, include=TRUE}
 #source("src/CHEBI_check.R")
 
@@ -60,6 +60,7 @@ Ingalls_Lab_Standards_ChEBI <- read.csv("data_extra/TEMPCHEBI.csv")
 
 -----
 
+#### IUPAC, InCHl, SMILES columns
 ```{r IUPAC, InCHI, and SMILES code, include=TRUE}
 source("src/IUPAC_InChl_Smiles.R")
 ```
@@ -69,6 +70,7 @@ source("src/IUPAC_InChl_Smiles.R")
 The next section deals with the ClassyFire ID section. 
 The source code for creating the ClassyFire IDs commented out: *DO NOT RUN THE High Class Function LINE UNLESS YOU ARE STARTING THE PROJECT FROM SCRATCH!!* It can take several hours just to complete.
 
+#### Classyfire column
 ```{r Source Classyfire code, include=TRUE}
 ### source("src/High_Class_Function_062220.R") ###
 source("src/Classyfire.R")
@@ -76,6 +78,7 @@ source("src/Classyfire.R")
 
 -----
 
+#### SQL-safe names: no special characters or leading numbers.
 ```{r Source SQL-Safe code, include=TRUE}
 source("src/SQL_Safe.R")
 ```
