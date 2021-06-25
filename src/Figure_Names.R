@@ -1,6 +1,6 @@
 # Script for Figure Names
 
-All_Standards <- Ingalls_Lab_Standards_PrimaryID
+All_Standards <- Vitamins
 
 complete.standards <- All_Standards %>%
   mutate(Compound.Name_figure = Compound.Name_old) %>%
@@ -8,19 +8,9 @@ complete.standards <- All_Standards %>%
   mutate(old.letter.count = nchar(Compound.Name_old)) %>%
   arrange(old.letter.count) 
 
-complete.standards$Compound.Name_figure <- str_replace(complete.standards$Compound.Name_figure, "Acid", "acid")
-
-Internal.Standards <- complete.standards %>%
-  filter(Compound.Type == "Internal Standard")
-
 Figure.Names <- complete.standards %>%
-  filter(Compound.Type != "Internal Standard") %>%
   mutate(Compound.Name_figure = ifelse(old.letter.count <= 14, Compound.Name, Compound.Name_figure)) %>%
   mutate(Compound.Name_figure = ifelse(old.letter.count <= 7, Compound.Name_old, Compound.Name_figure)) %>%
-  mutate(has.prefix = ifelse(str_detect(Compound.Name_figure, "L-|D-"), TRUE, FALSE)) %>%
-  mutate(Compound.Name_figure = ifelse((has.prefix == TRUE & old.letter.count <= 14), 
-                                       substring(Compound.Name_figure, 3, length(Compound.Name_figure)), Compound.Name_figure)) %>%
-  select(-has.prefix) %>%
   mutate(Compound.Name_figure = recode(Compound.Name_figure,
                                        # Small fixes
                                        "B-ionine" = "b-Ionine",
@@ -28,7 +18,6 @@ Figure.Names <- complete.standards %>%
                                        "Betaine" = "Glycine betaine",
                                        "N-Acetylserine" = "N-acetylserine",
                                        "RP B12" = "Cyano B12",
-                                       "4-hydroxybenzaldehyde" = "4-Hydroxybenzaldehyde",
                                        ###### Abbreviations ######
                                        "(3-Carboxypropyl)trimethylammonium (TMAB)" = "TMAB",
                                        "3 Indolebutyric acid" = "Indolebutyric acid",
@@ -131,12 +120,13 @@ Figure.Names <- complete.standards %>%
                                        "Pyridoxine" = "Vit B6",
                                        "Thiamine" = "Vit B1",
   )) %>%
-  unique() %>%
-  mutate(new.letter.count = nchar(Compound.Name_figure))
+  unique() 
+
+Figure.Names$Compound.Name_figure <- gsub(".*DL-|.*L-" ,"", Figure.Names$Compound.Name_figure)
 
 Ingalls_Lab_Standards_FigNames <- All_Standards %>%
   left_join(Figure.Names) %>%
-  mutate(Compound.Name_figure = ifelse(Compound.Type == "Internal Standard", Compound.Name, Compound.Name_figure)) %>%
+  #mutate(Compound.Name_figure = ifelse(Compound.Type == "Internal Standard", Compound.Name, Compound.Name_figure)) %>%
   select(Compound.Type, Column, Compound.Name, Compound.Name_old, Compound.Name_figure, everything()) %>%
-  select(-old.letter.count, -new.letter.count) 
+  select(-old.letter.count) 
 

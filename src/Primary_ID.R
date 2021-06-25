@@ -25,7 +25,8 @@ Laura_Edit <- read.csv("data_old/Ingalls_Lab_Standards_LauraEdit.csv",
                                     "cAMP" = "3',5'-Cyclic AMP",
                                     "cGMP" = "3',5'-Cyclic GMP",
                                     "Cys-Gly" = "L-Cysteinylglycine",
-                                    "Methyl (indol-3-yl)acetate" = "Methyl indole-3-acetate"))
+                                    "Methyl (indol-3-yl)acetate" = "Methyl indole-3-acetate",
+                                    "4-Hydroxybenzaldehyde" = "4-hydroxybenzaldehyde"))
 
 # Fix some small mistakes
 Laura_Edit[Laura_Edit == "O-Propanoylcarnitine"] <- "O-Propionylcarnitine"
