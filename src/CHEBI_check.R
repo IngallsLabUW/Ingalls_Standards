@@ -1,8 +1,9 @@
-# Define a function that accepts a KEGG ID (format cpd:C[number]) and returns
-# the ChEBI id found on the KEGG webpage. If there are multiple, return the
-# first one. If not found, return NA.
+# Script for updating ChEBI and PubChem columns.
 
-grabChEBI <- function(compound_id){
+grabChEBI <- function(compound_id) {
+  # Accepts a KEGG ID (format cpd:C[number]) and returns
+  # the ChEBI id found on the KEGG webpage. If there are multiple, return the
+  # first one. If not found, return NA.
   if(is.na(compound_id)) {
     return(NA)
   }
@@ -16,29 +17,63 @@ grabChEBI <- function(compound_id){
     grep(pattern = "ChEBI", value = TRUE) %>%
     gsub(pattern = " *ChEBI: ", replacement = "") %>%
     gsub(pattern = " .*", replacement = "")
-  if(length(ChEBI)==0){
+  if(length(ChEBI) == 0) {
     return(NA)
   }
-  ChEBI
+  return(ChEBI)
 }
 
-# Reassign the FigNames standards
+grabPubChem <- function(compound_id) {
+  if(is.na(compound_id)) {
+    return(NA)
+  }
+  PubChem <- compound_id %>%
+    paste0("http://rest.kegg.jp/get/", .) %>%
+    GET() %>%
+    content() %>%
+    as.character() %>%
+    strsplit(., "\\n") %>%
+    unlist() %>%
+    grep(pattern = "PubChem", value = TRUE) %>%
+    gsub(pattern = " *PubChem: ", replacement = "") %>%
+    gsub(pattern = " .*", replacement = "")
+  if(length(PubChem) == 0){
+    return(NA)
+  }
+  return(PubChem)
+}
+
+# Reassign the FigNames standards from the Figure_Names.R script
 All_Standards <- Ingalls_Lab_Standards_FigNames
 
-# Apply the function defined above to each ChEBI id
-new_ChEBI <- sapply(unique(All_Standards$C0), grabChEBI)
-# Replace the item with the obnoxious name <NA> with the character "NA"
-names(new_ChEBI)[which(is.na(names(new_ChEBI)))] <- "NA"
+#####################
+## TESTRUN for fine-tuning functions
+TestRun <- Ingalls_Lab_Standards %>% filter(Compound.Name == "Turicine")
+#####################
 
-# Merge with standards for comparison
-ChEBI_comparison <- new_ChEBI %>%
-  data.frame(C0=names(.), new_ChEBI=paste0("CHEBI:", .)) %>%
-  left_join(All_Standards, by="C0")
+# Apply the ChEBI and PubChem retrieval functions to the standards list
+Latest.ChEBI <- sapply(unique(TestRun$C0), grabChEBI)
+Latest.PubChem <- sapply(unique(TestRun$C0), grabPubChem)
+
+# Replace NAs with character values
+names(Latest.ChEBI)[which(is.na(names(Latest.ChEBI)))] <- "NA"
+names(Latest.PubChem)[which(is.na(names(Latest.PubChem)))] <- "NA"
+
+# Compare old and new ChEBI and PubChem vaues
+New_Columns <- data.frame(Latest.ChEBI) %>%
+  data.frame(Latest.PubChem) %>%
+  rownames_to_column(var = "C0") %>%
+  left_join(All_Standards, by = "C0") %>%
+  select(C0, Compound.Name, Latest.ChEBI, Latest.PubChem, CHEBI) %>%
+  unique()
+# Add something here about differences between old and new
+# so we have a heads up for changes? 
+
 
 # Add to full standards
-Ingalls_Lab_Standards_ChEBI <- ChEBI_comparison %>%
+Ingalls_Lab_Standards_ChEBI <- New_Columns %>%
   full_join(Ingalls_Lab_Standards_FigNames) %>%
   unique() %>%
-  rename(ChEBI = new_ChEBI) %>%
+  rename(ChEBI = Latest.ChEBI) %>% 
   select(Compound.Type, Column, Compound.Name, Compound.Name_old, Compound.Name_figure,
-         QE.LinRange:z, C0, ChEBI, Fraction1:KEGGNAME)
+         QE.LinRange:z, C0, ChEBI, Fraction1:KEGGNAME, everything())

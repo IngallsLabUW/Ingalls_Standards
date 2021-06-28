@@ -125,8 +125,7 @@ Figure.Names <- complete.standards %>%
 Figure.Names$Compound.Name_figure <- gsub(".*DL-|.*L-" ,"", Figure.Names$Compound.Name_figure)
 
 Ingalls_Lab_Standards_FigNames <- All_Standards %>%
-  left_join(Figure.Names) %>%
-  #mutate(Compound.Name_figure = ifelse(Compound.Type == "Internal Standard", Compound.Name, Compound.Name_figure)) %>%
+  left_join(Figure.Names, by = c("Compound.Type", "Compound.Name", "Compound.Name_old")) %>%
   select(Compound.Type, Column, Compound.Name, Compound.Name_old, Compound.Name_figure, everything()) %>%
   select(-old.letter.count) 
 
