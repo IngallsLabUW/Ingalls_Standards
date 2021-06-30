@@ -48,7 +48,7 @@ All_Standards <- Ingalls_Lab_Standards_FigNames
 
 #####################
 ## TESTRUN for fine-tuning functions
-TestRun <- Ingalls_Lab_Standards %>% filter(Compound.Name == "Turicine")
+TestRun <- Ingalls_Lab_Standards %>% filter(Compound.Name == "Choline")
 #####################
 
 # Apply the ChEBI and PubChem retrieval functions to the standards list
@@ -64,10 +64,18 @@ New_Columns <- data.frame(Latest.ChEBI) %>%
   data.frame(Latest.PubChem) %>%
   rownames_to_column(var = "C0") %>%
   left_join(All_Standards, by = "C0") %>%
+  mutate_all(~gsub("CHEBI:", "", .)) %>%
   select(C0, Compound.Name, Latest.ChEBI, Latest.PubChem, CHEBI) %>%
   unique()
-# Add something here about differences between old and new
-# so we have a heads up for changes? 
+
+if (New_Columns$Latest.ChEBI == New_Columns$CHEBI) {
+  print("Old ChEBI is equal to new ChEBI, no changes since last update.")
+} else {
+  print(paste("Changes have been made! Compound:", New_Columns$Compound.Name,
+              ", Old ChEBI:", New_Columns$CHEBI,
+              ", New ChEBI:", New_Columns$Latest.ChEBI))
+  stop()
+}
 
 
 # Add to full standards

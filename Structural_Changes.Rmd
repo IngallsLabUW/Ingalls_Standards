@@ -53,9 +53,9 @@ source("src/Figure_Names.R")
 
 #### ChEBI and KEGG columns
 ```{r ChEBI code, include=TRUE}
-#source("src/CHEBI_check.R")
+source("src/CHEBI_check.R")
 
-Ingalls_Lab_Standards_ChEBI <- read.csv("data_extra/TEMPCHEBI.csv")
+#Ingalls_Lab_Standards_ChEBI <- read.csv("data_extra/TEMPCHEBI.csv")
 ```
 
 -----
