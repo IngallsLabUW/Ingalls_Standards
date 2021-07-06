@@ -51,6 +51,8 @@ source("src/Figure_Names.R")
 
 -----
 
+# KEGG stuff will prolly go here
+
 #### ChEBI and KEGG columns
 ```{r ChEBI code, include=TRUE}
 source("src/CHEBI_check.R")
