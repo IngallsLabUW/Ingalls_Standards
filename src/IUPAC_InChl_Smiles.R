@@ -1,25 +1,24 @@
 ## Incorporate IUPAC, InChl, and SMILES keys into Ingalls Standards csv.
 library(httr)
 library(tidyverse)
-# could modify the path with a loop using the chemical formulas
 
+## Doing this with one specific compound
+compound.name <- "L-Methionine"
 
+path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
+
+r <- GET(url = path) 
+status_code(r)
+content(r)
+mydata <- read.csv(text = gsub("\t\n", "", r), sep = ",",
+                   header = TRUE)
+
+## Doing this in a (temporarily modified) loop
 standards <- read.csv("Ingalls_Lab_Standards.csv") %>%
   select(Compound.Name) %>%
   unique %>%
   slice(1:3)
 standards <- standards[["Compound.Name"]]
-
-for (i in standards) {
-  path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", i, "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
-  print(path)
-  
-  r <- GET(url = path) 
-  status_code(r)
-  content(r)
-  mydata <- read.csv(text = gsub("\t\n", "", r), sep = ",",
-                     header = TRUE)
-}
 
 httr::set_config(httr::config(http_version = 0))
 datalist = list()
@@ -38,19 +37,8 @@ for (i in standards) {
 
 big_data = do.call(rbind, datalist)
 
-compound.name <- "L-Methionine"
 
-path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
-
-r <- GET(url = path) 
-status_code(r)
-content(r)
-mydata <- read.csv(text = gsub("\t\n", "", r), sep = ",",
-              header = TRUE)
-
-
-
-
+## OG code
 All_Standards <- Ingalls_Lab_Standards_ChEBI
 
 IUPAC.InChl.SMILES <- read.csv("data_extra/Ingalls_Lab_Standards_Alt_Names.csv") %>%
