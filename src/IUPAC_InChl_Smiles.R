@@ -5,7 +5,8 @@ library(tidyverse)
 ## Doing this with one specific compound
 compound.name <- "L-Methionine"
 
-path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
+path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, 
+              "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
 
 r <- GET(url = path) 
 status_code(r)
@@ -24,7 +25,8 @@ httr::set_config(httr::config(http_version = 0))
 datalist = list()
 
 for (i in standards) {
-  path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", i, "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
+  path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", i, 
+                "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
   print(path)
   
   r <- GET(url = path) 
@@ -32,13 +34,13 @@ for (i in standards) {
   content(r)
   dat <- read.csv(text = gsub("\t\n", "", r), sep = ",",
                      header = TRUE)
-  datalist[[i]] <- dat # add it to your list
+  datalist[[i]] <- dat 
 }
 
 big_data = do.call(rbind, datalist)
 
 
-## OG code
+## Rest of the code
 All_Standards <- Ingalls_Lab_Standards_ChEBI
 
 IUPAC.InChl.SMILES <- read.csv("data_extra/Ingalls_Lab_Standards_Alt_Names.csv") %>%
