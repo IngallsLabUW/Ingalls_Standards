@@ -48,7 +48,7 @@ All_Standards <- Ingalls_Lab_Standards_FigNames
 
 #####################
 ## TESTRUN for fine-tuning functions
-TestRun <- Ingalls_Lab_Standards %>% filter(Compound.Name == "Choline")
+TestRun <- Ingalls_Lab_Standards_NEW
 #####################
 
 # Apply the ChEBI and PubChem retrieval functions to the standards list

@@ -29,7 +29,8 @@ for (i in standards) {
                 "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
   print(path)
   
-  r <- GET(url = path) 
+  r <- GET(url = path)
+  Sys.sleep(1)
   status_code(r)
   content(r)
   dat <- read.csv(text = gsub("\t\n", "", r), sep = ",",
@@ -41,14 +42,14 @@ big_data = do.call(rbind, datalist)
 
 
 ## Rest of the code
-All_Standards <- Ingalls_Lab_Standards_ChEBI
-
-IUPAC.InChl.SMILES <- read.csv("data_extra/Ingalls_Lab_Standards_Alt_Names.csv") %>%
-  select(Column, Compound.Name, IUPAC.Name, InChI.Key.Name, Canon.SMILES.Name) %>%
-  mutate_if(is.character, list(~na_if(., ""))) %>%
-  #group_by(Column, Compound.Name) %>%
-  left_join(All_Standards, by = c("Compound.Name", "Column")) %>%
-  unique()
-
-
-Ingalls_Lab_Standards_IUPAC.InCHI.SMILES <- IUPAC.InChl.SMILES
+# All_Standards <- Ingalls_Lab_Standards_ChEBI
+# 
+# IUPAC.InChl.SMILES <- read.csv("data_extra/Ingalls_Lab_Standards_Alt_Names.csv") %>%
+#   select(Column, Compound.Name, IUPAC.Name, InChI.Key.Name, Canon.SMILES.Name) %>%
+#   mutate_if(is.character, list(~na_if(., ""))) %>%
+#   #group_by(Column, Compound.Name) %>%
+#   left_join(All_Standards, by = c("Compound.Name", "Column")) %>%
+#   unique()
+# 
+# 
+# Ingalls_Lab_Standards_IUPAC.InCHI.SMILES <- IUPAC.InChl.SMILES

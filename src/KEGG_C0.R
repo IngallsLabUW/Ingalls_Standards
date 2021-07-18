@@ -7,22 +7,41 @@ library(tidyverse)
 ## Load pre-saved KEGG scrape and drop all brackets
 all_kegg_IDs <- read.csv("data_extra/Kegg_C0_info.csv") %>%
   rename(C0 = cmpd)
-all_kegg_IDs$name <- gsub("\\[|\\]", "", all_kegg_IDs$name)
+all_kegg_IDs$name <- gsub("\\[|\\]", "", all_kegg_IDs$name) # remove brackets
 
-# Import standards and isolate compound names
+# Import standards and isolate compound names, drop internal standards that have no KEGG ID.
 standards <- read.csv("Ingalls_Lab_Standards.csv") %>%
   select(Compound.Type, Compound.Name, C0) %>%
-  unique()
+  unique() %>%
+  filter(!str_detect(Compound.Type, "Internal"))
 
-
-## Seems like it should be working but has way too many matches.
+## Mostly working but isn't getting everything
 all_potential_matches <- all_kegg_IDs %>%
-  filter(str_detect(all_kegg_IDs$name, str_c(standards$Compound.Name, collapse="|"))) %>%
   separate_rows(name, sep = ";")
 all_potential_matches$name <- trimws(all_potential_matches$name, which = c("both"))
+all_potential_matches <- all_potential_matches %>%
+  filter(str_detect(all_potential_matches$name, str_c(standards$Compound.Name, collapse="|"))) 
 
-# Check this output. Check how many FALSEs there are
-standards$Compound.Name %in% all_potential_matches$name
+Match_Check <- do.call(rbind.data.frame,
+             lapply(unique(standards$Compound.Name),
+                    function(i){
+                      output <- print(i %in% all_potential_matches$name)
+                      return(output)})) %>%
+  rename(Has_Match = 1)
+
+Name_Check <- do.call(rbind.data.frame,
+             lapply(unique(standards$Compound.Name),
+                    function(i){
+                      name <- print(i)
+                      return(name)})) %>%
+  rename(Compound.Name = 1)
+
+check <- Match_Check %>% 
+  cbind(Name_Check) %>%
+  filter(Has_Match == FALSE) %>%
+  left_join(standards %>% select(Compound.Name, C0)) %>%
+  rename(Standards_C0 = C0) 
+
 
 # Everything in the "test" value is a standard and can be given the gold.
 test <- all_potential_matches %>%
@@ -31,20 +50,6 @@ test <- all_potential_matches %>%
 missing_values <- anti_join(standards, test) %>%
   filter(Compound.Type != "Internal Standard")
 
-## Match only to first kegg ID, which semi-works but misses compounds and makes some strange matches.
-first_kegg_ID <- all_kegg_IDs %>%
-  mutate(name = gsub("\\;.*", "", name))
-
-first_kegg_match <- first_kegg_ID %>%
-  filter(str_detect(first_kegg_ID$name, str_c(standards$Compound.Name, collapse="|")))
-
-
-standards4join <- standards %>%
-  rename(name = Compound.Name) %>%
-  
-  
-test <- first_kegg_match %>%
-  left_join(standards4join)
 
 ### OTHER OPTIONS
 
@@ -72,8 +77,6 @@ kegg_matches <- do.call(rbind.data.frame, lapply(unique(standards$Compound.Name)
 }))
 
 #standards_names_only <- standards[["Compound.Name"]]
-
-
 
 
 ##############################################################

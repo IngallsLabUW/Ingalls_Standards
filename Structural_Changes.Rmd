@@ -37,16 +37,22 @@ knitr::opts_chunk$set(echo = TRUE)
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
 ------
 
+## IMPORTANT: PLEASE READ
 The below code blocks represent **the order** in which large structural changes were made. Running these code blocks *WILL NOT* replace any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting. 
 
 #### Primary ID (column: Compound_Name)
 ```{r Primary ID code, include=TRUE}
 source("src/Primary_ID.R")
+
+rm(list=setdiff(ls(), "Ingalls_Lab_Standards_PrimaryID"))
 ```
 
 #### Shortened names (column: Compound_Name.figure)
 ```{r Figures Names code, include=TRUE}
 source("src/Figure_Names.R")
+
+rm(list=setdiff(ls(), "Ingalls_Lab_Standards_FigNames"))
+
 ```
 
 -----
