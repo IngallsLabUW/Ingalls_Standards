@@ -15,57 +15,57 @@ grabChEBI <- function(compound_id) {
     strsplit(., "\\n") %>%
     unlist() %>%
     grep(pattern = "ChEBI", value = TRUE) %>%
-    gsub(pattern = " *ChEBI: ", replacement = "") %>%
-    gsub(pattern = " .*", replacement = "")
+    trimws()
+  ChEBI <- sub("^(\\S*\\s+\\S+).*", "\\1", ChEBI)
   if(length(ChEBI) == 0) {
     return(NA)
   }
   return(ChEBI)
 }
 
-grabPubChem <- function(compound_id) {
-  if(is.na(compound_id)) {
-    return(NA)
-  }
-  PubChem <- compound_id %>%
-    paste0("http://rest.kegg.jp/get/", .) %>%
-    GET() %>%
-    content() %>%
-    as.character() %>%
-    strsplit(., "\\n") %>%
-    unlist() %>%
-    grep(pattern = "PubChem", value = TRUE) %>%
-    gsub(pattern = " *PubChem: ", replacement = "") %>%
-    gsub(pattern = " .*", replacement = "")
-  if(length(PubChem) == 0){
-    return(NA)
-  }
-  return(PubChem)
-}
+# grabPubChem <- function(compound_id) {
+#   if(is.na(compound_id)) {
+#     return(NA)
+#   }
+#   PubChem <- compound_id %>%
+#     paste0("http://rest.kegg.jp/get/", .) %>%
+#     GET() %>%
+#     content() %>%
+#     as.character() %>%
+#     strsplit(., "\\n") %>%
+#     unlist() %>%
+#     grep(pattern = "PubChem:", value = TRUE) %>%
+#     gsub(pattern = " *PubChem: ", replacement = "")# %>%
+#     #gsub(pattern = " .*", replacement = "")
+#   if(length(PubChem) == 0){
+#     return(NA)
+#   }
+#   return(PubChem)
+# }
 
 # Reassign the FigNames standards from the Figure_Names.R script
-All_Standards <- Ingalls_Lab_Standards_FigNames
+All_Standards <- Ingalls_Lab_Standards_KEGG
 
 #####################
 ## TESTRUN for fine-tuning functions
-TestRun <- Ingalls_Lab_Standards_NEW
+TestRun <- Ingalls_Lab_Standards_KEGG %>%
+  slice(1:20)
 #####################
 
 # Apply the ChEBI and PubChem retrieval functions to the standards list
 Latest.ChEBI <- sapply(unique(TestRun$C0), grabChEBI)
-Latest.PubChem <- sapply(unique(TestRun$C0), grabPubChem)
+#Latest.PubChem <- sapply(unique(TestRun$C0), grabPubChem)
 
 # Replace NAs with character values
 names(Latest.ChEBI)[which(is.na(names(Latest.ChEBI)))] <- "NA"
-names(Latest.PubChem)[which(is.na(names(Latest.PubChem)))] <- "NA"
+#names(Latest.PubChem)[which(is.na(names(Latest.PubChem)))] <- "NA"
 
 # Compare old and new ChEBI and PubChem vaues
 New_Columns <- data.frame(Latest.ChEBI) %>%
-  data.frame(Latest.PubChem) %>%
+  #data.frame(Latest.PubChem) %>%
   rownames_to_column(var = "C0") %>%
   left_join(All_Standards, by = "C0") %>%
-  mutate_all(~gsub("CHEBI:", "", .)) %>%
-  select(C0, Compound.Name, Latest.ChEBI, Latest.PubChem, CHEBI) %>%
+  select(C0, Compound.Name, Latest.ChEBI, CHEBI) %>% #Latest.PubChem
   unique()
 
 if (New_Columns$Latest.ChEBI == New_Columns$CHEBI) {

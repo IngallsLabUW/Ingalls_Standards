@@ -14,8 +14,10 @@ library(tidyverse)
 knitr::opts_chunk$set(echo = TRUE)
 
 ```
+## IMPORTANT: PLEASE READ
+The below code blocks represent **the order** in which large structural changes were made. Running these code blocks *WILL NOT* replace or modify any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting. 
 
-## This markdown document controls the original large structural changes made in 2020. 
+### This markdown document controls the original large structural changes made in 2020, and the revamp completed in the summer of 2021.
 
 #### Change Log
 4/8/20: Internal standards updated to reflect consistent naming scheme.  
@@ -37,9 +39,6 @@ knitr::opts_chunk$set(echo = TRUE)
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
 ------
 
-## IMPORTANT: PLEASE READ
-The below code blocks represent **the order** in which large structural changes were made. Running these code blocks *WILL NOT* replace any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting. 
-
 #### Primary ID (column: Compound_Name)
 ```{r Primary ID code, include=TRUE}
 source("src/Primary_ID.R")
@@ -52,16 +51,22 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_PrimaryID"))
 source("src/Figure_Names.R")
 
 rm(list=setdiff(ls(), "Ingalls_Lab_Standards_FigNames"))
-
 ```
 
 -----
 
-# KEGG stuff will prolly go here
+#### KEGG names
+```{r KEGG code, include=TRUE}
+source("src/KEGG.R")
 
-#### ChEBI and KEGG columns
+rm(list=setdiff(ls(), "Ingalls_Lab_Standards_KEGG"))
+```
+
+-----
+
+#### ChEBI and PubChem names
 ```{r ChEBI code, include=TRUE}
-source("src/CHEBI_check.R")
+source("src/ChEBI_PubChem.R")
 
 #Ingalls_Lab_Standards_ChEBI <- read.csv("data_extra/TEMPCHEBI.csv")
 ```

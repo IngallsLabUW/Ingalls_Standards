@@ -1,6 +1,6 @@
-library(data.table)
-library(httr)
-library(tidyverse)
+# library(data.table)
+# library(httr)
+# library(tidyverse)
 
 ## Pull down data from KEGG (try not to run too often or it crashes)
 # path <- "http://rest.kegg.jp/list/compound"
@@ -14,7 +14,8 @@ all_kegg_IDs <- read.csv("data_extra/Kegg_C0_info.csv") %>%
   rename(C0 = cmpd)
 
 # Import standards and isolate compound names, drop internal standards that have no KEGG ID.
-Full_Standards <-read.csv("Ingalls_Lab_Standards.csv")
+# Full_Standards <- read.csv("Ingalls_Lab_Standards.csv")
+Full_Standards <- Ingalls_Lab_Standards_FigNames
 
 standards <- Full_Standards %>%
   select(Compound.Type, Compound.Name, C0) %>%
@@ -56,27 +57,27 @@ Full_Check <- Mid_Check %>%
   mutate(Same_C0 = ifelse(Standards_C0 != C0, FALSE, TRUE)) %>%
   filter(is.na(Same_C0) | Same_C0 == FALSE)
 
-Final_KEGG_Standards <- Full_Standards %>%
-  select(Compound.Name, C0) %>%
-  mutate(C0 = replace(C0, Compound.Name == "Cys-Gly, oxidized", "cpd:C01419"),
-              replace(C0, Compound.Name == "2-keto-4-methylthiobutyric acid", "cpd:C01180"),
-              replace(C0, Compound.Name == "Ophthalmic acid", "cpd:C21016"), # Opthalmate check
-              replace(C0, Compound.Name == "Malic acid", "cpd:C00149"), # Check for malate and correct form
-              replace(C0, Compound.Name == "Threonic acid", "cpd:C01620"), # There's also L- and D- threonate
-              replace(C0, Compound.Name == "Methylphosphonic acid", "cpd:C20396"),
-              replace(C0, Compound.Name == "3-Phosphoglycerate", "cpd:C00597"),
-              replace(C0, Compound.Name == "(R)-2,3-Dihydroxypropane-1-sulfonate", "cpd:C19675"),
-              replace(C0, Compound.Name == "Caffeic acid", "cpd:C01197"),
-              replace(C0, Compound.Name == "beta-Cyclocitral", "cpd:C20425"),
-              replace(C0, Compound.Name == "Camalexin", "cpd:C21721"),
-              replace(C0, Compound.Name == "N-(4-Coumaroyl)-L-homoserine lactone", "cpd:C20677"),
-              replace(C0, Compound.Name == "N-(3-Oxohexanoyl)homoserine lactone", "cpd:C11839"),
-              replace(C0, Compound.Name == "N-(3-Oxooctanoyl)homoserine lactone", "cpd:C11841"),
-              replace(C0, Compound.Name == "2-(3,5-Dichlorophenylcarbamoyl)-1,2-dimethylcyclopropane-1-carboxylic acid", "cpd:C15249"),
-              replace(C0, Compound.Name == "5-(2-Hydroxyethyl)-4-methylthiazole", "cpd:C04294"),
-              replace(C0, Compound.Name == "Monesin", "cpd:C06693"),
-              replace(C0, Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643")) 
+Ingalls_Lab_Standards_KEGG <- Full_Standards %>%
+  mutate(C0 = ifelse(Compound.Name == "Cys-Gly, oxidized", "cpd:C01419", C0),
+         C0 = ifelse(Compound.Name == "2-keto-4-methylthiobutyric acid", "cpd:C01180", C0),
+         C0 = ifelse(Compound.Name == "Ophthalmic acid", "cpd:C21016", C0), # Opthalmate check
+         C0 = ifelse(Compound.Name == "Malic acid", "cpd:C00149", C0), # Check for malate and correct form
+         C0 = ifelse(Compound.Name == "Threonic acid", "cpd:C01620", C0), # There's also L- and D- threonate
+         C0 = ifelse(Compound.Name == "Methylphosphonic acid", "cpd:C20396", C0),
+         C0 = ifelse(Compound.Name == "3-Phosphoglycerate", "cpd:C00597", C0),
+         C0 = ifelse(Compound.Name == "(R)-2,3-Dihydroxypropane-1-sulfonate", "cpd:C19675", C0),
+         C0 = ifelse(Compound.Name == "Caffeic acid", "cpd:C01197", C0),
+         C0 = ifelse(Compound.Name == "beta-Cyclocitral", "cpd:C20425", C0),
+         C0 = ifelse(Compound.Name == "Camalexin", "cpd:C21721", C0),
+         C0 = ifelse(Compound.Name == "N-(4-Coumaroyl)-L-homoserine lactone", "cpd:C20677", C0),
+         C0 = ifelse(Compound.Name == "N-(3-Oxohexanoyl)homoserine lactone", "cpd:C11839", C0),
+         C0 = ifelse(Compound.Name == "N-(3-Oxooctanoyl)homoserine lactone", "cpd:C11841", C0),
+         C0 = ifelse(Compound.Name == "2-(3,5-Dichlorophenylcarbamoyl)-1,2-dimethylcyclopropane-1-carboxylic acid", "cpd:C15249", C0),
+         C0 = ifelse(Compound.Name == "5-(2-Hydroxyethyl)-4-methylthiazole", "cpd:C04294", C0),
+         C0 = ifelse(Compound.Name == "Monesin", "cpd:C06693", C0),
+         C0 = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", C0)) 
 
+ 
 
 ## After a secondary internet search
 # Homocysteine thiolactone
@@ -178,20 +179,3 @@ Final_KEGG_Standards <- Full_Standards %>%
 # Diacylglycerophosphoglycerol 16:0-18:2
 # Diether phosphatidylcholine diacylglycerol 16:0-16:0
 
-
-
-
-
-
-
-
-
-  
-
-
-
-##############################################################
-masspath <- "http://rest.kegg.jp/find/compound/exact_mass"	
-emass <- GET(url = masspath) %>%
-  content()
-tmass <- read.csv(text = gsub("\t\n", "", emass), sep = "\t", header = FALSE, col.names = c("cmpd", "exact_mass"))
