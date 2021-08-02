@@ -14,6 +14,7 @@ library(tidyverse)
 knitr::opts_chunk$set(echo = TRUE)
 
 ```
+
 ## IMPORTANT: PLEASE READ
 The below code blocks represent **the order** in which large structural changes were made. Running these code blocks *WILL NOT* replace or modify any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting. 
 
@@ -55,7 +56,18 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_FigNames"))
 
 -----
 
+#### SQL-safe names: no special characters or leading numbers.
+```{r Source SQL-Safe code, include=TRUE}
+source("src/SQL_Safe.R")
+
+rm(list=setdiff(ls(), "Ingalls_Lab_Standards_SQL"))
+```
+
+-----
+
 #### KEGG names
+This section can take quite a while; if you don't want to run the chunk you can use the latest downloaded
+version.
 ```{r KEGG code, include=TRUE}
 source("src/KEGG.R")
 
@@ -64,11 +76,13 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_KEGG"))
 
 -----
 
-#### ChEBI and PubChem names
+#### ChEBI names
+This section can take quite a while; if you don't want to run the chunk you can use the latest downloaded
+version.
 ```{r ChEBI code, include=TRUE}
-source("src/ChEBI_PubChem.R")
+source("src/ChEBI.R")
 
-#Ingalls_Lab_Standards_ChEBI <- read.csv("data_extra/TEMPCHEBI.csv")
+rm(list=setdiff(ls(), "Ingalls_Lab_Standards_ChEBI"))
 ```
 
 -----
@@ -89,10 +103,4 @@ The source code for creating the ClassyFire IDs commented out: *DO NOT RUN THE H
 source("src/Classyfire.R")
 ```
 
------
-
-#### SQL-safe names: no special characters or leading numbers.
-```{r Source SQL-Safe code, include=TRUE}
-source("src/SQL_Safe.R")
-```
 

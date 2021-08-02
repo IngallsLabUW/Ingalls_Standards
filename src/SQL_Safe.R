@@ -3,9 +3,9 @@
 replace_special_characters <- function(x) (gsub("[^[:alnum:] ]", " ", x))
 replace_double_spaces <- function(x) (gsub("  ", " ", x))
 
-All_Standards <- Ingalls_Lab_Standards_ChEBI
+All_Standards <- Ingalls_Lab_Standards_FigNames
 
-Special.Names <- Ingalls_Lab_Standards_ChEBI %>%
+Special.Names <- Ingalls_Lab_Standards_FigNames %>%
   select(Compound.Name, Compound.Name_figure) %>%
   filter_all(any_vars(str_detect(., "[^[:alnum:] ]"))) %>%
   unique() %>%
@@ -43,7 +43,7 @@ Leading.Numbers <- All.Characters.Replaced %>%
 Leading.Numbers$SQL <- trimws(Leading.Numbers$SQL, which = c("left"))
 
 
-Final.SQL <- All.Characters.Replaced %>%
+Ingalls_Lab_Standards_SQL <- All.Characters.Replaced %>%
   left_join(Leading.Numbers %>% select(Compound.Name, SQL)) %>%
   mutate(Compound.Name_SQL = ifelse(!is.na(SQL), SQL, Compound.Name_SQL)) %>%
   select(-SQL)

@@ -1,45 +1,49 @@
-# library(data.table)
-# library(httr)
-# library(tidyverse)
+library(data.table)
+library(httr)
+library(tidyverse)
 
-## Pull down data from KEGG (try not to run too often or it crashes)
+## Pull down latest data from KEGG (only run if you want the absolute latest version)
 # path <- "http://rest.kegg.jp/list/compound"
 # raw_content <- GET(url = path) %>%
 #   content()
-# all_kegg_IDs <- read.csv(text = gsub("\t\n", "", raw_content), sep = "\t", 
+# All_KEGG_IDs <- read.csv(text = gsub("\t\n", "", raw_content), sep = "\t",
 #               header = FALSE, col.names = c("cmpd", "name"))
+# write.csv(All_KEGG_IDs, paste0("data_extra/KEGG_Compounds_", 
+#                                format(Sys.time(), "%d-%b-%Y"), ".csv"),
+#           row.names = FALSE)
 
-## Load pre-saved KEGG scrape and drop all brackets
-all_kegg_IDs <- read.csv("data_extra/Kegg_C0_info.csv") %>%
+
+## Alternatively, load pre-saved KEGG scrape. The date in the filename indicates
+## when it was last downloaded
+All_KEGG_IDs <- read.csv("data_extra/KEGG_Compounds_28-Jul-2021.csv") %>%
   rename(C0 = cmpd)
-
+                                                                                     
 # Import standards and isolate compound names, drop internal standards that have no KEGG ID.
-# Full_Standards <- read.csv("Ingalls_Lab_Standards.csv")
-Full_Standards <- Ingalls_Lab_Standards_FigNames
+Full_Standards <- Ingalls_Lab_Standards_SQL
 
-standards <- Full_Standards %>%
+Standards_NoInt <- Full_Standards %>%
   select(Compound.Type, Compound.Name, C0) %>%
   unique() %>%
   filter(!str_detect(Compound.Type, "Internal"))
 
 # Checks and matches most of the standards
-all_potential_matches <- all_kegg_IDs %>%
+All_Potential_Matches <- All_KEGG_IDs %>%
   separate_rows(name, sep = ";")
-all_potential_matches$name <- trimws(all_potential_matches$name, which = c("both"))
-all_potential_matches <- all_potential_matches %>%
-  filter(str_detect(all_potential_matches$name, str_c(standards$Compound.Name, collapse="|"))) 
+All_Potential_Matches$name <- trimws(All_Potential_Matches$name, which = c("both"))
+All_Potential_Matches <- All_Potential_Matches %>%
+  filter(str_detect(All_Potential_Matches$name, str_c(Standards_NoInt$Compound.Name, collapse="|"))) 
 
 # Identify which standards have been matched with a KEGG compound
 Match_Check <- do.call(rbind.data.frame,
-             lapply(unique(standards$Compound.Name),
+             lapply(unique(Standards_NoInt$Compound.Name),
                     function(i){
-                      output <- print(i %in% all_potential_matches$name)
+                      output <- print(i %in% All_Potential_Matches$name)
                       return(output)})) %>%
   rename(Has_KEGG_Match = 1)
 
 # Add names to the matches
 Name_Check <- do.call(rbind.data.frame,
-             lapply(unique(standards$Compound.Name),
+             lapply(unique(Standards_NoInt$Compound.Name),
                     function(i){
                       name <- print(i)
                       return(name)})) %>%
@@ -48,21 +52,21 @@ Name_Check <- do.call(rbind.data.frame,
 # Combine matches with old and new names/IDs
 Mid_Check <- Match_Check %>% 
   cbind(Name_Check) %>%
-  left_join(standards %>% select(Compound.Name, C0)) %>%
+  left_join(Standards_NoInt %>% select(Compound.Name, C0)) %>%
   rename(Standards_C0 = C0)
 
 # Compare any upated C0s from latest kegg download
 Full_Check <- Mid_Check %>%
-  left_join(all_potential_matches %>% rename(Compound.Name = name)) %>%
+  left_join(All_Potential_Matches %>% rename(Compound.Name = name)) %>%
   mutate(Same_C0 = ifelse(Standards_C0 != C0, FALSE, TRUE)) %>%
   filter(is.na(Same_C0) | Same_C0 == FALSE)
 
 Ingalls_Lab_Standards_KEGG <- Full_Standards %>%
   mutate(C0 = ifelse(Compound.Name == "Cys-Gly, oxidized", "cpd:C01419", C0),
          C0 = ifelse(Compound.Name == "2-keto-4-methylthiobutyric acid", "cpd:C01180", C0),
-         C0 = ifelse(Compound.Name == "Ophthalmic acid", "cpd:C21016", C0), # Opthalmate check
-         C0 = ifelse(Compound.Name == "Malic acid", "cpd:C00149", C0), # Check for malate and correct form
-         C0 = ifelse(Compound.Name == "Threonic acid", "cpd:C01620", C0), # There's also L- and D- threonate
+         C0 = ifelse(Compound.Name == "Ophthalmic acid", "cpd:C21016", C0), 
+         C0 = ifelse(Compound.Name == "Malic acid", "cpd:C00149", C0), 
+         C0 = ifelse(Compound.Name == "Threonic acid", "cpd:C01620", C0), 
          C0 = ifelse(Compound.Name == "Methylphosphonic acid", "cpd:C20396", C0),
          C0 = ifelse(Compound.Name == "3-Phosphoglycerate", "cpd:C00597", C0),
          C0 = ifelse(Compound.Name == "(R)-2,3-Dihydroxypropane-1-sulfonate", "cpd:C19675", C0),
@@ -75,7 +79,8 @@ Ingalls_Lab_Standards_KEGG <- Full_Standards %>%
          C0 = ifelse(Compound.Name == "2-(3,5-Dichlorophenylcarbamoyl)-1,2-dimethylcyclopropane-1-carboxylic acid", "cpd:C15249", C0),
          C0 = ifelse(Compound.Name == "5-(2-Hydroxyethyl)-4-methylthiazole", "cpd:C04294", C0),
          C0 = ifelse(Compound.Name == "Monesin", "cpd:C06693", C0),
-         C0 = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", C0)) 
+         C0 = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", C0)) %>%
+  left_join(All_KEGG_IDs, by = "C0")
 
  
 

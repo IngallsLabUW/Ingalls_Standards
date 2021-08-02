@@ -1,30 +1,28 @@
 ## Incorporate IUPAC, InChl, and SMILES keys into Ingalls Standards csv.
-library(httr)
-library(tidyverse)
 
 ## Doing this with one specific compound
-compound.name <- "L-Methionine"
+# compound.name <- "L-Methionine"
+# 
+# path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, 
+#               "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
+# 
+# r <- GET(url = path) 
+# status_code(r)
+# content(r)
+# mydata <- read.csv(text = gsub("\t\n", "", r), sep = ",",
+#                    header = TRUE)
 
-path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, 
-              "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
-
-r <- GET(url = path) 
-status_code(r)
-content(r)
-mydata <- read.csv(text = gsub("\t\n", "", r), sep = ",",
-                   header = TRUE)
-
-## Doing this in a (temporarily modified) loop
-standards <- read.csv("Ingalls_Lab_Standards.csv") %>%
+## Loop each standard name to match with a scraped pubchem ID.
+Standards_Names <- read.csv("Ingalls_Lab_Standards.csv") %>%
   select(Compound.Name) %>%
-  unique %>%
-  slice(1:3)
-standards <- standards[["Compound.Name"]]
+  unique() %>%
+  slice(1:20)
+Standards_Names <- Standards_Names[["Compound.Name"]]
 
 httr::set_config(httr::config(http_version = 0))
-datalist = list()
+Looped_Names = list()
 
-for (i in standards) {
+for (i in Standards_Names) {
   path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", i, 
                 "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
   print(path)
@@ -33,12 +31,12 @@ for (i in standards) {
   Sys.sleep(1)
   status_code(r)
   content(r)
-  dat <- read.csv(text = gsub("\t\n", "", r), sep = ",",
+  names <- read.csv(text = gsub("\t\n", "", r), sep = ",",
                      header = TRUE)
-  datalist[[i]] <- dat 
+  Looped_Names[[i]] <- names 
 }
 
-big_data = do.call(rbind, datalist)
+IUPAC_InCHI_SMILES = do.call(rbind, Looped_Names)
 
 
 ## Rest of the code
