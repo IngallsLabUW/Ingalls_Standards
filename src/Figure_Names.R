@@ -2,13 +2,13 @@
 
 All_Standards <- Ingalls_Lab_Standards_PrimaryID
 
-complete.standards <- All_Standards %>%
+Complete_Standards <- All_Standards %>%
   mutate(Compound.Name_figure = Compound.Name_old) %>%
   select(Compound.Type, Compound.Name, Compound.Name_old, Compound.Name_figure) %>%
   mutate(old.letter.count = nchar(Compound.Name_old)) %>%
   arrange(old.letter.count) 
 
-Figure.Names <- complete.standards %>%
+Figure_Names <- Complete_Standards %>%
   mutate(Compound.Name_figure = ifelse(old.letter.count <= 14, Compound.Name, Compound.Name_figure)) %>%
   mutate(Compound.Name_figure = ifelse(old.letter.count <= 7, Compound.Name_old, Compound.Name_figure)) %>%
   mutate(Compound.Name_figure = recode(Compound.Name_figure,
@@ -118,14 +118,13 @@ Figure.Names <- complete.standards %>%
                                        "Pantothenic acid" = "Vit B5",
                                        "Phytonadione" = "Vit K1",
                                        "Pyridoxine" = "Vit B6",
-                                       "Thiamine" = "Vit B1",
-  )) %>%
+                                       "Thiamine" = "Vit B1")) %>%
   unique() 
 
-Figure.Names$Compound.Name_figure <- gsub(".*DL-|.*L-" ,"", Figure.Names$Compound.Name_figure)
+Figure_Names$Compound.Name_figure <- gsub(".*DL-|.*L-" ,"", Figure_Names$Compound.Name_figure)
 
 Ingalls_Lab_Standards_FigNames <- All_Standards %>%
-  left_join(Figure.Names, by = c("Compound.Type", "Compound.Name", "Compound.Name_old")) %>%
+  left_join(Figure_Names, by = c("Compound.Type", "Compound.Name", "Compound.Name_old")) %>%
   select(Compound.Type, Column, Compound.Name, Compound.Name_old, Compound.Name_figure, everything()) %>%
   select(-old.letter.count) 
 

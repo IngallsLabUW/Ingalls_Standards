@@ -16,7 +16,7 @@
 Standards_Names <- read.csv("Ingalls_Lab_Standards.csv") %>%
   select(Compound.Name) %>%
   unique() %>%
-  slice(1:20)
+  slice(1:5)
 Standards_Names <- Standards_Names[["Compound.Name"]]
 
 httr::set_config(httr::config(http_version = 0))
@@ -36,18 +36,18 @@ for (i in Standards_Names) {
   Looped_Names[[i]] <- names 
 }
 
-IUPAC_InCHI_SMILES = do.call(rbind, Looped_Names)
+IUPAC_InCHI_SMILES = do.call(rbind, Looped_Names) %>%
+  rownames_to_column(var = "Compound.Name")
 
 
-## Rest of the code
-# All_Standards <- Ingalls_Lab_Standards_ChEBI
-# 
-# IUPAC.InChl.SMILES <- read.csv("data_extra/Ingalls_Lab_Standards_Alt_Names.csv") %>%
-#   select(Column, Compound.Name, IUPAC.Name, InChI.Key.Name, Canon.SMILES.Name) %>%
-#   mutate_if(is.character, list(~na_if(., ""))) %>%
-#   #group_by(Column, Compound.Name) %>%
-#   left_join(All_Standards, by = c("Compound.Name", "Column")) %>%
-#   unique()
-# 
-# 
-# Ingalls_Lab_Standards_IUPAC.InCHI.SMILES <- IUPAC.InChl.SMILES
+All_Standards <- Ingalls_Lab_Standards_ChEBI
+
+Ingalls_Lab_Standards_IUPAC.InCHI.SMILES <- All_Standards %>%
+  #select(Column, Compound.Name, IUPAC.Name, InChI.Key.Name, Canon.SMILES.Name) %>%
+  #mutate_if(is.character, list(~na_if(., ""))) %>%
+  #group_by(Column, Compound.Name) %>%
+  left_join(IUPAC_InCHI_SMILES) %>% #, by = c("Compound.Name", "Column")) %>%
+  unique()
+
+
+Ingalls_Lab_Standards_IUPAC.InCHI.SMILES <- IUPAC.InChl.SMILES

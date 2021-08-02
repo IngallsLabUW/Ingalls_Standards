@@ -12,7 +12,6 @@ library(httr)
 library(stringr)
 library(tidyverse)
 knitr::opts_chunk$set(echo = TRUE)
-
 ```
 
 ## IMPORTANT: PLEASE READ
@@ -38,6 +37,18 @@ The below code blocks represent **the order** in which large structural changes 
 8/10/20: Classyfire classifications added for those compounds that have them.
 10/14/20: First version of SQL-safe names introduced. 
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
+
+I think we should change the title of the standards sheet, “Ingalls_Lab_Standards_NEW.csv” to just “Ingalls_Lab_Standards.csv”, as I have done in these examples. I originally added the “NEW” suffix during my first redo of the standards and it doesn’t make sense to keep it permanently.
+The column order is redone, take a look to see if it makes sense.
+I dropped the QE and TQS LinRange, RSD, Ratio columns.
+Renamed all column to use consistent underscores instead of a mix of underscores and periods, changed all columns that refer to third party ids to “Database_ID”,  e.g. “C0” is now “KEGG_ID”.
+Added a “PubChem_ID” column.
+Removed the “ChEBI:” and “cpd:” prefixes in the KEGG and ChEBI columns.
+
+Yay!! This looks awesome - thanks so much for doing all the cleaning. A few more comments (per usual): "emperical" formula is misspelled (I think this has always been the case but now's our chance to fix it); I think we should keep the ChEBI prefixes (I've never seen them as just the number); and InCHI and SMILES would be more accurately described as "codes" rather than names (love the suffix consistency though!)
+
+Changing all column names and stuff at the end so this markdown remains as backwards compatible as possible.
+Keep the IUPAC/INCHI/SMILES stuff like title and molecular fomula? Check that.
 ------
 
 #### Primary ID (column: Compound_Name)
@@ -67,8 +78,28 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_SQL"))
 
 #### KEGG names
 This section can take quite a while; if you don't want to run the chunk you can use the latest downloaded
-version.
+version. Uncomment the code you want to use 
 ```{r KEGG code, include=TRUE}
+## Option 1: Pull down latest data from KEGG (only run if you want the absolute latest version).
+## This also includes saving the latest scrape to the data_extra folder.
+
+# path <- "http://rest.kegg.jp/list/compound"
+# raw_content <- GET(url = path) %>%
+#   content()
+# All_KEGG_IDs <- read.csv(text = gsub("\t\n", "", raw_content), sep = "\t",
+#               header = FALSE, col.names = c("cmpd", "name"))
+# write.csv(All_KEGG_IDs, paste0("data_extra/KEGG_Compounds_",
+#                                format(Sys.time(), "%d-%b-%Y"), ".csv"),
+#           row.names = FALSE)
+
+
+## Option 2: load pre-saved KEGG scrape. The date in the filename indicates
+## when it was last downloaded. You will need to enter the filename correctly 
+## for the My_KEGG_File variable, as there may be many downloaded KEGG files.
+
+My_KEGG_File <- "KEGG_Compounds_02-Aug-2021"
+All_KEGG_IDs <- read.csv(dir("data_extra/", full.names=T, pattern=My_KEGG_File))
+
 source("src/KEGG.R")
 
 rm(list=setdiff(ls(), "Ingalls_Lab_Standards_KEGG"))
@@ -77,9 +108,64 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_KEGG"))
 -----
 
 #### ChEBI names
-This section can take quite a while; if you don't want to run the chunk you can use the latest downloaded
-version.
-```{r ChEBI code, include=TRUE}
+The section below is for updating ChEBI and can take quite a while; if you don't want to update ChEBI you can skip this chunk and use the latest downloaded version (next chunk).
+```{r Download latest ChEBI, include=TRUE}
+# grabChEBI <- function(compound_id) {
+#   # Accepts a KEGG ID (format cpd:C[number]) and returns
+#   # the ChEBI id found on the KEGG webpage. If there are multiple, return the
+#   # first one. If not found, return NA.
+#   if(is.na(compound_id)) {
+#     return(NA)
+#   }
+#   ChEBI <- compound_id %>%
+#     paste0("http://rest.kegg.jp/get/", .) %>%
+#     GET() %>%
+#     content() %>%
+#     as.character() %>%
+#     strsplit(., "\\n") %>%
+#     unlist() %>%
+#     grep(pattern = "ChEBI", value = TRUE) %>%
+#     trimws(which = "both")
+#   ChEBI <- sub("^(\\S*\\s+\\S+).*", "\\1", ChEBI)
+#   ChEBI <- gsub( " ", "", ChEBI) 
+#   if(length(ChEBI) == 0) {
+#     return(NA)
+#   }
+#   return(ChEBI)
+# }
+# 
+# # Reassign the FigNames standards from the Figure_Names.R script
+# All_Standards <- Ingalls_Lab_Standards_KEGG 
+# All_Standards$CHEBI <- gsub("CHEBI", "ChEBI", All_Standards$CHEBI)
+# 
+# # Apply the ChEBI retrieval function to the standards list
+# ChEBI_Names <- sapply(unique(All_Standards$C0), grabChEBI)
+# names(ChEBI_Names)[which(is.na(names(ChEBI_Names)))] <- "NA"
+# 
+# # Compare old and new ChEBI values
+# Latest_ChEBI <- data.frame(ChEBI_Names) %>%
+#   drop_na() %>%
+#   rownames_to_column(var = "C0")
+# 
+# Full_ChEBI <- All_Standards %>%
+#   left_join(Latest_ChEBI) 
+# 
+# # Write the latest download here if you want to save it.
+# Last_ChEBI_Download <- data.frame(Full_ChEBI)
+# write.csv(Last_ChEBI_Download, paste0("data_extra/ChEBI_Download_",
+#                                       format(Sys.time(), "%d-%b-%Y"), ".csv"),
+#           row.names = FALSE)
+```
+
+This section is for using the last downloaded ChEBI file.
+```{r Last updated ChEBI, include=TRUE}
+# Load the latest ChEBI scrape if you don't want to run the whole function.
+My_ChEBI_File <- "ChEBI_Download_28-Jul-2021"
+Full_ChEBI <- read.csv(dir("data_extra/", full.names=T, pattern = My_ChEBI_File))
+```
+
+
+```{r Run ChEBI, include=TRUE}
 source("src/ChEBI.R")
 
 rm(list=setdiff(ls(), "Ingalls_Lab_Standards_ChEBI"))

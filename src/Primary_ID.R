@@ -53,6 +53,3 @@ Vitamins <- Standards_LauraEdit %>%
                                 "Vitamin K2" = "Menaquinone")) 
 
 Ingalls_Lab_Standards_PrimaryID <- Vitamins
-
-
-

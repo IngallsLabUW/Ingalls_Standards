@@ -1,23 +1,8 @@
-library(data.table)
-library(httr)
-library(tidyverse)
+# Script to update
 
-## Pull down latest data from KEGG (only run if you want the absolute latest version)
-# path <- "http://rest.kegg.jp/list/compound"
-# raw_content <- GET(url = path) %>%
-#   content()
-# All_KEGG_IDs <- read.csv(text = gsub("\t\n", "", raw_content), sep = "\t",
-#               header = FALSE, col.names = c("cmpd", "name"))
-# write.csv(All_KEGG_IDs, paste0("data_extra/KEGG_Compounds_", 
-#                                format(Sys.time(), "%d-%b-%Y"), ".csv"),
-#           row.names = FALSE)
-
-
-## Alternatively, load pre-saved KEGG scrape. The date in the filename indicates
-## when it was last downloaded
-All_KEGG_IDs <- read.csv("data_extra/KEGG_Compounds_28-Jul-2021.csv") %>%
+All_KEGG_IDs <- All_KEGG_IDs %>%
   rename(C0 = cmpd)
-                                                                                     
+
 # Import standards and isolate compound names, drop internal standards that have no KEGG ID.
 Full_Standards <- Ingalls_Lab_Standards_SQL
 
@@ -37,7 +22,7 @@ All_Potential_Matches <- All_Potential_Matches %>%
 Match_Check <- do.call(rbind.data.frame,
              lapply(unique(Standards_NoInt$Compound.Name),
                     function(i){
-                      output <- print(i %in% All_Potential_Matches$name)
+                      output <- i %in% All_Potential_Matches$name
                       return(output)})) %>%
   rename(Has_KEGG_Match = 1)
 
@@ -45,7 +30,7 @@ Match_Check <- do.call(rbind.data.frame,
 Name_Check <- do.call(rbind.data.frame,
              lapply(unique(Standards_NoInt$Compound.Name),
                     function(i){
-                      name <- print(i)
+                      name <- i
                       return(name)})) %>%
   rename(Compound.Name = 1)
 
@@ -80,7 +65,9 @@ Ingalls_Lab_Standards_KEGG <- Full_Standards %>%
          C0 = ifelse(Compound.Name == "5-(2-Hydroxyethyl)-4-methylthiazole", "cpd:C04294", C0),
          C0 = ifelse(Compound.Name == "Monesin", "cpd:C06693", C0),
          C0 = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", C0)) %>%
-  left_join(All_KEGG_IDs, by = "C0")
+  left_join(All_KEGG_IDs, by = "C0") %>%
+  select(-KEGGNAME) %>%
+  rename(KEGGNAME = name)
 
  
 

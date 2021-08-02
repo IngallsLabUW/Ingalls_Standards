@@ -5,7 +5,7 @@ replace_double_spaces <- function(x) (gsub("  ", " ", x))
 
 All_Standards <- Ingalls_Lab_Standards_FigNames
 
-Special.Names <- Ingalls_Lab_Standards_FigNames %>%
+Special_Names <- Ingalls_Lab_Standards_FigNames %>%
   select(Compound.Name, Compound.Name_figure) %>%
   filter_all(any_vars(str_detect(., "[^[:alnum:] ]"))) %>%
   unique() %>%
@@ -16,8 +16,8 @@ Special.Names <- Ingalls_Lab_Standards_FigNames %>%
   select(Compound.Name, Compound.Name_SQL) %>%
   drop_na() 
 
-All.Characters.Replaced <- All_Standards %>%
-  left_join(Special.Names, by = "Compound.Name") %>%
+All_Characters_Replaced <- All_Standards %>%
+  left_join(Special_Names, by = "Compound.Name") %>%
   mutate(Compound.Name_SQL = ifelse(is.na(Compound.Name_SQL), Compound.Name, Compound.Name_SQL)) %>%
   select(Compound.Type:Compound.Name_figure, Compound.Name_SQL, everything())
 
@@ -26,7 +26,7 @@ All.Characters.Replaced <- All_Standards %>%
 LauraEditsSQL <- read.csv("data_extra/Standards_LeadingNumbers_LTC.csv") %>%
   select(Compound.Name_SQL, Compound.Name_SQL_LTC)
 
-Leading.Numbers <- All.Characters.Replaced %>%
+Leading_Numbers <- All_Characters_Replaced %>%
   select(Compound.Name, Compound.Name_SQL) %>%
   drop_na() %>%
   mutate(SQL = recode(Compound.Name_SQL,
@@ -40,11 +40,11 @@ Leading.Numbers <- All.Characters.Replaced %>%
                                     )) %>%
   filter(str_detect(SQL, "^[0-9]")) %>%
   mutate(SQL = gsub("[[:digit:]]+", "", SQL)) 
-Leading.Numbers$SQL <- trimws(Leading.Numbers$SQL, which = c("left"))
+Leading_Numbers$SQL <- trimws(Leading_Numbers$SQL, which = c("left"))
 
 
-Ingalls_Lab_Standards_SQL <- All.Characters.Replaced %>%
-  left_join(Leading.Numbers %>% select(Compound.Name, SQL)) %>%
+Ingalls_Lab_Standards_SQL <- All_Characters_Replaced %>%
+  left_join(Leading_Numbers %>% select(Compound.Name, SQL)) %>%
   mutate(Compound.Name_SQL = ifelse(!is.na(SQL), SQL, Compound.Name_SQL)) %>%
   select(-SQL)
 
