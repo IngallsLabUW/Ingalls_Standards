@@ -97,7 +97,7 @@ version. Uncomment the code you want to use
 ## when it was last downloaded. You will need to enter the filename correctly 
 ## for the My_KEGG_File variable, as there may be many downloaded KEGG files.
 
-My_KEGG_File <- "KEGG_Compounds_02-Aug-2021"
+My_KEGG_File <- "KEGG_Compounds_28-Jul-2021"
 All_KEGG_IDs <- read.csv(dir("data_extra/", full.names=T, pattern=My_KEGG_File))
 
 source("src/KEGG.R")
@@ -127,7 +127,7 @@ The section below is for updating ChEBI and can take quite a while; if you don't
 #     grep(pattern = "ChEBI", value = TRUE) %>%
 #     trimws(which = "both")
 #   ChEBI <- sub("^(\\S*\\s+\\S+).*", "\\1", ChEBI)
-#   ChEBI <- gsub( " ", "", ChEBI) 
+#   ChEBI <- gsub( " ", "", ChEBI)
 #   if(length(ChEBI) == 0) {
 #     return(NA)
 #   }
@@ -135,7 +135,7 @@ The section below is for updating ChEBI and can take quite a while; if you don't
 # }
 # 
 # # Reassign the FigNames standards from the Figure_Names.R script
-# All_Standards <- Ingalls_Lab_Standards_KEGG 
+# All_Standards <- Ingalls_Lab_Standards_KEGG
 # All_Standards$CHEBI <- gsub("CHEBI", "ChEBI", All_Standards$CHEBI)
 # 
 # # Apply the ChEBI retrieval function to the standards list
@@ -148,7 +148,7 @@ The section below is for updating ChEBI and can take quite a while; if you don't
 #   rownames_to_column(var = "C0")
 # 
 # Full_ChEBI <- All_Standards %>%
-#   left_join(Latest_ChEBI) 
+#   left_join(Latest_ChEBI)
 # 
 # # Write the latest download here if you want to save it.
 # Last_ChEBI_Download <- data.frame(Full_ChEBI)
@@ -160,11 +160,11 @@ The section below is for updating ChEBI and can take quite a while; if you don't
 This section is for using the last downloaded ChEBI file.
 ```{r Last updated ChEBI, include=TRUE}
 # Load the latest ChEBI scrape if you don't want to run the whole function.
-My_ChEBI_File <- "ChEBI_Download_28-Jul-2021"
+My_ChEBI_File <- "ChEBI_Download_02-Aug-2021"
 Full_ChEBI <- read.csv(dir("data_extra/", full.names=T, pattern = My_ChEBI_File))
 ```
 
-
+This section runs the downloaded ChEBI data and updates the Ingalls Standards.
 ```{r Run ChEBI, include=TRUE}
 source("src/ChEBI.R")
 
@@ -174,14 +174,59 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_ChEBI"))
 -----
 
 #### IUPAC, InCHl, SMILES columns
+As with KEGG and ChEBI, the section below updates the IUPAC, INCHI, and SMILES columns, and takes a few minutes to run. You can either run the chunk to get the latest data, or use a previously downloaded version.
 ```{r IUPAC, InCHI, and SMILES code, include=TRUE}
+
+# Standards_Names <- read.csv("Ingalls_Lab_Standards.csv") %>%
+#   select(Compound.Name) %>%
+#   unique() 
+# Standards_Names <- Standards_Names[["Compound.Name"]]
+# 
+# httr::set_config(httr::config(http_version = 0))
+# Looped_Names = list()
+# 
+# for (i in Standards_Names) {
+#   path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", i, 
+#                 "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
+#   print(path)
+#   
+#   r <- GET(url = path)
+#   Sys.sleep(1)
+#   status_code(r)
+#   content(r)
+#   names <- read.csv(text = gsub("\t\n", "", r), sep = ",",
+#                      header = TRUE)
+#   Looped_Names[[i]] <- names 
+# }
+# 
+# IUPAC_InCHI_SMILES = bind_rows(Looped_Names) %>%
+#   rename(Compound.Name = Title) %>%
+#   filter(Compound.Name %in% Ingalls_Lab_Standards_ChEBI$Compound.Name) %>%
+#   select(CID:IUPACName)
+# 
+# write.csv(IUPAC_InCHI_SMILES, paste0("data_extra/IUPAC_Download_",
+#                                       format(Sys.time(), "%d-%b-%Y"), ".csv"),
+#           row.names = FALSE)
+
+```
+
+```{r Last updated PubChem, include=TRUE}
+# Load the latest ChEBI scrape if you don't want to run the whole function.
+My_IUPAC_File <- "IUPAC_Download_02-Aug-2021"
+Full_IUPAC <- read.csv(dir("data_extra/", full.names=T, pattern = My_IUPAC_File))
+```
+
+```{r Add all PubChem code, include=TRUE}
 source("src/IUPAC_InChl_Smiles.R")
+
+rm(list=setdiff(ls(), "Ingalls_Lab_Standards_AllPubChem"))
 ```
 
 -----
 
 The next section deals with the ClassyFire ID section. 
-The source code for creating the ClassyFire IDs commented out: *DO NOT RUN THE High Class Function LINE UNLESS YOU ARE STARTING THE PROJECT FROM SCRATCH!!* It can take several hours just to complete.
+The source code for creating the ClassyFire IDs commented out: *DO NOT RUN THE High Class Function LINE UNLESS YOU WOULD LIKE TO COMPLETELY UPDATE IT!* 
+The other scrapes take on the order of minutes, this one can take up to several hours. 
 
 #### Classyfire column
 ```{r Source Classyfire code, include=TRUE}
