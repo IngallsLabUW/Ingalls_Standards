@@ -1,0 +1,39 @@
+So you want to add a new standard to the Ingalls Standards Sheet!
+
+
+What is the compound name?
+What is the exact mass?
+What is the retention time?
+What is the HILIC mode (if applicable)?
+What is the HILIC mix?
+What is the z?
+What is the empirical formula (this can be automated)?
+What is the ionization form?
+What is the liquid fraction?
+What is the concentration in uM?
+Add KEGG ID and names:
+Add ChEBI:
+Add InCHI:
+Add SMILES:
+Add Classyfire:
+Is it a priority?
+What is today's date?
+
+```{r Test Standards, include=TRUE}
+
+Test <- read.csv("Ingalls_Lab_Standards.csv") %>%
+  slice(1:10)
+
+```
+
+## Doing this with one specific compound
+# compound.name <- "L-Methionine"
+# 
+# path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, 
+#               "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
+# 
+# r <- GET(url = path) 
+# status_code(r)
+# content(r)
+# mydata <- read.csv(text = gsub("\t\n", "", r), sep = ",",
+#                    header = TRUE)

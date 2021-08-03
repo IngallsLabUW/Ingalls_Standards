@@ -1,5 +1,4 @@
 # Script to update
-
 All_KEGG_IDs <- All_KEGG_IDs %>%
   rename(C0 = cmpd)
 
@@ -64,7 +63,14 @@ Ingalls_Lab_Standards_KEGG <- Full_Standards %>%
          C0 = ifelse(Compound.Name == "2-(3,5-Dichlorophenylcarbamoyl)-1,2-dimethylcyclopropane-1-carboxylic acid", "cpd:C15249", C0),
          C0 = ifelse(Compound.Name == "5-(2-Hydroxyethyl)-4-methylthiazole", "cpd:C04294", C0),
          C0 = ifelse(Compound.Name == "Monesin", "cpd:C06693", C0),
-         C0 = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", C0)) %>%
+         C0 = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", C0),
+         C0 = ifelse(Compound.Name == "Butyrylcarnitine", "cpd:C02862", C0),
+         C0 = ifelse(Compound.Name == "beta-Ionine", "cpd:C12287", C0),
+         C0 = ifelse(Compound.Name == "Methyl indole-3-acetate", "cpd:C20635", C0),
+         C0 = ifelse(Compound.Name == "Coenzyme Q1", "cpd:C00399", C0),
+         C0 = ifelse(Compound.Name == "D-Glucosamine", "cpd:C00329", C0),
+         C0 = ifelse(Compound.Name == "3-Sulfolactate", "cpd:C16069", C0)) %>%
+  mutate(Compound.Name = ifelse(Compound.Name == "beta-Ionine", "beta-Ionone", Compound.Name)) %>%
   left_join(All_KEGG_IDs, by = "C0") %>%
   select(-KEGGNAME) %>%
   rename(KEGGNAME = name)

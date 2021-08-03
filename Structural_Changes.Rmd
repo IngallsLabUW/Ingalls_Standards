@@ -38,15 +38,6 @@ The below code blocks represent **the order** in which large structural changes 
 10/14/20: First version of SQL-safe names introduced. 
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
 
-I think we should change the title of the standards sheet, “Ingalls_Lab_Standards_NEW.csv” to just “Ingalls_Lab_Standards.csv”, as I have done in these examples. I originally added the “NEW” suffix during my first redo of the standards and it doesn’t make sense to keep it permanently.
-The column order is redone, take a look to see if it makes sense.
-I dropped the QE and TQS LinRange, RSD, Ratio columns.
-Renamed all column to use consistent underscores instead of a mix of underscores and periods, changed all columns that refer to third party ids to “Database_ID”,  e.g. “C0” is now “KEGG_ID”.
-Added a “PubChem_ID” column.
-Removed the “ChEBI:” and “cpd:” prefixes in the KEGG and ChEBI columns.
-
-Yay!! This looks awesome - thanks so much for doing all the cleaning. A few more comments (per usual): "emperical" formula is misspelled (I think this has always been the case but now's our chance to fix it); I think we should keep the ChEBI prefixes (I've never seen them as just the number); and InCHI and SMILES would be more accurately described as "codes" rather than names (love the suffix consistency though!)
-
 Changing all column names and stuff at the end so this markdown remains as backwards compatible as possible.
 Keep the IUPAC/INCHI/SMILES stuff like title and molecular fomula? Check that.
 ------
@@ -232,6 +223,19 @@ The other scrapes take on the order of minutes, this one can take up to several 
 ```{r Source Classyfire code, include=TRUE}
 ### source("src/High_Class_Function_062220.R") ###
 source("src/Classyfire.R")
+
+rm(list=setdiff(ls(), "Ingalls_Lab_Standards_Classyfire"))
 ```
 
 
+----
+
+#### Standards Facelift
+
+```{r Standards Facelift, include=TRUE}
+
+source("Temp_Standards.R")
+
+```
+
+This section handles the layout changes for the standards sheet; including column removal/addition, column order, and 
