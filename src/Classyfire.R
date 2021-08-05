@@ -1,20 +1,13 @@
 ## Classyfire IDs
 
+Full_Classyfire <- Full_Classyfire %>%
+  rename(InChI_Key_Code = key,
+         Classyfire_new = Classyfire)
 
-All_Standards <- Ingalls_Lab_Standards_AllPubChem
-
-Classyfire <- read.csv("data_extra/classyfire_stds.csv") 
-Classyfire$Compound.Name <- gsub("_", " ", Classyfire$Compound.Name)
-
-Combined.Classyfire <- Classyfire %>%
-  unite(Combined, c("Level", "Classification"), sep = ": ") %>%
-  arrange(Compound.Name) %>%
-  unique() %>%
-  group_by(Compound.Name) %>%
-  mutate("Classyfire" = paste(Combined, collapse = "; ")) %>%
-  select(-Combined) %>%
-  unique() %>%
-  as.data.frame()
-
-Ingalls_Lab_Standards_Classyfire <- All_Standards %>%
-  left_join(Combined.Classyfire, by = "Compound.Name") 
+Ingalls_Lab_Standards_Classyfire <- Ingalls_Lab_Standards_AllPubChem %>%
+  left_join(Full_Classyfire, by = "InChI_Key_Code") %>%
+  mutate(Classyfire = ifelse(is.na(Classyfire_new)==TRUE & is.na(Classyfire)==FALSE, Classyfire,
+                             ifelse(is.na(Classyfire_new)==FALSE & is.na(Classyfire)==TRUE, Classyfire_new,
+                                    ifelse(Classyfire == Classyfire_new, Classyfire_new, Classyfire_new)))) %>%
+  select(-Classyfire_new)
+  

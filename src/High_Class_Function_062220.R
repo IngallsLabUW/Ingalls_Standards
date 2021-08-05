@@ -15,7 +15,7 @@
 # and the ChemOnt-ID # for that classification. The other functions present are adapted from the ClassyFire_R package
 # and have been modified and included in the high_class function.
 
-#Required packages
+
 
 library(clisymbols)
 
@@ -132,6 +132,4 @@ high_class <- function(input)
   classy_dat <- bind_rows(output)
   print(classy_dat)
 }
-
-
 

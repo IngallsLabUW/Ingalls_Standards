@@ -1,179 +1,79 @@
-# Script to update
+## Script to update KEGG codes and names
 All_KEGG_IDs <- All_KEGG_IDs %>%
-  rename(C0 = cmpd)
+  rename(KEGG_Code = cmpd)
 
-# Import standards and isolate compound names, drop internal standards that have no KEGG ID.
-Full_Standards <- Ingalls_Lab_Standards_SQL
-
-Standards_NoInt <- Full_Standards %>%
-  select(Compound.Type, Compound.Name, C0) %>%
+## Import standards and isolate compound names, drop internal standards that have no KEGG ID.
+Standards_NoInt <- Ingalls_Lab_Standards_SQL %>%
+  rename(KEGG_Code = C0) %>%
+  select(Compound.Type, Compound.Name, KEGG_Code) %>%
   unique() %>%
   filter(!str_detect(Compound.Type, "Internal"))
 
-# Checks and matches most of the standards
-All_Potential_Matches <- All_KEGG_IDs %>%
+## Check and match most of the standards
+Potential_Matches <- All_KEGG_IDs %>%
   separate_rows(name, sep = ";")
-All_Potential_Matches$name <- trimws(All_Potential_Matches$name, which = c("both"))
-All_Potential_Matches <- All_Potential_Matches %>%
-  filter(str_detect(All_Potential_Matches$name, str_c(Standards_NoInt$Compound.Name, collapse="|"))) 
+Potential_Matches$name <- trimws(Potential_Matches$name, which = c("both"))
+Potential_Matches <- Potential_Matches %>%
+  filter(str_detect(Potential_Matches$name, str_c(Standards_NoInt$Compound.Name, collapse = "|"))) 
 
-# Identify which standards have been matched with a KEGG compound
-Match_Check <- do.call(rbind.data.frame,
+## Create TRUE/FALSE check for which standards have been matched with a KEGG compound
+Binary_Check <- do.call(rbind.data.frame,
              lapply(unique(Standards_NoInt$Compound.Name),
                     function(i){
-                      output <- i %in% All_Potential_Matches$name
+                      output <- i %in% Potential_Matches$name
                       return(output)})) %>%
   rename(Has_KEGG_Match = 1)
 
-# Add names to the matches
-Name_Check <- do.call(rbind.data.frame,
+## Isolate names to add to the binary matches
+Standards_Names <- do.call(rbind.data.frame,
              lapply(unique(Standards_NoInt$Compound.Name),
                     function(i){
                       name <- i
                       return(name)})) %>%
   rename(Compound.Name = 1)
 
-# Combine matches with old and new names/IDs
-Mid_Check <- Match_Check %>% 
-  cbind(Name_Check) %>%
-  left_join(Standards_NoInt %>% select(Compound.Name, C0)) %>%
-  rename(Standards_C0 = C0)
+## Combine names and binary checks, and add standards with old and new names/IDs
+## Check for changes since the latest KEGG download.
+Full_Match_Check <- Binary_Check %>% 
+  cbind(Standards_Names) %>%
+  left_join(Standards_NoInt %>% select(Compound.Name, KEGG_Code)) %>%
+  rename(Standards_KEGG_Code = KEGG_Code) %>%
+  left_join(Potential_Matches %>% rename(Compound.Name = name)) %>%
+  mutate(Same_KEGG_Code = ifelse(Standards_KEGG_Code != KEGG_Code, FALSE, TRUE)) 
 
-# Compare any upated C0s from latest kegg download
-Full_Check <- Mid_Check %>%
-  left_join(All_Potential_Matches %>% rename(Compound.Name = name)) %>%
-  mutate(Same_C0 = ifelse(Standards_C0 != C0, FALSE, TRUE)) %>%
-  filter(is.na(Same_C0) | Same_C0 == FALSE)
+Changed_Code <- which(Full_Match_Check$Same_KEGG_Code == FALSE)
 
-Ingalls_Lab_Standards_KEGG <- Full_Standards %>%
-  mutate(C0 = ifelse(Compound.Name == "Cys-Gly, oxidized", "cpd:C01419", C0),
-         C0 = ifelse(Compound.Name == "2-keto-4-methylthiobutyric acid", "cpd:C01180", C0),
-         C0 = ifelse(Compound.Name == "Ophthalmic acid", "cpd:C21016", C0), 
-         C0 = ifelse(Compound.Name == "Malic acid", "cpd:C00149", C0), 
-         C0 = ifelse(Compound.Name == "Threonic acid", "cpd:C01620", C0), 
-         C0 = ifelse(Compound.Name == "Methylphosphonic acid", "cpd:C20396", C0),
-         C0 = ifelse(Compound.Name == "3-Phosphoglycerate", "cpd:C00597", C0),
-         C0 = ifelse(Compound.Name == "(R)-2,3-Dihydroxypropane-1-sulfonate", "cpd:C19675", C0),
-         C0 = ifelse(Compound.Name == "Caffeic acid", "cpd:C01197", C0),
-         C0 = ifelse(Compound.Name == "beta-Cyclocitral", "cpd:C20425", C0),
-         C0 = ifelse(Compound.Name == "Camalexin", "cpd:C21721", C0),
-         C0 = ifelse(Compound.Name == "N-(4-Coumaroyl)-L-homoserine lactone", "cpd:C20677", C0),
-         C0 = ifelse(Compound.Name == "N-(3-Oxohexanoyl)homoserine lactone", "cpd:C11839", C0),
-         C0 = ifelse(Compound.Name == "N-(3-Oxooctanoyl)homoserine lactone", "cpd:C11841", C0),
-         C0 = ifelse(Compound.Name == "2-(3,5-Dichlorophenylcarbamoyl)-1,2-dimethylcyclopropane-1-carboxylic acid", "cpd:C15249", C0),
-         C0 = ifelse(Compound.Name == "5-(2-Hydroxyethyl)-4-methylthiazole", "cpd:C04294", C0),
-         C0 = ifelse(Compound.Name == "Monesin", "cpd:C06693", C0),
-         C0 = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", C0),
-         C0 = ifelse(Compound.Name == "Butyrylcarnitine", "cpd:C02862", C0),
-         C0 = ifelse(Compound.Name == "beta-Ionine", "cpd:C12287", C0),
-         C0 = ifelse(Compound.Name == "Methyl indole-3-acetate", "cpd:C20635", C0),
-         C0 = ifelse(Compound.Name == "Coenzyme Q1", "cpd:C00399", C0),
-         C0 = ifelse(Compound.Name == "D-Glucosamine", "cpd:C00329", C0),
-         C0 = ifelse(Compound.Name == "3-Sulfolactate", "cpd:C16069", C0)) %>%
+## Manually fix incorrect KEGG codes that can't be automated.
+## Update the KEGGNAME column so 
+Ingalls_Lab_Standards_KEGG <- Ingalls_Lab_Standards_SQL %>%
+  rename(KEGG_Code = C0) %>%
+  mutate(KEGG_Code = ifelse(Compound.Name == "Cys-Gly, oxidized", "cpd:C01419", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "2-keto-4-methylthiobutyric acid", "cpd:C01180", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Ophthalmic acid", "cpd:C21016", KEGG_Code), 
+         KEGG_Code = ifelse(Compound.Name == "Malic acid", "cpd:C00149", KEGG_Code), 
+         KEGG_Code = ifelse(Compound.Name == "Threonic acid", "cpd:C01620", KEGG_Code), 
+         KEGG_Code = ifelse(Compound.Name == "Methylphosphonic acid", "cpd:C20396", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "3-Phosphoglycerate", "cpd:C00597", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "(R)-2,3-Dihydroxypropane-1-sulfonate", "cpd:C19675", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Caffeic acid", "cpd:C01197", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "beta-Cyclocitral", "cpd:C20425", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Camalexin", "cpd:C21721", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "N-(4-Coumaroyl)-L-homoserine lactone", "cpd:C20677", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "N-(3-Oxohexanoyl)homoserine lactone", "cpd:C11839", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "N-(3-Oxooctanoyl)homoserine lactone", "cpd:C11841", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "2-(3,5-Dichlorophenylcarbamoyl)-1,2-dimethylcyclopropane-1-carboxylic acid", "cpd:C15249", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "5-(2-Hydroxyethyl)-4-methylthiazole", "cpd:C04294", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Monesin", "cpd:C06693", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Butyrylcarnitine", "cpd:C02862", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "beta-Ionine", "cpd:C12287", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Methyl indole-3-acetate", "cpd:C20635", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Coenzyme Q1", "cpd:C00399", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "D-Glucosamine", "cpd:C00329", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "3-Sulfolactate", "cpd:C16069", KEGG_Code)) %>%
   mutate(Compound.Name = ifelse(Compound.Name == "beta-Ionine", "beta-Ionone", Compound.Name)) %>%
-  left_join(All_KEGG_IDs, by = "C0") %>%
+  left_join(All_KEGG_IDs, by = "KEGG_Code") %>%
   select(-KEGGNAME) %>%
-  rename(KEGGNAME = name)
-
+  rename(KEGG_Names = name)
  
-
-## After a secondary internet search
-# Homocysteine thiolactone
-  # Suggests on ebi.uk that L-Homocysteine is a KEGG match, cpd:C00155
-# Butyrylcarnitine
-  # Suggests on kegg that O-Butanoylcarnitine is a match, cpd:C02862
-# S-Farnesyl-L-cysteine methyl ester
-  # Kegg suggestion is Protein C-terminal S-farnesyl-L-cysteine methyl ester, cpd:C04748
-# beta-Ionine
-  # Closest is beta-Ionone, not sure if that's the same thing. cpd:C12287
-# Decarboxylated S-Adenosylmethionine
-  # KEGG does have S-Adenosylmethionine, but not decarboxylated.cpd:C00019
-# 1-Stearoyl-2-oleoyl-sn-glycero-3-phosphoethanolamine
-  # Closest match is cpd:C01233, sn-Glycero-3-phosphoethanolamine
-# Indole-3-methyl acetate
-  # Closest match is Methyl (indol-3-yl)acetate, cpd: C20635. This was a previous match for KEGG in the OG standards.
-# Methyl indole-3-carboxylate
-  # Closest KEGG match is Indole-3-carboxylate, cpd: C19837
-# Coenzyme Q1
-  # Closest is Coenzyme Q, cpd:C00399
-# N-(3-Oxodecanoyl)homoserine lactone
-  # Comes close with N-3-Oxo-dodecanoyl-L-homoserine lactone, cpd:C21201, but probably not the same thing
-# 2-Hydroxy-4-(methylthio)butyric acid
-  # maybe cpd:C01180
-# Glucosamine
-  # maybe cpd:C00329
-# Sulfolactic acid
-  # maybe cpd:C16069
-# Amino Propanesulfonic Acid
-  # maybe cpd:C03349
-# Dimethylsulfoniopropionate
-  # maybe cpd:C03392
-# Sodium 2-mercaptoethanesulfonate
-  # maybe cpd:C03576
-# beta-Apo-8'-carotenal
-  # maybe cpd:C06733
-# Indoleacrylic acid
-  # maybe cpd:C21283
-# N-(3-Oxododecanoyl)homoserine lactone
-  # maybe cpd:C11840
-# N-Decanoyl-L-homoserine lactone
-  # maybe cpd:C21201
-# Calciferol
-  # maybe incorrectly matched? Currently cpd:C05441
-# Sulfolactic acid
-  # currently cpd:C11537, is that correct?
-# Palmitoyl-L-carnitine
-  # the same as cpd:C02990 L-Palmitoylcarnitine"
-# beta-glutamic acid
-  # L/d glutamic acid? 
-# Allopurinol
-  # Listed as part of the drug database, D00224
-
-
-## Currently unable to find any potential matches
-# Gonyol
-  # Has some long synonyms on chemspider
-# O-Methylmalonyl-L-carnitine
-# Propionylglycine
-# Succinylglycine
-  # Potentialy N-Succinylglycine, but still no kegg matches
-# Ethyl dihydroxybenzoate
-# Acetylglycine
-# Butyrylglycine
-# Glutamylphenylalanine
-# Homarine
-# Indole-3-carbinol
-# Ethanesulfonic acid
-# N-Acetyltaurine
-# N-Methyltaurine
-# 1-Propanesulfonate
-# Trolox
-# Syringaldehyde
-# beta-Ionylidene acetaldehyde
-# Isobutyryl-carnitine
-# 1-Palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine
-# 3-Indolepropionic acid
-# 2,4-Decadienal
-# 2,4-Octadienal
-# 3OHC12-HSL
-# N-Tetradecanoyl-DL-homoserine lactone
-
-
-
-## Lipids, potential matches
-# Triacylglycerol 12:0-12:0-12:0 and Triacylglycerol 14:0-14:0-14:0, do either match to cpd:C00422?
-# Diacylglycerol 18:1-18:1, could it match to cpd:C00165?
-# MonoacylglycerolÂ 18:1, could it match to cpd:C01885? ALSO REMOVE FUNKY CHARACTER
-# Lysophosphatidylcholine monoacylglycerol 18:1 is matched with cpd:C03916, 1-Oleoylglycerophosphocholine; 1-Oleoyl-sn-glycero-3-phosphocholine
-# Sulfoquinovosyldiacylglycerol 16:0-18:3 may match to cpd:C13508
-# Ceramide d18:1-24:0, is the d intentional?
-
-## Lipids, missing/can't find
-# Phosphatidylcholine diacylglycerol 16:0-18:2
-# Phosphatidylserine diacylglycerol 18:0-18:1
-# Monogalactosyldiacylglycerol 16:3-18:3
-# Digalactosyldiacylglycerol 18:3-18:3
-# 1,2-Diacylglyceryl-3-O-4'-(N,N,N-trimethyl)-homoserineÂ 16:0-16:0 REMOVE FUNKY CHARACTER
-# Diacylglycerophosphoglycerol 16:0-18:2
-# Diether phosphatidylcholine diacylglycerol 16:0-16:0
-
+ 

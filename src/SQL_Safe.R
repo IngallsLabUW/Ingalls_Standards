@@ -1,10 +1,9 @@
-# Script for SQL-Safe, CMAP-Friendly compound names
+## Script for SQL-Safe, CMAP-Friendly compound names
 
 replace_special_characters <- function(x) (gsub("[^[:alnum:] ]", " ", x))
 replace_double_spaces <- function(x) (gsub("  ", " ", x))
 
-All_Standards <- Ingalls_Lab_Standards_FigNames
-
+## Replace special characters
 Special_Names <- Ingalls_Lab_Standards_FigNames %>%
   select(Compound.Name, Compound.Name_figure) %>%
   filter_all(any_vars(str_detect(., "[^[:alnum:] ]"))) %>%
@@ -16,35 +15,17 @@ Special_Names <- Ingalls_Lab_Standards_FigNames %>%
   select(Compound.Name, Compound.Name_SQL) %>%
   drop_na() 
 
-All_Characters_Replaced <- All_Standards %>%
-  left_join(Special_Names, by = "Compound.Name") %>%
+All_Characters_Replaced <- Ingalls_Lab_Standards_FigNames %>%
+  left_join(Special_Names, by = c("Compound.Name", "Compound.Name_SQL")) %>%
   mutate(Compound.Name_SQL = ifelse(is.na(Compound.Name_SQL), Compound.Name, Compound.Name_SQL)) %>%
+  mutate(Compound.Name_SQL = recode(Compound.Name_SQL,
+                      "2iP" = "Dimethylallyladenine",
+                      "1 2 3 phosphocholine" = "POPC",
+                      "1 2 3 phosphoethanolamine" = "SOPE",
+                      "3O12 HSL" = "Oxododecanoyl homoserine lactone",
+                      "3OC10 HSL" = "Oxodecanoyl homoserine lactone",
+                      "3OC8 HSL" = "Oxooctanoyl homoserine lactone",
+                      "3OC6 HSL" = "Oxohexanoyl homoserine lactone")) %>%
   select(Compound.Type:Compound.Name_figure, Compound.Name_SQL, everything())
 
-
-# Handle leading numbers
-LauraEditsSQL <- read.csv("data_extra/Standards_LeadingNumbers_LTC.csv") %>%
-  select(Compound.Name_SQL, Compound.Name_SQL_LTC)
-
-Leading_Numbers <- All_Characters_Replaced %>%
-  select(Compound.Name, Compound.Name_SQL) %>%
-  drop_na() %>%
-  mutate(SQL = recode(Compound.Name_SQL,
-                                    "2iP" = "Dimethylallyladenine",
-                                    "1 2 3 phosphocholine" = "POPC",
-                                    "1 2 3 phosphoethanolamine" = "SOPE",
-                                    "3O12 HSL" = "Oxododecanoyl homoserine lactone",
-                                    "3OC10 HSL" = "Oxodecanoyl homoserine lactone",
-                                    "3OC8 HSL" = "Oxooctanoyl homoserine lactone",
-                                    "3OC6 HSL" = "Oxohexanoyl homoserine lactone"
-                                    )) %>%
-  filter(str_detect(SQL, "^[0-9]")) %>%
-  mutate(SQL = gsub("[[:digit:]]+", "", SQL)) 
-Leading_Numbers$SQL <- trimws(Leading_Numbers$SQL, which = c("left"))
-
-
-Ingalls_Lab_Standards_SQL <- All_Characters_Replaced %>%
-  left_join(Leading_Numbers %>% select(Compound.Name, SQL)) %>%
-  mutate(Compound.Name_SQL = ifelse(!is.na(SQL), SQL, Compound.Name_SQL)) %>%
-  select(-SQL)
-
+Ingalls_Lab_Standards_SQL <- All_Characters_Replaced

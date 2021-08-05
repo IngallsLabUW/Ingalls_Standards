@@ -15,41 +15,31 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## IMPORTANT: PLEASE READ
-The below code blocks represent **the order** in which large structural changes were made. Running these code blocks *WILL NOT* replace or modify any of the Ingalls_Standards sheets. They exist only as a reference for troubleshooting. 
+The below code blocks represent **the order** in which large structural changes were made. Running these code blocks *WILL NOT* replace or modify the Ingalls_Standards sheet. They exist only as a reference for troubleshooting and as a guideline for future structural changes.
 
-### This markdown document controls the original large structural changes made in 2020, and the revamp completed in the summer of 2021.
+### This markdown document controls both the original large structural changes made in 2020, and the revamp completed in the summer of 2021.
 
-#### Change Log
-4/8/20: Internal standards updated to reflect consistent naming scheme.  
-4/20/20: Abbreviated compounds switched to full-length KEGG names.  
-4/20/20: Adjusted compounds with incorrect capitalization.  
-4/22/20: Added or removed symbols as required by KEGG names.  
-4/23/20: Update last compounds not falling into the above groups.
-4/23/20: Complete renaming of compounds, including those that didn't change from the original names.
-4/28/20: Adjust vitamins to descriptive names.
-4/29/20: Adjust abbreviations for consistency.
-5/8/20: FINAL NAMES DECIDED FOR PRIMARY ID.
-5/28/20: Bug fixes in final names.
-5/28/20: First suggestions for Figure Name column.
-6/3/20: Final Figure Names decided.
-7/30/20: ChEBI names scraped from website and added in new column.
-8/3/20: IUPAC, InCHI, and SMILES columns added to standards.
-8/10/20: Classyfire classifications added for those compounds that have them.
-10/14/20: First version of SQL-safe names introduced. 
-10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
-
-Changing all column names and stuff at the end so this markdown remains as backwards compatible as possible.
-Keep the IUPAC/INCHI/SMILES stuff like title and molecular fomula? Check that.
 ------
 
-#### Primary ID (column: Compound_Name)
+#### Primary ID (column: Compound.Name)
+
+The Primary ID column was adjusted back in 2020. This involved two parts: one redo by Laura followed by a joint tidying by Regina and Laura. 
+To see the original, pre-primary ID revamp, please take a look at the  data_old/Ingalls_Lab_Standards_pre2020.csv.
+To see Laura's edits from 2020, go to data_old/Ingalls_Lab_Standards_LauraEdit2020.csv.
+The rest of the changes are all outlined in the src/Primary_ID.R script below.
+
 ```{r Primary ID code, include=TRUE}
 source("src/Primary_ID.R")
 
 rm(list=setdiff(ls(), "Ingalls_Lab_Standards_PrimaryID"))
 ```
 
-#### Shortened names (column: Compound_Name.figure)
+-----
+
+#### Figure Names (column: Compound.Name_figure)
+
+This script handles the creation of the Figure Names column: shorter names for the compounds. The script shows how changes were made, as well as a record of all names that had to be changed manually.
+
 ```{r Figures Names code, include=TRUE}
 source("src/Figure_Names.R")
 
@@ -58,7 +48,10 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_FigNames"))
 
 -----
 
-#### SQL-safe names: no special characters or leading numbers.
+#### SQL-safe names (column: Compound.Name_SQL)
+
+This script deals with the creation of the SQL names column. This columnn is for uploading compounds into online databases that require consistency, and sometimes requires that entries contain no special characters or leading numbers.
+
 ```{r Source SQL-Safe code, include=TRUE}
 source("src/SQL_Safe.R")
 
@@ -67,30 +60,36 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_SQL"))
 
 -----
 
-#### KEGG names
-This section can take quite a while; if you don't want to run the chunk you can use the latest downloaded
-version. Uncomment the code you want to use 
-```{r KEGG code, include=TRUE}
-## Option 1: Pull down latest data from KEGG (only run if you want the absolute latest version).
-## This also includes saving the latest scrape to the data_extra folder.
+#### KEGG (columns: KEGG_Code, KEGG_Names)
 
+This section relies on accessing the remote KEGG database to update the codes and names. These values don't change often and running this chunk can take quite a while. If you want to scrape KEGG and save the latest version, uncomment the chunk below and run it.
+
+Alternatively, use the latest downloaded version, located at data_extra/KEGG_Download_<Latest_Date_Here>.csv.
+
+Option 1: Pull down latest data from KEGG (only run if you want the absolute latest version).
+This also includes saving the latest scrape to the data_extra folder.
+
+```{r Scrape KEGG code, include=TRUE}
 # path <- "http://rest.kegg.jp/list/compound"
 # raw_content <- GET(url = path) %>%
-#   content()
+#   content() 
+#   
 # All_KEGG_IDs <- read.csv(text = gsub("\t\n", "", raw_content), sep = "\t",
 #               header = FALSE, col.names = c("cmpd", "name"))
-# write.csv(All_KEGG_IDs, paste0("data_extra/KEGG_Compounds_",
+# write.csv(All_KEGG_IDs, paste0("data_extra/KEGG_Download_",
 #                                format(Sys.time(), "%d-%b-%Y"), ".csv"),
 #           row.names = FALSE)
+```
+
+Option 2: load a pre-saved KEGG scrape. The date in the filename indicates when it was last downloaded. You will need to enter the filename correctly for the My_KEGG_File variable, as there may be more than one downloaded KEGG files.
+```{r Load prescraped KEGG, include=TRUE}
+My_KEGG_File <- "KEGG_Download_03-Aug-2021"
+All_KEGG_IDs <- read.csv(dir("data_extra/", full.names = T, pattern = My_KEGG_File))
+```
 
 
-## Option 2: load pre-saved KEGG scrape. The date in the filename indicates
-## when it was last downloaded. You will need to enter the filename correctly 
-## for the My_KEGG_File variable, as there may be many downloaded KEGG files.
-
-My_KEGG_File <- "KEGG_Compounds_28-Jul-2021"
-All_KEGG_IDs <- read.csv(dir("data_extra/", full.names=T, pattern=My_KEGG_File))
-
+Run the KEGG script to update the standards.
+```{r Run KEGG script}
 source("src/KEGG.R")
 
 rm(list=setdiff(ls(), "Ingalls_Lab_Standards_KEGG"))
@@ -98,64 +97,29 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_KEGG"))
 
 -----
 
-#### ChEBI names
-The section below is for updating ChEBI and can take quite a while; if you don't want to update ChEBI you can skip this chunk and use the latest downloaded version (next chunk).
+#### ChEBI (column: ChEBI_Code)
+
+Like the KEGG section, this section handles downloading and updating the ChEBI codes. 
+Downloading ChEBI takes time; if you don't want to do the update you can skip this chunk and use the latest downloaded version, located at data_extra/ChEBI_Download_<Latest_Date_Here>.csv.
 ```{r Download latest ChEBI, include=TRUE}
-# grabChEBI <- function(compound_id) {
-#   # Accepts a KEGG ID (format cpd:C[number]) and returns
-#   # the ChEBI id found on the KEGG webpage. If there are multiple, return the
-#   # first one. If not found, return NA.
-#   if(is.na(compound_id)) {
-#     return(NA)
-#   }
-#   ChEBI <- compound_id %>%
-#     paste0("http://rest.kegg.jp/get/", .) %>%
-#     GET() %>%
-#     content() %>%
-#     as.character() %>%
-#     strsplit(., "\\n") %>%
-#     unlist() %>%
-#     grep(pattern = "ChEBI", value = TRUE) %>%
-#     trimws(which = "both")
-#   ChEBI <- sub("^(\\S*\\s+\\S+).*", "\\1", ChEBI)
-#   ChEBI <- gsub( " ", "", ChEBI)
-#   if(length(ChEBI) == 0) {
-#     return(NA)
-#   }
-#   return(ChEBI)
-# }
+# source("src/ChEBI_Download.R")
 # 
-# # Reassign the FigNames standards from the Figure_Names.R script
-# All_Standards <- Ingalls_Lab_Standards_KEGG
-# All_Standards$CHEBI <- gsub("CHEBI", "ChEBI", All_Standards$CHEBI)
-# 
-# # Apply the ChEBI retrieval function to the standards list
-# ChEBI_Names <- sapply(unique(All_Standards$C0), grabChEBI)
-# names(ChEBI_Names)[which(is.na(names(ChEBI_Names)))] <- "NA"
-# 
-# # Compare old and new ChEBI values
-# Latest_ChEBI <- data.frame(ChEBI_Names) %>%
-#   drop_na() %>%
-#   rownames_to_column(var = "C0")
-# 
-# Full_ChEBI <- All_Standards %>%
-#   left_join(Latest_ChEBI)
-# 
-# # Write the latest download here if you want to save it.
-# Last_ChEBI_Download <- data.frame(Full_ChEBI)
-# write.csv(Last_ChEBI_Download, paste0("data_extra/ChEBI_Download_",
+# ## Save the standards sheet with the latest ChEBI download here.
+# write.csv(Latest_ChEBI_Download, paste0("data_extra/ChEBI_Download_",
 #                                       format(Sys.time(), "%d-%b-%Y"), ".csv"),
 #           row.names = FALSE)
 ```
 
-This section is for using the last downloaded ChEBI file.
+This section is for using the latest downloaded ChEBI file and updating the standards sheet.
+Remember you need to enter the exact filename of the last download.
 ```{r Last updated ChEBI, include=TRUE}
 # Load the latest ChEBI scrape if you don't want to run the whole function.
-My_ChEBI_File <- "ChEBI_Download_02-Aug-2021"
+My_ChEBI_File <- "ChEBI_Download_04-Aug-2021"
 Full_ChEBI <- read.csv(dir("data_extra/", full.names=T, pattern = My_ChEBI_File))
 ```
 
 This section runs the downloaded ChEBI data and updates the Ingalls Standards.
+It drops the old CheBI column and prints differences between the two. 
 ```{r Run ChEBI, include=TRUE}
 source("src/ChEBI.R")
 
@@ -164,51 +128,26 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_ChEBI"))
 
 -----
 
-#### IUPAC, InCHl, SMILES columns
-As with KEGG and ChEBI, the section below updates the IUPAC, INCHI, and SMILES columns, and takes a few minutes to run. You can either run the chunk to get the latest data, or use a previously downloaded version.
-```{r IUPAC, InCHI, and SMILES code, include=TRUE}
+#### IUPAC, InCHl, SMILES (columns: IUPAC_Code, InCHI_Key_Code, Canon_SMILES_Code)
 
-# Standards_Names <- read.csv("Ingalls_Lab_Standards.csv") %>%
-#   select(Compound.Name) %>%
-#   unique() 
-# Standards_Names <- Standards_Names[["Compound.Name"]]
+As with KEGG and ChEBI, the section below downloads the IUPAC, INCHI, and SMILES columns from the remote PubChem database, and takes a few minutes to run. You can either run the chunk to get the latest data, or use a previously downloaded version, located at data_extra/PubChem_Download_<Latest_Date_Here>.csv.
+```{r PubChem download code, include=TRUE}
+# source("src/PubChem_Download.R")
 # 
-# httr::set_config(httr::config(http_version = 0))
-# Looped_Names = list()
-# 
-# for (i in Standards_Names) {
-#   path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", i, 
-#                 "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
-#   print(path)
-#   
-#   r <- GET(url = path)
-#   Sys.sleep(1)
-#   status_code(r)
-#   content(r)
-#   names <- read.csv(text = gsub("\t\n", "", r), sep = ",",
-#                      header = TRUE)
-#   Looped_Names[[i]] <- names 
-# }
-# 
-# IUPAC_InCHI_SMILES = bind_rows(Looped_Names) %>%
-#   rename(Compound.Name = Title) %>%
-#   filter(Compound.Name %in% Ingalls_Lab_Standards_ChEBI$Compound.Name) %>%
-#   select(CID:IUPACName)
-# 
-# write.csv(IUPAC_InCHI_SMILES, paste0("data_extra/IUPAC_Download_",
-#                                       format(Sys.time(), "%d-%b-%Y"), ".csv"),
+# write.csv(All_PubChem_Data, paste0("data_extra/PubChem_Download_",
+#                                    format(Sys.time(), "%d-%b-%Y"), ".csv"),
 #           row.names = FALSE)
-
 ```
 
+Run this chunk to use the last updated PubChem file. Remember to enter the correct filename for the latest download.
 ```{r Last updated PubChem, include=TRUE}
-# Load the latest ChEBI scrape if you don't want to run the whole function.
-My_IUPAC_File <- "IUPAC_Download_02-Aug-2021"
-Full_IUPAC <- read.csv(dir("data_extra/", full.names=T, pattern = My_IUPAC_File))
+My_PubChem_File <- "PubChem_Download_04-Aug-2021"
+Full_PubChem <- read.csv(dir("data_extra/", full.names=T, pattern = My_PubChem_File))
 ```
 
+Update all Pubchem data.
 ```{r Add all PubChem code, include=TRUE}
-source("src/IUPAC_InChl_Smiles.R")
+source("src/PubChem.R")
 
 rm(list=setdiff(ls(), "Ingalls_Lab_Standards_AllPubChem"))
 ```
@@ -216,26 +155,41 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_AllPubChem"))
 -----
 
 The next section deals with the ClassyFire ID section. 
-The source code for creating the ClassyFire IDs commented out: *DO NOT RUN THE High Class Function LINE UNLESS YOU WOULD LIKE TO COMPLETELY UPDATE IT!* 
-The other scrapes take on the order of minutes, this one can take up to several hours. 
 
-#### Classyfire column
+*DO NOT RUN THE High Class Function LINE UNLESS YOU WOULD LIKE TO COMPLETELY UPDATE IT!*  
+
+Like the other remote downloads, the Classyfire script is commented out. *Unlike* the other scrapes, which take ~5 mins, the Classyfire one takes up to several hours.
+
+#### Classyfire (column: Classyfire)
+
 ```{r Source Classyfire code, include=TRUE}
-### source("src/High_Class_Function_062220.R") ###
+# source("src/High_Class_Function_062220.R")
+# source("src/Classyfire_Download.R")
+# 
+# write.csv(Combined_Classyfire, paste0("data_extra/Classyfire_Download_",
+#                                    format(Sys.time(), "%d-%b-%Y"), ".csv"),
+#           row.names = FALSE)
+```
+
+Use a downloaded Classyfire run
+```{r Update the Classyfire column, include=TRUE}
+My_Classyfire_File <- "Classyfire_Download_04-Aug-2021"
+Full_Classyfire <- read.csv(dir("data_extra/", full.names=T, pattern = My_Classyfire_File))
+
 source("src/Classyfire.R")
 
 rm(list=setdiff(ls(), "Ingalls_Lab_Standards_Classyfire"))
 ```
 
-
 ----
 
 #### Standards Facelift
 
+This section handles the layout changes for the standards sheet; including column removal/addition, column order, and 
+
 ```{r Standards Facelift, include=TRUE}
 
-source("Temp_Standards.R")
+source("src/Standards_Facelift.R")
 
 ```
 
-This section handles the layout changes for the standards sheet; including column removal/addition, column order, and 

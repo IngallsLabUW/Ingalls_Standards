@@ -16,11 +16,56 @@ This repository contains all the relevant information the Ingalls Lab Standards.
 If you are looking to simply use the new Ingalls Standards list, download Ingalls_Lab_Standards.csv and use accordingly. If you would like to view a previous version of the standards, or see how changes were made, the **Structural_Changes.Rmd** markdown file manages the log history of changes to the original csv.
 
 
+#### Change Log
+4/8/20: Internal standards updated to reflect consistent naming scheme.  
+4/20/20: Abbreviated compounds switched to full-length KEGG names.  
+4/20/20: Adjusted compounds with incorrect capitalization.  
+4/22/20: Added or removed symbols as required by KEGG names.  
+4/23/20: Update last compounds not falling into the above groups.
+4/23/20: Complete renaming of compounds, including those that didn't change from the original names.
+4/28/20: Adjust vitamins to descriptive names.
+4/29/20: Adjust abbreviations for consistency.
+5/8/20: FINAL NAMES DECIDED FOR PRIMARY ID.
+5/28/20: Bug fixes in final names.
+5/28/20: First suggestions for Figure Name column.
+6/3/20: Final Figure Names decided.
+7/30/20: ChEBI names scraped from website and added in new column.
+8/3/20: IUPAC, InCHI, and SMILES columns added to standards.
+8/10/20: Classyfire classifications added for those compounds that have them.
+10/14/20: First version of SQL-safe names introduced. 
+10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
+
+The below changes are from the 2020 facelift.
+  mutate(Compound.Name_Laura = recode(Compound.Name_Laura,
+                                    "DMSP" = "Dimethylsulfoniopropionate",
+                                    "ADP" = "Adenosine diphosphate",
+                                    "AMP" = "Adenosine monophosphate",
+                                    "AMP, 15N5" = "Adenosine monophosphate, 15N5",
+                                    "ATP" = "Adenosine triphosphate",
+                                    "FAD" = "Flavin adenine dinucleotide",
+                                    "GMP" = "Guanosine monophosphate",
+                                    "GMP, 15N5" = "Guanosine monophosphate, 15N5",
+                                    "GTP" = "Guanosine triphosphate",
+                                    "PEP" = "Phosphoenolpyruvic acid",
+                                    "TMAB" = "(3-Carboxypropyl)trimethylammonium",
+                                    "cAMP" = "3',5'-Cyclic AMP",
+                                    "cGMP" = "3',5'-Cyclic GMP",
+                                    "Cys-Gly" = "L-Cysteinylglycine",
+                                    "Methyl (indol-3-yl)acetate" = "Methyl indole-3-acetate",
+                                    "4-Hydroxybenzaldehyde" = "4-hydroxybenzaldehyde"))
+                                    Laura_Edit[Laura_Edit == "O-Propanoylcarnitine"] <- "O-Propionylcarnitine"
+Laura_Edit[Laura_Edit == "O-Acetyl-L-carnitine"] <- "O-Acetylcarnitine"
+Laura_Edit[Laura_Edit == "Propanoyl-CoA"] <- "Propionyl-CoA"
+Laura_Edit[87, 1] <- "Methyl indole-3-carboxylate"
+
+ALSO DROPPED CHEBI_OLD but kept it in the pre2020 version just in case.
+
 ### Overview
 In June of 2020, significant changes were made to the original Ingalls Standards sheet. For an itemized list of changes, see the below descriptions. Changes can also be viewed on the git log of this project, available at https://github.com/IngallsLabUW/Ingalls_Standards/commits/master.
 
 Starting June of 2021, this repository will be tidied and reorganized. 
-
+Changing all column names and stuff at the end so this markdown remains as backwards compatible as possible.
+Keep the IUPAC/INCHI/SMILES stuff like title and molecular fomula? Check that.
 ------
 
 #### Conventions made in Summer 2020 Revamp

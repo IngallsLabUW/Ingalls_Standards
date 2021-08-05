@@ -1,16 +1,13 @@
 # Script for updating ChEBI column.
+Full_ChEBI$ChEBI <- gsub("CHEBI:NA", NA, Full_ChEBI$ChEBI)
+Full_ChEBI$ChEBI <- gsub("CHEBI:", "ChEBI:", Full_ChEBI$ChEBI)
 
-
-if (identical(Full_ChEBI[["ChEBI"]], Full_ChEBI[["ChEBI_Names"]]) == TRUE) {
-  print("Old ChEBI is equal to new ChEBI, no changes since last update.")
-} else {
-  print(which(Full_ChEBI$CHEBI != Full_ChEBI$ChEBI_Names))
-  message("There are updated ChEBI IDs! Check the printed row numbers above.")
-}
-
+## Quick check to see any differences between latest download and standards sheet.
+ChEBI_Match_Check <- Full_ChEBI %>% 
+  mutate(ChEBI_Code = ifelse(is.na(ChEBI_Code)==TRUE & is.na(ChEBI)==FALSE, ChEBI,
+                             ifelse(is.na(ChEBI_Code)==FALSE & is.na(ChEBI)==TRUE, ChEBI_Code,
+                                    ifelse(ChEBI == ChEBI_Code, ChEBI_Code, ChEBI_Code))))
+  
 # Add to full standards
 Ingalls_Lab_Standards_ChEBI <- Full_ChEBI %>%
-  unique() %>%
-  #rename(ChEBI = ChEBI_Names) %>% 
-  select(Compound.Type, Column, Compound.Name, Compound.Name_old, Compound.Name_figure,
-         QE.LinRange:z, C0, CHEBI, Fraction1:KEGGNAME, everything())
+  select(-ChEBI)
