@@ -1,7 +1,4 @@
 ## Script outlining the renaming of the primary ID column (Compound.Name) on the Ingalls Standards sheet.
-Ingalls_Lab_Standards <- read.csv("Ingalls_Lab_Standards.csv")
-
-# Complete, original edits made by Laura:
 
 # Outline specific edits made by Laura
 Laura_Edit <- Ingalls_Lab_Standards %>%

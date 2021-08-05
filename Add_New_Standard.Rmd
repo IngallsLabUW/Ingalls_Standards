@@ -1,39 +1,121 @@
 So you want to add a new standard to the Ingalls Standards Sheet!
 
+Please run the below chunks one at a time.
 
-What is the compound name?
-What is the exact mass?
-What is the retention time?
-What is the HILIC mode (if applicable)?
-What is the HILIC mix?
-What is the z?
-What is the empirical formula (this can be automated)?
-What is the ionization form?
-What is the liquid fraction?
-What is the concentration in uM?
+
+```{r Load data, include=TRUE}
+library(tidyverse)
+
+Standards_test <- read.csv("Ingalls_Lab_Standards.csv")
+```
+
+Please fill in the following fields:
+
+```{r Compound_Name, include=TRUE}
+New_Compound_Name <- "L-Methionine"
+```
+
 Add KEGG ID and names:
+```{r Add KEGG, include=TRUE}
+KEGG_Database <- read.csv(dir("data_extra", full.names=T, pattern="KEGG_Download"))
+
+FindKEGGCode <- function(Compound_Name, KEGG_Download) {
+  Search_Results <- KEGG_Download %>%
+    separate_rows(name, sep = ";") %>%
+    mutate(name = str_trim(name, side = "both")) %>%
+    filter(str_detect(name, str_c(New_Compound_Name, collapse = "|"))) 
+ return(Search_Results) 
+}
+
+KEGG_Results <- FindKEGGCode(New_Compound_Name, KEGG_Database)
+```
+
 Add ChEBI:
-Add InCHI:
-Add SMILES:
-Add Classyfire:
-Is it a priority?
-What is today's date?
+```{r Add ChEBI, include=TRUE}
 
-```{r Test Standards, include=TRUE}
+FindChEBICode <- function(KEGG_Code) {
+  # Accepts a KEGG ID (format cpd:C[number]) and returns
+  # the ChEBI id found on the KEGG webpage. If there are multiple, return the
+  # first one. If not found, return NA.
+  if(is.na(KEGG_Code)) {
+    return(NA)
+  }
+  ChEBI <- KEGG_Code %>%
+    paste0("http://rest.kegg.jp/get/", .) %>%
+    GET() %>%
+    content() %>%
+    as.character() %>%
+    strsplit(., "\\n") %>%
+    unlist() %>%
+    grep(pattern = "ChEBI", value = TRUE) %>%
+    trimws(which = "both")
+  ChEBI <- sub("^(\\S*\\s+\\S+).*", "\\1", ChEBI)
+  ChEBI <- gsub( " ", "", ChEBI)
+  if(length(ChEBI) == 0) {
+    return(NA)
+  }
+  return(ChEBI)
+}
 
-Test <- read.csv("Ingalls_Lab_Standards.csv") %>%
-  slice(1:10)
+ChEBI_Results <- FindChEBICode("cpd:C00073")
 
 ```
 
+Add PubChem, InCHI, SMILES
+```{r Test Standards, include=TRUE}
+
 ## Doing this with one specific compound
-# compound.name <- "L-Methionine"
-# 
-# path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", compound.name, 
-#               "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
-# 
-# r <- GET(url = path) 
-# status_code(r)
-# content(r)
-# mydata <- read.csv(text = gsub("\t\n", "", r), sep = ",",
-#                    header = TRUE)
+FindPubChemCodes <- function(Compound_Name) {
+  path <- paste("https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/", New_Compound_Name,
+                "/property/Title,MolecularFormula,inchikey,CanonicalSMILES,IUPACName/CSV", sep = "")
+  
+  r <- GET(url = path)
+  status_code(r)
+  content(r)
+  PubChemData <- read.csv(text = gsub("\t\n", "", r), sep = ",",
+                     header = TRUE) %>%
+    rename(Compound_Name = Title,
+           InChI_Key_Code = InChIKey,
+           Canon_SMILES_Code = CanonicalSMILES,
+           IUPAC_Code = IUPACName,
+           PubChem_Code = CID,
+           PubChem_Formula = MolecularFormula) %>%
+    select(PubChem_Code:IUPAC_Code) 
+  
+  return(PubChemData)
+}
+
+PubChem_Results <- FindPubChemCodes(New_Compound_Name)
+
+```
+
+Add Classyfire
+```{r Classyfire, include=TRUE}
+
+FindClassyfire <- function(PubChem) {
+  
+  source("src/High_Class_Function_062220.R")
+  
+  myinput <- PubChem %>%
+    select(Compound_Name, InChI_Key_Code)
+  
+  Classyfire <- high_class(myinput)
+  
+  Combined_Classyfire <- Classyfire %>%
+    unite(Combined, c("Level", "Classification"), sep = ": ") %>%
+    arrange(key) %>%
+    group_by(key) %>%
+    mutate("Classyfire" = paste(Combined, collapse = "; ")) %>%
+    select(-Combined, - CHEMONT) %>%
+    unique() %>%
+    as.data.frame()
+  
+  return(Combined_Classyfire)
+}
+
+Classyfire_Results <- FindClassyfire(PubChem_Results)
+```
+
+Is it a priority?
+What is today's date?
+

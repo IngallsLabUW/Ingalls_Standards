@@ -35,30 +35,6 @@ If you are looking to simply use the new Ingalls Standards list, download Ingall
 10/14/20: First version of SQL-safe names introduced. 
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
 
-The below changes are from the 2020 facelift.
-  mutate(Compound.Name_Laura = recode(Compound.Name_Laura,
-                                    "DMSP" = "Dimethylsulfoniopropionate",
-                                    "ADP" = "Adenosine diphosphate",
-                                    "AMP" = "Adenosine monophosphate",
-                                    "AMP, 15N5" = "Adenosine monophosphate, 15N5",
-                                    "ATP" = "Adenosine triphosphate",
-                                    "FAD" = "Flavin adenine dinucleotide",
-                                    "GMP" = "Guanosine monophosphate",
-                                    "GMP, 15N5" = "Guanosine monophosphate, 15N5",
-                                    "GTP" = "Guanosine triphosphate",
-                                    "PEP" = "Phosphoenolpyruvic acid",
-                                    "TMAB" = "(3-Carboxypropyl)trimethylammonium",
-                                    "cAMP" = "3',5'-Cyclic AMP",
-                                    "cGMP" = "3',5'-Cyclic GMP",
-                                    "Cys-Gly" = "L-Cysteinylglycine",
-                                    "Methyl (indol-3-yl)acetate" = "Methyl indole-3-acetate",
-                                    "4-Hydroxybenzaldehyde" = "4-hydroxybenzaldehyde"))
-                                    Laura_Edit[Laura_Edit == "O-Propanoylcarnitine"] <- "O-Propionylcarnitine"
-Laura_Edit[Laura_Edit == "O-Acetyl-L-carnitine"] <- "O-Acetylcarnitine"
-Laura_Edit[Laura_Edit == "Propanoyl-CoA"] <- "Propionyl-CoA"
-Laura_Edit[87, 1] <- "Methyl indole-3-carboxylate"
-
-ALSO DROPPED CHEBI_OLD but kept it in the pre2020 version just in case.
 
 ### Overview
 In June of 2020, significant changes were made to the original Ingalls Standards sheet. For an itemized list of changes, see the below descriptions. Changes can also be viewed on the git log of this project, available at https://github.com/IngallsLabUW/Ingalls_Standards/commits/master.
@@ -66,6 +42,11 @@ In June of 2020, significant changes were made to the original Ingalls Standards
 Starting June of 2021, this repository will be tidied and reorganized. 
 Changing all column names and stuff at the end so this markdown remains as backwards compatible as possible.
 Keep the IUPAC/INCHI/SMILES stuff like title and molecular fomula? Check that.
+prefer to have the manual entry of dates for latest downloads?
+ALSO DROPPED CHEBI_OLD but kept it in the pre2020 version just in case.
+
+ingalls_lab_standards is now updated with all structural changes.
+shall we keep the empirical formulas, do we want to use the ones from pubchem? Currently have both, can drop one.
 ------
 
 #### Conventions made in Summer 2020 Revamp

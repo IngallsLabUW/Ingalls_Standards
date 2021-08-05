@@ -1,11 +1,11 @@
 
 ## Save pre-facelift standards to an "archive data" sheet. This includes the 
-## columns that have been dropped 
+## columns that have been dropped, moved to the front for clarity.
 Auxilary_Columns <- Ingalls_Lab_Standards_Classyfire %>%
   select(Compound.Name, Column, z, QE.LinRange, QE.RF.ratio, QE.RSD, 
          TQS.LinRange, TQS.RF.ratio, TQS.RSD, everything())
-write.csv(Auxilary_Columns, 
-          "data_old/Ingalls_Lab_Standards_AuxColumns.csv", row.names = FALSE)
+# write.csv(Auxilary_Columns, 
+#           "data_old/Ingalls_Lab_Standards_AuxColumns.csv", row.names = FALSE)
 
 ## New column order 
 # Dropped all "QE" and "TQS" columns like RSD, LinRange, Ratio.

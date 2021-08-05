@@ -11,10 +11,9 @@ Standards_NoInt <- Ingalls_Lab_Standards_SQL %>%
 
 ## Check and match most of the standards
 Potential_Matches <- All_KEGG_IDs %>%
-  separate_rows(name, sep = ";")
-Potential_Matches$name <- trimws(Potential_Matches$name, which = c("both"))
-Potential_Matches <- Potential_Matches %>%
-  filter(str_detect(Potential_Matches$name, str_c(Standards_NoInt$Compound.Name, collapse = "|"))) 
+  separate_rows(name, sep = ";") %>%
+  mutate(name = str_trim(name, side = "both")) %>%
+  filter(str_detect(name, str_c(Standards_NoInt$Compound.Name, collapse = "|"))) 
 
 ## Create TRUE/FALSE check for which standards have been matched with a KEGG compound
 Binary_Check <- do.call(rbind.data.frame,

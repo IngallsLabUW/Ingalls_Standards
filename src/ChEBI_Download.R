@@ -29,11 +29,8 @@ ChEBI_Code <- sapply(unique(Ingalls_Lab_Standards_KEGG$KEGG_Code), grabChEBI)
 names(ChEBI_Code)[which(is.na(names(ChEBI_Code)))] <- "NA"
 
 ## Make dataframe of the latest ChEBI download
-Latest_ChEBI <- data.frame(ChEBI_Code) %>%
+Latest_ChEBI_Download <- data.frame(ChEBI_Code) %>%
   drop_na() %>%
-  rownames_to_column(var = "KEGG_Code")
-
-## Combine with the full standards frame
-Latest_ChEBI_Download <- Ingalls_Lab_Standards_KEGG %>%
-  left_join(Latest_ChEBI) %>%
-  select(Compound.Type:KEGG_Code, ChEBI, ChEBI_Code, everything())
+  rownames_to_column(var = "KEGG_Code") %>%
+  left_join(Ingalls_Lab_Standards_KEGG %>% select(Compound.Name, KEGG_Code)) %>%
+  unique()
