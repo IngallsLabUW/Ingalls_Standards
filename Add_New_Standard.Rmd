@@ -4,34 +4,43 @@ Please run the below chunks one at a time.
 
 
 ```{r Load data, include=TRUE}
+library(httr) 
 library(tidyverse)
-
-Standards_test <- read.csv("Ingalls_Lab_Standards.csv")
 ```
 
-Please fill in the following fields:
-
+Please enter the name of the new standared:
 ```{r Compound_Name, include=TRUE}
 New_Compound_Name <- "L-Methionine"
 ```
 
-Add KEGG ID and names:
+Run this chunk to retrieve the KEGG code and KEGG names:
 ```{r Add KEGG, include=TRUE}
 KEGG_Database <- read.csv(dir("data_extra", full.names=T, pattern="KEGG_Download"))
 
-FindKEGGCode <- function(Compound_Name, KEGG_Download) {
-  Search_Results <- KEGG_Download %>%
+FindKEGGCode <- function(Compound_Name) {
+  path <- "http://rest.kegg.jp/list/compound"
+  raw_content <- GET(url = path) %>%
+    content()
+
+  All_KEGG_IDs <- read.csv(text = gsub("\t\n", "", raw_content), sep = "\t",
+                           header = FALSE, col.names = c("cmpd", "name"))
+
+  Search_Results <- All_KEGG_IDs %>%
     separate_rows(name, sep = ";") %>%
     mutate(name = str_trim(name, side = "both")) %>%
     filter(str_detect(name, str_c(New_Compound_Name, collapse = "|"))) 
+  
  return(Search_Results) 
 }
 
-KEGG_Results <- FindKEGGCode(New_Compound_Name, KEGG_Database)
+KEGG_Results <- FindKEGGCode(New_Compound_Name)
 ```
 
-Add ChEBI:
+Enter the KEGG code from the above step.
+Run this chunk to get the ChEBI info:
 ```{r Add ChEBI, include=TRUE}
+
+KEGG_Code <- "cpd:C00073"
 
 FindChEBICode <- function(KEGG_Code) {
   # Accepts a KEGG ID (format cpd:C[number]) and returns
@@ -57,12 +66,13 @@ FindChEBICode <- function(KEGG_Code) {
   return(ChEBI)
 }
 
-ChEBI_Results <- FindChEBICode("cpd:C00073")
+ChEBI_Results <- FindChEBICode(KEGG_Code = KEGG_Code)
 
 ```
 
-Add PubChem, InCHI, SMILES
+Run this chunk for PubChem, InCHI and SMILES codes.
 ```{r Test Standards, include=TRUE}
+New_Compound_Name <- New_Compound_Name
 
 ## Doing this with one specific compound
 FindPubChemCodes <- function(Compound_Name) {
@@ -80,7 +90,7 @@ FindPubChemCodes <- function(Compound_Name) {
            IUPAC_Code = IUPACName,
            PubChem_Code = CID,
            PubChem_Formula = MolecularFormula) %>%
-    select(PubChem_Code:IUPAC_Code) 
+    select(PubChem_Code, Compound_Name, InChI_Key_Code:IUPAC_Code) 
   
   return(PubChemData)
 }
@@ -89,7 +99,7 @@ PubChem_Results <- FindPubChemCodes(New_Compound_Name)
 
 ```
 
-Add Classyfire
+Run this chunk to add the Classyfire classification
 ```{r Classyfire, include=TRUE}
 
 FindClassyfire <- function(PubChem) {
@@ -115,7 +125,4 @@ FindClassyfire <- function(PubChem) {
 
 Classyfire_Results <- FindClassyfire(PubChem_Results)
 ```
-
-Is it a priority?
-What is today's date?
 
