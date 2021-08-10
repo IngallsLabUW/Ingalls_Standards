@@ -65,12 +65,27 @@ Ingalls_Lab_Standards_KEGG <- Ingalls_Lab_Standards_SQL %>%
          KEGG_Code = ifelse(Compound.Name == "Monesin", "cpd:C06693", KEGG_Code),
          KEGG_Code = ifelse(Compound.Name == "2-Heptyl-4(1H)-quinolone", "cpd:C20643", KEGG_Code),
          KEGG_Code = ifelse(Compound.Name == "Butyrylcarnitine", "cpd:C02862", KEGG_Code),
-         KEGG_Code = ifelse(Compound.Name == "beta-Ionine", "cpd:C12287", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "beta-Ionone", "cpd:C12287", KEGG_Code),
          KEGG_Code = ifelse(Compound.Name == "Methyl indole-3-acetate", "cpd:C20635", KEGG_Code),
          KEGG_Code = ifelse(Compound.Name == "Coenzyme Q1", "cpd:C00399", KEGG_Code),
          KEGG_Code = ifelse(Compound.Name == "D-Glucosamine", "cpd:C00329", KEGG_Code),
-         KEGG_Code = ifelse(Compound.Name == "3-Sulfolactate", "cpd:C16069", KEGG_Code)) %>%
-  mutate(Compound.Name = ifelse(Compound.Name == "beta-Ionine", "beta-Ionone", Compound.Name)) %>%
+         KEGG_Code = ifelse(Compound.Name == "3-Sulfolactate", "cpd:C16069", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "3-Aminopropanesulfonate", "cpd:C03349", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Dimethylsulfoniopropionate", "cpd:C04022", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "beta-Apo-8'-carotenal", "cpd:C19728", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Indoleacrylic acid", "cpd:C21283", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "N-(3-Oxododecanoyl)homoserine lactone", "cpd:C11840", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Palmitoyl-L-carnitine", "cpd:C02990", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "3-Indolepropionic acid", "cpd:C22236", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Ergocalciferol", "cpd:C05441", KEGG_Code)) %>%
+  ## General forms of lipids, KEGG code is an approximation only!
+  mutate(KEGG_Code = ifelse(Compound.Name == "Triacylglycerol 12:0-12:0-12:0", "cpd:C00422", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Triacylglycerol 14:0-14:0-14:0", "cpd:C00422", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Diacylglycerol 18:1-18:1", "cpd:C00165", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Monoacylglycerol 18:1", "cpd:C01885", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Sulfoquinovosyldiacylglycerol 16:0-18:3", "cpd:C13508", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Phosphatidylcholine diacylglycerol 16:0-18:2", "cpd:C00157", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Phosphatidylserine diacylglycerol 18:0-18:1", "cpd:C02737", KEGG_Code)) %>%
   left_join(All_KEGG_IDs, by = "KEGG_Code") %>%
   select(-KEGGNAME) %>%
   rename(KEGG_Names = name)

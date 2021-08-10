@@ -3,6 +3,7 @@
 # Outline specific edits made by Laura
 Laura_Edit <- Ingalls_Lab_Standards %>%
   mutate(Compound.Name = recode(Compound.Name,
+                                # old = new
                                 "DMSP" = "Dimethylsulfoniopropionate",
                                 "ADP" = "Adenosine diphosphate",
                                 "AMP" = "Adenosine monophosphate",
@@ -27,7 +28,11 @@ Laura_Edit <- Ingalls_Lab_Standards %>%
                                 "Vitamin K2" = "Menaquinone",
                                 "O-Propanoylcarnitine" = "O-Propionylcarnitine",
                                 "O-Acetyl-L-carnitine" = "O-Acetylcarnitine",
-                                "Propanoyl-CoA" = "Propionyl-CoA"))
+                                "Propanoyl-CoA" = "Propionyl-CoA",
+                                "beta-Ionine" = "beta-Ionone",
+                                "Calciferol" = "Ergocalciferol"))
+
+Laura_Edit$Compound.Name <- Laura_Edit$Compound.Name <- str_replace_all(Laura_Edit$Compound.Name, "Â", "")
 
 
 Ingalls_Lab_Standards_PrimaryID <- Laura_Edit

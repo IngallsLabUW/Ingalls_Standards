@@ -7,9 +7,15 @@ Auxilary_Columns <- Ingalls_Lab_Standards_Classyfire %>%
 # write.csv(Auxilary_Columns, 
 #           "data_old/Ingalls_Lab_Standards_AuxColumns.csv", row.names = FALSE)
 
+## Drop unneccessary compounds
+Ingalls_Lab_Standards_DropRows <- Auxilary_Columns %>%
+  filter(Compound.Name != "Ergocalciferol" | Column != "RP") %>%
+  filter(Compound.Name != "Allopurinol") %>%
+  filter(Compound.Name != "Trolox")
+
 ## New column order 
 # Dropped all "QE" and "TQS" columns like RSD, LinRange, Ratio.
-Ingalls_Lab_Standards_ColumnSelection <- Ingalls_Lab_Standards_Classyfire %>%
+Ingalls_Lab_Standards_ColumnSelection <- Ingalls_Lab_Standards_DropRows %>%
   select(Compound.Name, m.z, RT..min., z, Column, HILICMix,
          Conc..uM, ionization_form, Liquid.Fraction, 
          Compound.Type, Emperical.Formula, PubChem_Formula, 
