@@ -85,7 +85,8 @@ Ingalls_Lab_Standards_KEGG <- Ingalls_Lab_Standards_SQL %>%
          KEGG_Code = ifelse(Compound.Name == "Monoacylglycerol 18:1", "cpd:C01885", KEGG_Code),
          KEGG_Code = ifelse(Compound.Name == "Sulfoquinovosyldiacylglycerol 16:0-18:3", "cpd:C13508", KEGG_Code),
          KEGG_Code = ifelse(Compound.Name == "Phosphatidylcholine diacylglycerol 16:0-18:2", "cpd:C00157", KEGG_Code),
-         KEGG_Code = ifelse(Compound.Name == "Phosphatidylserine diacylglycerol 18:0-18:1", "cpd:C02737", KEGG_Code)) %>%
+         KEGG_Code = ifelse(Compound.Name == "Phosphatidylserine diacylglycerol 18:0-18:1", "cpd:C02737", KEGG_Code),
+         KEGG_Code = ifelse(Compound.Name == "Diacylglycerophosphoglycerol 16:0-18:2", "cpd:C00344", KEGG_Code)) %>%
   left_join(All_KEGG_IDs, by = "KEGG_Code") %>%
   select(-KEGGNAME) %>%
   rename(KEGG_Names = name)
