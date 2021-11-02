@@ -60,11 +60,11 @@
 "L-Isoleucine, 15N",133.0989,8.17,1,"HILIC",NA,0.5,"[M+H]","Aq","Internal Standard","C6H13N(15)O2",NA,NA,NA,NA,NA,NA,NA,NA,NA,"L-Isoleucine, 15N","L-Isoleucine, 15N","L Isoleucine 15N",160401,TRUE
 "L-Methionine, 2H3",153.0771,7.96,1,"HILIC",NA,1,"[M+H]","Aq","Internal Standard","C5D3H8NO2S",NA,NA,NA,NA,NA,NA,NA,NA,NA,"L-Methionine, D3","L-Methionine, 2H3","L Methionine 2H3",160401,TRUE
 "Succinic acid, 2H4",121.0444,11.9,-1,"HILIC",NA,10,"[M-H]","Aq","Internal Standard","C4D4H2O4",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Succinic Acid, D4","Succinic acid, 2H4","Succinic acid 2H4",160401,TRUE
-"Sucrose, 13C",353.1497,11.77,-1,"HILIC",NA,5,"[M-H]","Aq","Internal Standard","C(13)12H22O11",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sucrose, 13C","Sucrose, 13C","Sucrose 13C",170601,TRUE
+"Sucrose, 13C12",353.1497,11.77,-1,"HILIC",NA,5,"[M-H]","Aq","Internal Standard","C(13)12H22O11",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sucrose, 13C","Sucrose, 13C","Sucrose 13C",170601,TRUE
 "Sulfoacetic acid, 13C2",140.9774,13.9,-1,"HILIC",NA,2.5,"[M-H]","Aq","Internal Standard","C(13)2H4O5S",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sulfoacetic Acid, 13C2","Sulfoacetic acid, 13C2","Sulfoacetic acid 13C2",160401,TRUE
 "3-Sulfolactate, 13C3",171.9913,13.27,-1,"HILIC",NA,1,"[M-H]","Aq","Internal Standard","C(13)2H5O4S",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sulfolactic Acid, 13C3","3-Sulfolactate, 13C3","Sulfolactate 13C3",160401,TRUE
 "Taurine, 2H4",128.0325,10,-1,"HILIC",NA,1,"[M-H]","Aq","Internal Standard","C2D4H3NO3S",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Taurine, D4","Taurine, 2H4","Taurine 2H4",160401,TRUE
-"Trehalose, 13C",353.1497,12.63,-1,"HILIC",NA,5,"[M-H]","Aq","Internal Standard","C(13)12H22O11",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Trehalose, 13C","Trehalose, 13C","Trehalose 13C",170601,TRUE
+"Trehalose, 13C12",353.1497,12.63,-1,"HILIC",NA,5,"[M-H]","Aq","Internal Standard","C(13)12H22O11",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Trehalose, 13C","Trehalose, 13C","Trehalose 13C",170601,TRUE
 "Glycine betaine, 13C5, 15N",124.1006,7.27,1,"HILIC",NA,1,"[M+H]","Aq","Internal Standard","C(13)5H11N(15)O2",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Betaine, 13C5-15N","Glycine betaine, 13C5, 15N","Glycine betaine 13C5 15N",190514,TRUE
 "Adenine, 15N2",138.0564,4.64,1,"HILIC",NA,1,"[M+H]","Aq","Internal Standard","C5H5N(15)2N3",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Adenine, 15N2","Adenine, 15N2","Adenine 15N2",190514,TRUE
 "Cytosine, 13C2, 15N3",117.0489,6.82,1,"HILIC",NA,2,"[M+H]","Aq","Internal Standard","C(13)2C2H5N(15)3O",NA,NA,NA,NA,NA,NA,NA,NA,NA,"Cytosine, 13C2-15N3","Cytosine, 13C2, 15N3","Cytosine 13C2 15N3",190514,TRUE
