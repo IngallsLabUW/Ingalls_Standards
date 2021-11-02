@@ -193,8 +193,18 @@ rm(list=setdiff(ls(), "Ingalls_Lab_Standards_Classyfire"))
 
 #### Standards Facelift
 
-This section handles the layout changes for the standards sheet; including column removal/addition, column order, and 
+This section handles the layout changes for the standards sheet; including column removal/addition, column order.
 
 ```{r Standards Facelift, include=TRUE}
+source("src/Standards_Facelift.R")
+```
+
+----
+
+#### Replace deuterized Empirical_Formula
+
+This section handles replacing all internal standards "D"s with "H(2)"s. 
+
+```{r Replace deuterization, include=TRUE}
 source("src/Standards_Facelift.R")
 ```
