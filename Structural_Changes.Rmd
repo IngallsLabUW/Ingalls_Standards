@@ -206,5 +206,5 @@ source("src/Standards_Facelift.R")
 This section handles replacing all internal standards "D"s with "H(2)"s. 
 
 ```{r Replace deuterization, include=TRUE}
-source("src/Standards_Facelift.R")
+source("src/InProg_EmpiricalDeuterize.R")
 ```
