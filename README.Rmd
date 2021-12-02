@@ -42,7 +42,7 @@ If you are looking to simply use the new Ingalls Standards list, download Ingall
 8/10/20: Classyfire classifications added for those compounds that have them.
 10/14/20: First version of SQL-safe names introduced. 
 10/22/20: Remove all trailing numbers from SQL-safe names. This is the column to be used for CMAP.
-08/21: Columns renamed, reordered, and unnecessary columns trimmed.
+08/01/21: Columns renamed, reordered, and unnecessary columns trimmed.
 
 ------
 
