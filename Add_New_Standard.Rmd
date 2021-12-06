@@ -10,7 +10,7 @@ library(tidyverse)
 
 Please enter the name of the new standared:
 ```{r Compound_Name, include=TRUE}
-New_Compound_Name <- "L-Methionine"
+New_Compound_Name <- "5-Oxoproline"
 ```
 
 Run this chunk to retrieve the KEGG code and KEGG names:
@@ -40,7 +40,7 @@ Enter the KEGG code from the above step.
 Run this chunk to get the ChEBI info:
 ```{r Add ChEBI, include=TRUE}
 
-KEGG_Code <- "cpd:C00073"
+KEGG_Code <- "cpd:C01879"
 
 FindChEBICode <- function(KEGG_Code) {
   # Accepts a KEGG ID (format cpd:C[number]) and returns
@@ -72,7 +72,6 @@ ChEBI_Results <- FindChEBICode(KEGG_Code = KEGG_Code)
 
 Run this chunk for PubChem, InCHI and SMILES codes.
 ```{r Test Standards, include=TRUE}
-New_Compound_Name <- New_Compound_Name
 
 ## Doing this with one specific compound
 FindPubChemCodes <- function(Compound_Name) {
@@ -81,7 +80,7 @@ FindPubChemCodes <- function(Compound_Name) {
   
   r <- GET(url = path)
   status_code(r)
-  content(r)
+  content(r, encoding = "UTF-8")
   PubChemData <- read.csv(text = gsub("\t\n", "", r), sep = ",",
                      header = TRUE) %>%
     rename(Compound_Name = Title,
@@ -90,7 +89,7 @@ FindPubChemCodes <- function(Compound_Name) {
            IUPAC_Code = IUPACName,
            PubChem_Code = CID,
            PubChem_Formula = MolecularFormula) %>%
-    select(PubChem_Code, Compound_Name, InChI_Key_Code:IUPAC_Code) 
+    select(PubChem_Code, Compound_Name, InChI_Key_Code:IUPAC_Code)
   
   return(PubChemData)
 }
