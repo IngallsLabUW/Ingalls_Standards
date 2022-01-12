@@ -75,9 +75,13 @@ msdata_pre <- ScaledforMS2 %>%
   mutate(frag_group = mz_group(mz, ppm = 5)) 
 
 subgroup_test <- msdata_pre %>%
-  filter(voltage==20) %>% # & compound_name=="Trehalose" & 
-  group_by(voltage, frag_group) %>%
-  # filter(voltage==20, frag_group==1) %>%
+  filter(voltage==20 & compound_name=="Trehalose") %>%
+  group_by(voltage, frag_group) %>% 
+  mutate(sub_group=assign_subgroup(mz, int, filename))
+
+full_subgroup_test <- msdata_pre %>%
+  filter(voltage==20) %>%
+  group_by(frag_group, compound_name) %>% 
   mutate(sub_group=assign_subgroup(mz, int, filename))
 
 # Visualize
