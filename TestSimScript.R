@@ -145,4 +145,4 @@ dataframe_lastone <- algorithm2_df %>%
 test <- dataframe_firstfour %>%
   left_join(dataframe_lastone) %>%
   rowwise() %>%
-  dplyr::mutate(MS2_cosine_similarity1 = MS2CosineSimilarity(MS2_firstfour, MS2_lastone))
+  dplyr::mutate(MS2_cosine_similarity1 = MS2CosineSimilarity(MS2_firstfour, MS2_lastone, mz.flexibility = 0.02))
