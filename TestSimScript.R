@@ -1,4 +1,3 @@
-library(lsa)
 library(tidyverse)
 
 # WKumler function to assign intensity subgroups within fragment groups
@@ -48,7 +47,6 @@ ScaleMS2Intensity <- function(scan) {
 # RML/KRH function for finding cosine similarity
 MS2CosineSimilarity <- function(scan1, scan2, mz.flexibility) {
   
-  mz.flexibility <- mz.flexibility
   scan1 <- MakeScantable(scan1)
   scan2 <- MakeScantable(scan2)
   
@@ -104,7 +102,6 @@ msdata_frags <- Ingalls_Lab_Standards_MSMS %>%
 
 # Create intensity subgroups
 intensity_subgroups <- msdata_frags %>%
-  #filter(voltage==20) %>% # and compound name for specific visualizations
   group_by(frag_group, compound_name, voltage) %>% 
   mutate(sub_group=assign_subgroup(mz, int, filename))
 
@@ -112,37 +109,41 @@ intensity_subgroups <- msdata_frags %>%
 algorithm2_df <- intensity_subgroups %>%
   group_by(compound_name, voltage, frag_group, filename) %>%
   top_n(1, int) %>%
-  slice_sample() %>%
-  filter(compound_name == "Gonyol" & voltage == 20)
+  slice_sample() # %>%
+  #filter(compound_name == "Arsenobetaine" & voltage == 20)
 
 dataframe_firstfour <- algorithm2_df %>%
+  group_by(voltage, compound_name) %>%
   filter(!str_detect(filename, "pos5")) %>%
-  group_by(frag_group) %>%
+  group_by(voltage, compound_name, frag_group) %>%
   mutate(mz = median(mz)) %>%
   mutate(int = median(int)) %>%
   ungroup() %>%
   unite(MS2, c(mz, int), sep = ", ") %>%
   select(-filename, -frag_group, -sub_group) %>%
   unique() %>%
+  group_by(voltage, compound_name) %>%
   mutate(MS2_firstfour = str_c(MS2, collapse = "; ")) %>%
   select(-MS2) %>%
   unique()
 
 dataframe_lastone <- algorithm2_df %>%
+  group_by(voltage, compound_name) %>%
   filter(str_detect(filename, "pos5")) %>%
   ungroup() %>%
+  select(voltage:compound_name) %>%
   unite(MS2, c(mz, int), sep = ", ") %>%
-  select(-filename, -frag_group, -sub_group) %>%
+  group_by(voltage, compound_name) %>%
   mutate(MS2_lastone = str_c(MS2, collapse = "; ")) %>%
   select(-MS2) %>%
   unique()
 
-
 ########################################################################
-
-# Tidy and add required columns to input data
 
 test <- dataframe_firstfour %>%
   left_join(dataframe_lastone) %>%
+  ungroup() %>%
+  drop_na() %>% ## Issues from missing pos 5
+  slice(1:299) %>% ## errors from when multiple spectra are filtered out
   rowwise() %>%
   dplyr::mutate(MS2_cosine_similarity1 = MS2CosineSimilarity(MS2_firstfour, MS2_lastone, mz.flexibility = 0.02))
