@@ -1,5 +1,13 @@
 library(tidyverse)
 
+## Questions for Will
+# Need to handle instances where there aren't enough spectra to do comparisons. Ignore? Flag?
+# Gonna stick with cosine similarity for now, but literally the only reason is time and not 
+# any kind of helpful or scientific justification. Will agrees mwahahaha
+
+# Instead of scaling to 100, maybe we can use the value of the MS1 that produced the scan?
+# This should end up as a more drag and drop type code, swap in functions easily for cosine similartiy, vs dot product, etcx.
+
 # WKumler function to assign intensity subgroups within fragment groups
 assign_subgroup <- function(mzs, ints, filenames){
   data_mat <- cbind(mzs, ints)
@@ -109,12 +117,16 @@ intensity_subgroups <- msdata_frags %>%
 algorithm2_df <- intensity_subgroups %>%
   group_by(compound_name, voltage, frag_group, filename) %>%
   top_n(1, int) %>%
-  slice_sample() # %>%
-  #filter(compound_name == "Arsenobetaine" & voltage == 20)
+  slice_sample() 
 
+# Randomly select four runs for median calculation
 dataframe_firstfour <- algorithm2_df %>%
-  group_by(voltage, compound_name) %>%
-  filter(!str_detect(filename, "pos5")) %>%
+  ungroup() %>%
+  group_by(compound_name, voltage) %>%
+  mutate(ID = match(filename, unique(filename))) %>%
+  group_by(compound_name, voltage, ID) %>%
+  slice_sample(n = 4) %>%
+
   group_by(voltage, compound_name, frag_group) %>%
   mutate(mz = median(mz)) %>%
   mutate(int = median(int)) %>%
@@ -129,7 +141,9 @@ dataframe_firstfour <- algorithm2_df %>%
 
 dataframe_lastone <- algorithm2_df %>%
   group_by(voltage, compound_name) %>%
-  filter(str_detect(filename, "pos5")) %>%
+  
+  anti_join(dataframe_firstfour) 
+
   ungroup() %>%
   select(voltage:compound_name) %>%
   unite(MS2, c(mz, int), sep = ", ") %>%
@@ -143,7 +157,9 @@ dataframe_lastone <- algorithm2_df %>%
 test <- dataframe_firstfour %>%
   left_join(dataframe_lastone) %>%
   ungroup() %>%
-  drop_na() %>% ## Issues from missing pos 5
-  slice(1:299) %>% ## errors from when multiple spectra are filtered out
+  slice(-472, -473) %>% ## errors from when multiple spectra are filtered out
+  # Maybe return value of NA or 1, check to see how many of these actually happen. NA is probably preferable.
   rowwise() %>%
-  dplyr::mutate(MS2_cosine_similarity1 = MS2CosineSimilarity(MS2_firstfour, MS2_lastone, mz.flexibility = 0.02))
+  dplyr::mutate(MS2_cosine_similarity = ifelse(is.na(MS2_firstfour) | is.na(MS2_lastone),
+                                                NA, MS2CosineSimilarity(MS2_firstfour, MS2_lastone, mz.flexibility)))
+# This should eventually be more flexible and documented so we can drag and drop a better/different function
