@@ -210,4 +210,14 @@ source("src/EmpiricalDeuterize.R")
 ```
 
 
+#### Move some columns to separate CSV
+
+We decided that some columns were more annoying than effective in the original
+standards sheet, so the script below splits the csv into two separate files,
+removing these columns from the "Ingalls_Lab_Standards.csv" and adding them
+to the new "Ingalls_Lab_Standards_Supplement.csv" in data_extra.
+
+```{r}
+source("src/SupplementSplit.R")
+```
 
