@@ -124,8 +124,9 @@ dataframe_firstfour <- algorithm2_df %>%
   ungroup() %>%
   group_by(compound_name, voltage) %>%
   mutate(ID = match(filename, unique(filename))) %>%
-  group_by(compound_name, voltage, ID) %>%
-  slice_sample(n = 4) %>%
+  ungroup() %>%
+  group_by(compound_name, voltage) %>%
+  slice_sample(n = 4)
 
   group_by(voltage, compound_name, frag_group) %>%
   mutate(mz = median(mz)) %>%
