@@ -10,7 +10,7 @@ library(tidyverse)
 
 Please enter the name of the new standared:
 ```{r Compound_Name, include=TRUE}
-New_Compound_Name <- "5-Oxoproline"
+New_Compound_Name <- "Inosine"
 ```
 
 Run this chunk to retrieve the KEGG code and KEGG names:
@@ -40,7 +40,7 @@ Enter the KEGG code from the above step.
 Run this chunk to get the ChEBI info:
 ```{r Add ChEBI, include=TRUE}
 
-KEGG_Code <- "cpd:C01879"
+KEGG_Code <- "cpd:C00294"
 
 FindChEBICode <- function(KEGG_Code) {
   # Accepts a KEGG ID (format cpd:C[number]) and returns
