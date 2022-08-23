@@ -3,13 +3,19 @@ library(git2r)
 library(RaMS)
 library(tidyverse)
 
+
+# README #
+# The script below is outdated, please see issue 33 (https://github.com/IngallsLabUW/Ingalls_Standards/issues/33)
+# for how to best update this. The filepath below should be correct but this method of connecting to thed drive
+# no longer works. Additionally, as UW changes the Google storage policy accessing the drive may become deprecated.
+
 ## Setup ----
 
 ## Set absolute path to the Google Drive. The MS2 files live there and you must have your working directory 
 ## Ensure the getwd() command properly connects to the shared Drive from your filepath!
 
 # setwd("G:\\Shared drives\\Ingalls Lab\\Collaborative_Projects\\Standards\\Ingalls_Standards\\MSMS") # Windows
-setwd("~/Google Drive/Shared drives/Ingalls Lab/Collaborative_Projects/Standards/Ingalls_Standards/MSMS/") # Mac
+setwd("~/Google Drive/Shared drives/Ingalls Lab/Collaborative Projects/Standards/Ingalls_Standards/MSMS/") # Mac
 
 ## Check for correct working directory.
 if(str_detect(getwd(), "Ingalls_Standards/MSMS")) {
@@ -21,7 +27,6 @@ if(str_detect(getwd(), "Ingalls_Standards/MSMS")) {
 # Define functions ----
 extractMSMSdata <- function(compound.name, mz.standard, rt.standard, filename.standard, ppm, rt.flex) {
   # Isolate MS2 data from the Ingalls Standards MS2 data.
-  # Needs to be updated!
   # Args
   #   compound.name, mz.standard, rt.standard: Parameters of the compound to retrieve MS2 for.
   #   ppm, rt.flex: User-defined flexibility for parameter selection windows.

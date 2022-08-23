@@ -8,9 +8,9 @@ library(httr)
 library(tidyverse)
 ```
 
-Please enter the name of the new standared:
+Please enter the name of the new standard:
 ```{r Compound_Name, include=TRUE}
-New_Compound_Name <- "Inosine"
+New_Compound_Name <- "Betaine glycine"
 ```
 
 Run this chunk to retrieve the KEGG code and KEGG names:
@@ -40,7 +40,7 @@ Enter the KEGG code from the above step.
 Run this chunk to get the ChEBI info:
 ```{r Add ChEBI, include=TRUE}
 
-KEGG_Code <- "cpd:C00294"
+KEGG_Code <- "cpd:C00183"
 
 FindChEBICode <- function(KEGG_Code) {
   # Accepts a KEGG ID (format cpd:C[number]) and returns
