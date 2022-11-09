@@ -1,19 +1,19 @@
-compound_type,compound_name,compound_name_old,formula,rt,mz,ionization_form,charge,kegg_id,polarity,conc_um,date_added,mix,priority,peak_quality,Comments
-Custom,Bisulfate,Bisulfate,HSO4,13,96.95900565,[M],-1,NA,neg,NA,1/1/2015,NA,NA,NA,Pretty typical giant peak at the correct mass
-Custom,Bromine81,Bromine upper,Br(81),7,80.91563,[M],-1,NA,neg,NA,1/1/2015,NA,NA,NA,Pretty typical giant peak at the correct mass
-Custom,Bromine79,Bromine lower,Br(79),7,78.91768,[M],-1,NA,neg,NA,1/1/2015,NA,NA,NA,Pretty typical giant peak at the correct mass
-Custom,Pyro from glutamine?,Pyro from glutamine?,C5H7NO3,11,130.050419,[M-NH3+H],-1,NA,pos,NA,1/1/2015,NA,NA,NA,Forms in-source from glutamine: https://pubs.acs.org/doi/full/10.1021/ac501451v
-Custom,Pyro from glutamate?,Pyro from glutamate?,C5H7NO3,12,130.050419,[M-H2O+H],-1,NA,pos,NA,1/1/2015,NA,NA,NA,Forms in-source from glutamate: https://pubs.acs.org/doi/full/10.1021/ac501451v
-Custom,Deoxycytidine?,Deoxycytidine?,C10H13N5O4,6.6,228.09788,[M+H],1,NA,pos,NA,1/1/2015,NA,NA,NA,Mass matches and peak looks like a nucleic acid
-Custom,Homoserine betaine?,Homoserine betaine?,C7H15NO3,6.7,162.1125,[M+H],1,NA,pos,NA,1/1/2015,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
-Custom,Threonine betaine?,Threonine betaine?,C7H15NO3,5,162.1125,[M+H],1,NA,pos,NA,1/1/2015,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
-Custom,Theanine?,Theanine?,C7H14N2O3,6.8,175.10771,[M+H],1,NA,pos,NA,1/1/2015,NA,NA,NA,"Mass and formula matches, conf level 3ish"
-Custom,Asterina-330,Asterina-330,C12H20N2O6,10.5,289.1393,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
-Custom,Shinorine,Shinorine,C13H20N2O8,11.6,333.1292,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
-Custom,Palythine,Palythine,C10H16N2O5,11,245.1132,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
-Custom,Porphyra-334?,Porphyra-334?,C14H22N2O8,8.1,347.1449,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA No fragments collected but mass matches
-Custom,Mycosporine-2-glycine?,Mycosporine-2-glycine?,C12H18N2O7,11.3,303.1186,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA No fragments collected but mass matches
-Custom,Palythene/Usujirene?,Palythene/Usujirene?,C13H20N2O5,8.3,285.1445,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA No fragments collected but mass matches
-Custom,Also Palythene/Usujirene?,Also Palythene/Usujirene?,C13H20N2O5,6.9,285.1445,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA No fragments collected but mass matches
-Custom,Mycosporine-glycine?,Mycosporine-glycine?,C10H15NO6,10,246.0972,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA No fragments collected but mass matches
-Custom,Also mycosporine-glycine?,Also mycosporine-glycine?,C10H15NO6,9.5,246.0972,[M+H],1,NA,pos,NA,NA,NA,NA,NA,MAA No fragments collected but mass matches
+Compound_Type,Compound_Name,Compound_Name_Original,Empirical_Formula,RT_minute,mz,Ionization_Form,z,KEGG_Code,Concentration_uM,Date_Added,HILIC_Mix,Priority,Peak_Quality,Comments
+Custom,Bisulfate,Bisulfate,HSO4,13,96.95900565,[M],-1,NA,NA,1/1/2015,NA,NA,NA,Pretty typical giant peak at the correct mass
+Custom,Bromine81,Bromine upper,Br(81),7,80.91563,[M],-1,NA,NA,1/1/2015,NA,NA,NA,Pretty typical giant peak at the correct mass
+Custom,Bromine79,Bromine lower,Br(79),7,78.91768,[M],-1,NA,NA,1/1/2015,NA,NA,NA,Pretty typical giant peak at the correct mass
+Custom,Pyro from glutamine?,Pyro from glutamine?,C5H7NO3,11,130.050419,[M-NH3+H],-1,NA,NA,1/1/2015,NA,NA,NA,Forms in-source from glutamine: https://pubs.acs.org/doi/full/10.1021/ac501451v
+Custom,Pyro from glutamate?,Pyro from glutamate?,C5H7NO3,12,130.050419,[M-H2O+H],-1,NA,NA,1/1/2015,NA,NA,NA,Forms in-source from glutamate: https://pubs.acs.org/doi/full/10.1021/ac501451v
+Custom,Deoxycytidine?,Deoxycytidine?,C10H13N5O4,6.6,228.09788,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,Mass matches and peak looks like a nucleic acid
+Custom,Homoserine betaine?,Homoserine betaine?,C7H15NO3,6.7,162.1125,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
+Custom,Threonine betaine?,Threonine betaine?,C7H15NO3,5,162.1125,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
+Custom,Theanine?,Theanine?,C7H14N2O3,6.8,175.10771,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,"Mass and formula matches, conf level 3ish"
+Custom,Asterina-330,Asterina-330,C12H20N2O6,10.5,289.1393,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
+Custom,Shinorine,Shinorine,C13H20N2O8,11.6,333.1292,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
+Custom,Palythine,Palythine,C10H16N2O5,11,245.1132,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
+Custom,Porphyra-334?,Porphyra-334?,C14H22N2O8,8.1,347.1449,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA No fragments collected but mass matches
+Custom,Mycosporine-2-glycine?,Mycosporine-2-glycine?,C12H18N2O7,11.3,303.1186,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA No fragments collected but mass matches
+Custom,Palythene/Usujirene?,Palythene/Usujirene?,C13H20N2O5,8.3,285.1445,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA No fragments collected but mass matches
+Custom,Also Palythene/Usujirene?,Also Palythene/Usujirene?,C13H20N2O5,6.9,285.1445,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA No fragments collected but mass matches
+Custom,Mycosporine-glycine?,Mycosporine-glycine?,C10H15NO6,10,246.0972,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA No fragments collected but mass matches
+Custom,Also mycosporine-glycine?,Also mycosporine-glycine?,C10H15NO6,9.5,246.0972,[M+H],1,NA,NA,1/1/2015,NA,NA,NA,MAA No fragments collected but mass matches
