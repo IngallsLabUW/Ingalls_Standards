@@ -100,7 +100,7 @@ conMS2_dat <- init_dat %>%
         group_by(cut_height, cluster) %>%
         count() %>%
         group_by(cut_height) %>%
-        filter(n%in%c(4:6)) %>%
+        filter(n%in%c(4:6, 9:11)) %>%
         count() %>%
         ungroup() %>%
         arrange(desc(n)) %>%
@@ -112,7 +112,7 @@ conMS2_dat <- init_dat %>%
       consistent_frags <- cutree_output %>%
         filter(cut_height==best_cut_height) %>%
         group_by(mz_group) %>%
-        filter(n()%in%c(4:6))
+        filter(n()%in%c(4:6, 9:11))
       if(nrow(consistent_frags)==0){
         return("") # Sometimes you get zero frags that are "good", oh well
       }
