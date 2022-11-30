@@ -146,3 +146,32 @@ conMS2_dat %>%
 
 out_file_name <- "MSMS/data_processed/Ingalls_Lab_Standards_MSMS_consensed.csv"
 write.csv(conMS2_dat, out_file_name, row.names = FALSE)
+
+
+
+
+con_long <- conMS2_dat %>%
+  filter(compound_name=="Guanine") %>%
+  separate_rows(consensus_MS2, sep = ": ") %>%
+  separate(consensus_MS2, into = c("voltage", "MS2"), sep = "V ") %>%
+  separate_rows(MS2, sep = "; ") %>%
+  separate(MS2, into = c("mz", "int"), sep = ", ") %>%
+  mutate(across(c(mz, int, voltage), as.numeric)) %>%
+  mutate(int=-int)
+init_long <- init_dat %>%
+  filter(compound_name=="Guanine") %>%
+  separate_rows(MS2, sep = "; ") %>%
+  separate(MS2, into = c("mz", "int"), sep = ", ") %>%
+  mutate(across(c(mz, int, voltage), as.numeric)) %>%
+  group_by(filename, voltage) %>%
+  mutate(int=int/max(int)*100)
+
+con_long %>%
+  ggplot(aes(x=mz, y=int, xend=mz, yend=0)) + 
+  geom_hline(yintercept = 0) +
+  geom_point() +
+  geom_segment() +
+  geom_point(data=init_long) +
+  geom_segment(data=init_long) +
+  facet_wrap(~voltage, ncol=1)
+
