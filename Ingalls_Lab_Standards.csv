@@ -5,7 +5,7 @@ Urea,61.040188,6.4,1,HILIC,Mix1,30,[M+H],Aq,Urea cycle,CH4N2O,CH4N2O,1176,cpd:C0
 Ethanolamine,62.060589,15.66,1,HILIC,Mix1,6,[M+H],Aq,Osmolyte,C2H7NO,C2H7NO,700,cpd:C00189,Ethanolamine,Ethanolamine,210615,TRUE,Yes
 "Nitrate, 15N",62.9842,4.55,-1,HILIC,NA,5,[M-H],Aq,Internal Standard,N(15)O3,NA,NA,NA,"Nitrate, 15N","Nitrate, 15N",220628,TRUE,Yes
 Glycine,76.039854,11.9,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C2H5NO2,C2H5NO2,750,cpd:C00037,Glycine,Glycine,160401,TRUE,Yes; can have a messy peak shape or peak can be a bit small
-Trimethylamine N-oxide,76.076239,6.59,1,HILIC,Mix2,4,[M+H],Aq,Osmolyte,C3H9NO,NA,NA,cpd:C01104,Trimethylamine N-oxide,TMAO,180130,TRUE,Yes
+Trimethylamine N-oxide,76.076239,6.9,1,HILIC,Mix2,4,[M+H],Aq,Osmolyte,C3H9NO,NA,NA,cpd:C01104,Trimethylamine N-oxide,TMAO,180130,TRUE,Yes
 "Trimethylamine N-oxide, 2H9",85.1327,6.9,1,HILIC,NA,4,[M+H],Aq,Internal Standard,C3H(2)9NO,NA,NA,NA,"Trimethylamine N-oxide, 2H9","Trimethylamine N-oxide, 2H9",220628,TRUE,Yes
 Oxalic acid,88.987485,15.11,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C2H2O4,C2H2O4,971,cpd:C00209,Oxalic Acid,Oxalic acid,160401,TRUE,Problematic; particulate matrix effect
 beta-Alanine,90.055504,11.39,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid derivative,C3H7NO2,C3H7NO2,239,cpd:C00099,beta-Alanine,b-Alanine,180701,TRUE,"Problematic; Sarcosine, Alanine, and beta Alanine all have the same mass, peak order is Sarcosine, Alanine, beta Alanine"
@@ -20,10 +20,10 @@ Choline,104.107539,15.265,1,HILIC,Mix1,4,[M],Aq,Betaine,C5H14NO,C5H14NO+,305,cpd
 L-Serine,106.050419,11.86,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C3H7NO3,NA,NA,cpd:C00065,Serine,Serine,160401,TRUE,Yes
 Ethanesulfonic acid,108.995942,4.29,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C2H6O3S,C2H6O3S,11668,NA,Ethanesulfonic Acid,Esylic acid,160401,TRUE,Yes
 Hypotaurine,110.027576,10.7,1,HILIC,Mix2,6,[M+H],Aq,Sulfur,C2H7NO2S,C2H7NO2S,107812,cpd:C00519,Hypotaurine,Hypotaurine,160401,TRUE,Yes; can have a messy peak shape
-Cytosine,110.035437,7.41,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C4H5N3O,C4H5N3O,597,cpd:C00380,Cytosine,Cytosine,160401,FALSE,Yes
-Uracil,111.019453,4,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C4H4N2O2,C4H4N2O2,1174,cpd:C00106,Uracil,Uracil,160401,TRUE,"Yes; may also see Uridine, integrate first peak around 4 minutes"
+Cytosine,110.035437,6.82,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C4H5N3O,C4H5N3O,597,cpd:C00380,Cytosine,Cytosine,160401,FALSE,Yes
+Uracil,111.019453,3.73,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C4H4N2O2,C4H4N2O2,1174,cpd:C00106,Uracil,Uracil,160401,TRUE,"Yes; may also see Uridine, integrate first peak around 4 minutes"
 Creatinine,112.051087,6.09,-1,HILIC,Mix1,4,[M-H],Aq,Amino Acid derivative,C4H7N3O,C4H7N3O,588,cpd:C00791,Creatinine,Creatinine,210615,FALSE,Yes
-Cytosine,112.051087,7.41,1,HILIC,Mix2,4,[M+H],Aq,Nucleic Acid,C4H5N3O,C4H5N3O,597,cpd:C00380,Cytosine,Cytosine,160401,TRUE,Yes
+Cytosine,112.051087,6.82,1,HILIC,Mix2,4,[M+H],Aq,Nucleic Acid,C4H5N3O,C4H5N3O,597,cpd:C00380,Cytosine,Cytosine,160401,TRUE,Yes
 Creatinine,114.066737,6.09,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid derivative,C4H7N3O,C4H7N3O,588,cpd:C00791,Creatinine,Creatinine,210615,TRUE,Yes
 Fumaric acid,115.003135,12.7,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C4H4O4,C4H4O4,444972,cpd:C00122,Fumaric Acid,Fumaric acid,160401,TRUE,Yes
 "Uracil, 15N2, 2H2",115.0261,3.73,-1,HILIC,NA,8,[M-H],Aq,Internal Standard,C4H(2)2H2N(15)2O2,NA,NA,NA,"Uracil, 15N2-D2","Uracil, 15N2, 2H2",190514,TRUE,"Problematic; this internal standard does not look good, not currently in skyline file"
@@ -32,7 +32,7 @@ L-Proline,116.071154,9.49,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C5H9NO2,NA,NA,cpd:C
 Succinic acid,117.018785,11.9,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C4H6O4,C4H6O4,1110,cpd:C00042,Succinic Acid,Succinic acid,160401,TRUE,Yes
 "Cytosine, 13C2, 15N3",117.0489,6.82,1,HILIC,NA,2,[M+H],Aq,Internal Standard,C(13)2C2H5N(15)3O,NA,NA,NA,"Cytosine, 13C2-15N3","Cytosine, 13C2, 15N3",190514,TRUE,Yes
 Homocysteine thiolactone,118.032661,2.78,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid derivative,C4H7NOS,C4H7NOS,134505,NA,Homocysteine Thiolactone,Homocysteine thiolactone,170331,TRUE,Yes
-Glycine betaine,118.086804,7.86,1,HILIC,Mix2,4,[M+H],Aq,Betaine,C5H11NO2,NA,NA,cpd:C00719,Betaine,Glycine betaine,160401,TRUE,Yes
+Glycine betaine,118.086804,7.27,1,HILIC,Mix2,4,[M+H],Aq,Betaine,C5H11NO2,NA,NA,cpd:C00719,Betaine,Glycine betaine,160401,TRUE,Yes
 L-Valine,118.086804,9.09,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C5H11NO2,NA,NA,cpd:C00183,Valine,Valine,160401,TRUE,"Problematic; same mass as Glycine betaine, Valine is the much smaller peak that comes off after Glycine betaine, peak can be hard to see most of the time"
 L-Homoserine,120.066069,11.32,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid derivative,C4H9NO3,C4H9NO3,12647,cpd:C00263,Homoserine,Homoserine,170331,TRUE,"Problematic; Homoserine and Threonine have the same mass, peak order is Threonine and then Homoserine"
 L-Threonine,120.066069,10.92,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C4H9NO3,NA,NA,cpd:C00188,Threonine,Threonine,160401,TRUE,"Problematic; Homoserine and Threonine have the same mass, peak order is Threonine and then Homoserine"
@@ -43,17 +43,17 @@ L-Cysteine,122.027576,7,1,HILIC,NA,NA,[M+H],Aq,Amino Acid,C3H7NO2S,C3H7NO2S,5862
 Phenylethylamine,122.096974,7.82,1,HILIC,Mix2,5,[M+H],Aq,Alkaloid,C8H11N,C8H11N,1001,cpd:C02455,Phenylethylamine,Phenylethylamine,230511,TRUE,Yes
 1-Propanesulfonate,123.011592,2.81,-1,HILIC,Mix2,4,[M],Aq,Sulfur,C3H7O3S,NA,NA,NA,Propanesulfonate,Propanesulfonate,160401,TRUE,Yes
 "L-Proline, 2H7",123.1145,9.49,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H3H(2)7NO2,NA,NA,NA,"DL-Proline, D7","DL-Proline, 2H7",170301,TRUE,Yes
-Taurine,124.006841,9.4,-1,HILIC,Mix2,5,[M-H],Aq,Sulfur,C2H7NO3S,C2H7NO3S,1123,cpd:C00245,Taurine,Taurine,160401,TRUE,Yes; RT may shift a bit
+Taurine,124.006841,10,-1,HILIC,Mix2,5,[M-H],Aq,Sulfur,C2H7NO3S,C2H7NO3S,1123,cpd:C00245,Taurine,Taurine,160401,TRUE,Yes; RT may shift a bit
 Nicotinic acid,124.039854,2.68,1,HILIC,NA,4,[M+H],Aq,Vitamin,C6H5NO2,C6H5NO2,938,cpd:C00253,Vitamin B3,Vit B3,160401,FALSE,"No; not currently in HILIC standard mix, analyzed using RP"
 Picolinic acid,124.039854,4.51,1,HILIC,Mix2,4,[M+H],Aq,Pyridine derivative,C6H5NO2,C6H5NO2,1018,cpd:C10164  ,Picolinic acid,Picolinic acid,230511,TRUE,"Problematic; not showing up well, keeping this out of the skyline file"
 "Glycine betaine, 13C5, 15N",124.1006,7.27,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C(13)5H11N(15)O2,NA,NA,NA,"Betaine, 13C5-15N","Glycine betaine, 13C5, 15N",190514,TRUE,Yes
 Isethionic acid,124.990857,7.2,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C2H6O4S,NA,NA,cpd:C05123,Isethionic Acid,Isethionic acid,160401,TRUE,Yes; can have a messy peak shape
-Thymine,125.035103,3.02,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C5H6N2O2,C5H6N2O2,1135,cpd:C00178,Thymine,Thymine,160401,TRUE,"Yes; may also see Thymidine, get correct RT from Mix 2"
-Taurine,126.022491,11.12,1,HILIC,Mix2,5,[M+H],Aq,Sulfur,C2H7NO3S,C2H7NO3S,1123,cpd:C00245,Taurine,Taurine,160401,FALSE,Yes; RT may shift a bit
+Thymine,125.035103,3.06,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C5H6N2O2,C5H6N2O2,1135,cpd:C00178,Thymine,Thymine,160401,TRUE,"Yes; may also see Thymidine, get correct RT from Mix 2"
+Taurine,126.022491,10,1,HILIC,Mix2,5,[M+H],Aq,Sulfur,C2H7NO3S,C2H7NO3S,1123,cpd:C00245,Taurine,Taurine,160401,FALSE,Yes; RT may shift a bit
 5-Methylcytosine,126.066737,5.53,1,HILIC,Mix2,4,[M+H],Aq,Pyrimidine derivative,C5H7N3O,C5H7N3O,65040,cpd:C02376,5-Methylcytosine,5-Methylcytosine,190514,TRUE,Yes
 "L-Valine, 2H8",126.1365,9.09,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H4H(2)8NO2,NA,NA,NA,"DL-Valine, D8","DL-Valine, 2H8",170301,TRUE,Yes
 "Isethionic acid, 13C2",126.9981,7.2,-1,HILIC,NA,0.5,[M-H],Aq,Internal Standard,C(13)2H6O4S,NA,NA,NA,"Isethionic Acid, 13C2","Isethionic acid, 13C2",160401,TRUE,Yes; can have a messy peak shape
-Thymine,127.050753,3.02,1,HILIC,Mix2,4,[M+H],Aq,Nucleic Acid,C5H6N2O2,C5H6N2O2,1135,cpd:C00178,Thymine,Thymine,160401,FALSE,"Yes; may also see Thymidine, get correct RT from Mix 2"
+Thymine,127.050753,3.06,1,HILIC,Mix2,4,[M+H],Aq,Nucleic Acid,C5H6N2O2,C5H6N2O2,1135,cpd:C00178,Thymine,Thymine,160401,FALSE,"Yes; may also see Thymidine, get correct RT from Mix 2"
 Melamine,127.073219,6.68,1,HILIC,Mix1,4,[M+H],Aq,Cursed,C3H6N6,C3H6N6,7955,cpd:C08737,Melamine,Melamine,180701,TRUE,Yes
 "Taurine, 2H4",128.0325,10,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C2H(2)4H3NO3S,NA,NA,NA,"Taurine, D4","Taurine, 2H4",160401,TRUE,Yes
 5-Oxoproline,128.034768,7.97,-1,HILIC,Mix1,4,[M-H],Aq,Amino Acid derivative,C5H7NO3,NA,NA,cpd:C01879,L-Pyroglutamic acid,Pidolic acid,180130,TRUE,Yes; can have a messy peak shape in particulate matrix
@@ -66,20 +66,20 @@ Pipecolic acid,130.086255,10.79,1,HILIC,Mix1,5,[M+H],Aq,Amino Acid derivative,C6
 Hydroxyproline,132.066069,10.07,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid - collagen,C5H9NO3,C5H9NO3,5810,cpd:C01157,trans Hydroxyl proline,THP,160401,TRUE,Yes
 Creatine,132.077302,11.34,1,HILIC,Mix1,4,[M+H],Aq,Organic Acid - nitrogenous,C4H9N3O2,C4H9N3O2,586,cpd:C00300,Creatine,Creatine,160401,TRUE,Yes
 beta-Alaninebetaine,132.1018,9.38,1,HILIC,Mix2,4,[M+H],Aq,Betaine,C6H13NO2,NA,NA,cpd:C08263,Trimethylammonium Propionate (TMAP),TMAP,190514,TRUE,"Problematic; later peak around 9 minutes, same mass as isoleucine/leucine"
-L-Isoleucine,132.102454,7.3,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C6H13NO2,NA,NA,cpd:C00407,Isoleucine,Isoleucine,160401,TRUE,"Problematic; Leucine and Isoleucine do not separate well, integrate both together, same mass as beta-Alaninebetaine which is the later peak in the chromatogram"
+L-Isoleucine,132.102454,8.17,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C6H13NO2,NA,NA,cpd:C00407,Isoleucine,Isoleucine,160401,TRUE,"Problematic; Leucine and Isoleucine do not separate well, integrate both together, same mass as beta-Alaninebetaine which is the later peak in the chromatogram"
 L-Leucine,132.102454,6.5,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid,C6H13NO2,NA,NA,cpd:C00123,Leucine,Leucine,160401,TRUE,"Problematic; Leucine and Isoleucine do not separate well, integrate both together, same mass as beta-Alaninebetaine which is the later peak in the chromatogram"
 Malic acid,133.0137,11.97,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C4H6O5,C4H6O5,525,cpd:C00149,Malic Acid,Malic acid,160401,TRUE,Yes
 L-Asparagine,133.061318,11.86,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C4H8N2O3,NA,NA,cpd:C00152,Asparagine,Asparagine,160401,TRUE,Yes; can have a messy peak shape
 L-Ornithine,133.097703,16.79,1,HILIC,Mix1,5,[M+H],Aq,Urea cycle,C5H12N2O2,C5H12N2O2,6262,cpd:C00077,Ornithine,Ornithine,170331,TRUE,Yes
 "L-Isoleucine, 15N",133.0989,8.17,1,HILIC,NA,0.5,[M+H],Aq,Internal Standard,C6H13N(15)O2,NA,NA,NA,"L-Isoleucine, 15N","L-Isoleucine, 15N",160401,TRUE,Yes
 L-Aspartic acid,134.045334,12.86,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C4H7NO4,NA,NA,cpd:C00049,Aspartic acid,Aspartic acid,160401,TRUE,Yes; can have a messy peak shape
-Adenine,134.0462,4.72,-1,HILIC,Mix1,4,[M-H],Aq,Nucleic Acid,C5H5N5,C5H5N5,190,cpd:C00147,Adenine,Adenine,160401,FALSE,Yes
+Adenine,134.0462,4.64,-1,HILIC,Mix1,4,[M-H],Aq,Nucleic Acid,C5H5N5,C5H5N5,190,cpd:C00147,Adenine,Adenine,160401,FALSE,Yes
 Threonic acid,135.02935,10.37,-1,HILIC,Mix2,4,[M-H],Aq,Sugar,C4H8O5,C4H8O5,151152,cpd:C01620,Threonic acid,Threonic acid,190715,TRUE,Problematic; later peak around 10 minutes
 Allopurinol,135.030686,4.16,-1,HILIC,Mix1,4,[M-H],Aq,Purine derivative,C5H4N4O,C5H4N4O,135401907,NA,Allopurinol,Allopurinol,180701,TRUE,Problematic; first peak around 4 or 5 minutes
 Hypoxanthine,135.030686,6.2,-1,HILIC,Mix2,4,[M-H],Aq,Purine derivative,C5H4N4O,C5H4N4O,135398638,cpd:C00262,Hypoxanthine,Hypoxanthine,190514,FALSE,"Problematic; same mass as Allopurinol, which is in the negative mode skyline file, Hypoxanthine is the second peak around 5 to 6 minutes"
 Dimethylsulfoniopropionate,135.047977,9.325,1,HILIC,Mix2,4,[M+H],Aq,Sulfur,C5H10O2S,NA,NA,cpd:C04022,DMSP,DMSP,160401,TRUE,Yes
 L-Homocysteine,136.043226,8.7,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid synthesis,C4H9NO2S,C4H9NO2S,91552,cpd:C00155,L-Homocysteine,Homocysteine,160401,TRUE,No; not currently in HILIC standard mix
-Adenine,136.06232,4.72,1,HILIC,Mix1,4,[M+H],Aq,Nucleic Acid,C5H5N5,C5H5N5,190,cpd:C00147,Adenine,Adenine,160401,TRUE,Yes
+Adenine,136.06232,4.64,1,HILIC,Mix1,4,[M+H],Aq,Nucleic Acid,C5H5N5,C5H5N5,190,cpd:C00147,Adenine,Adenine,160401,TRUE,Yes
 Salicylic acid,137.02387,2.2,-1,HILIC,Mix1,4,[M-H],Aq,Antioxidant,C7H6O3,C7H6O3,338,cpd:C00805,Salicylic Acid,Salicylic acid,160401,TRUE,Yes
 Urocanic acid,137.035103,8.16,-1,HILIC,Mix1,4,[M-H],Aq,Amino Acid derivative,C6H6N2O2,C6H6N2O2,736715,cpd:C00785,Imidazoleacrylic Acid,Urocanate,180701,TRUE,Yes
 Allopurinol,137.046336,4.16,1,HILIC,Mix1,4,[M+H],Aq,Purine derivative,C5H4N4O,C5H4N4O,135401907,NA,Allopurinol,Allopurinol,180701,FALSE,Problematic; first peak around 4 or 5 minutes
@@ -111,12 +111,12 @@ L-Glutamic acid,148.060984,12.41,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C5H9NO4,NA,N
 O-Acetyl-L-serine,148.060984,6.27,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid - degraded,C5H9NO4,NA,NA,cpd:C00979,N-Acetyl-Serine,N-Acetylserine,170331,TRUE,"Problematic; integrate the first peak you see around 6 minutes, messy peak shape"
 Hydroxyisoleucine,148.097369,8.34,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid derivative,C6H13NO3,NA,NA,cpd:C20802,4-Hydroxyisoleucine,4-Hydroxyisoleucine,180701,TRUE,Yes
 2-Hydroxy-4-(methylthio)butyric acid,149.027242,2.69,-1,HILIC,Mix1,5,[M-H],Aq,Sulfur,C5H10O3S,C5H10O3S,11427,NA,2-Hydroxy-4-(methylthio)butyric_acid,2-Hydroxy-4-(methylthio)butyric_acid,170331,TRUE,Yes; can have a messy peak shape
-Guanine,150.041585,8.61,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C5H5N5O,C5H5N5O,135398634,cpd:C00242,Guanine,Guanine,160401,FALSE,Yes
+Guanine,150.041585,8.18,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C5H5N5O,C5H5N5O,135398634,cpd:C00242,Guanine,Guanine,160401,FALSE,Yes
 L-Methionine,150.058876,7.96,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C5H11NO2S,NA,NA,cpd:C00073,Methionine,Methionine,160401,TRUE,Yes; can have a messy peak shape or split peaks
 N6-Methyladenine,150.07797,3.97,1,HILIC,Mix2,4,[M+H],Aq,Purine derivative,C6H7N5,NA,NA,cpd:C08434,6-Methyladenine,N6-Methyladenine,190514,TRUE,Yes
 Dimethylsulfoxonium propionate,151.042892,9.88,1,HILIC,Mix2,4,[M],Aq,Sulfur,C5H11O3S,NA,NA,NA,Dimethylsulfoxonium propionate,DMSOP,230330,TRUE,Yes
 L-Cysteinesulfinic acid,152.001756,10.74,-1,HILIC,Mix2,5,[M-H],Aq,Sulfur,C3H7NO4S,C3H7NO4S,1549098,cpd:C00606,Cysteinesulfinic acid,CSA,190514,TRUE,Yes
-Guanine,152.057235,8.61,1,HILIC,Mix2,4,[M+H],Aq,Nucleic Acid,C5H5N5O,C5H5N5O,135398634,cpd:C00242,Guanine,Guanine,160401,TRUE,Yes
+Guanine,152.057235,8.18,1,HILIC,Mix2,4,[M+H],Aq,Nucleic Acid,C5H5N5O,C5H5N5O,135398634,cpd:C00242,Guanine,Guanine,160401,TRUE,Yes
 "2,5-Dihydroxybenzoic acid",153.018785,4.08,-1,HILIC,Mix2,5,[M-H],Aq,Lignin,C7H6O4,C7H6O4,3469,cpd:C00628,Resorcylic Acid,Resorcylic acid,160401,TRUE,Yes
 "L-Methionine, 2H3",153.0771,7.96,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H(2)3H8NO2S,NA,NA,NA,"L-Methionine, D3","L-Methionine, 2H3",160401,TRUE,Yes; can have a messy peak shape or split peaks
 L-Cysteinesulfinic acid,154.017406,10.74,1,HILIC,Mix2,5,[M+H],Aq,Sulfur,C3H7NO4S,C3H7NO4S,1549098,cpd:C00606,Cysteinesulfinic acid,CSA,190514,FALSE,Yes
@@ -147,18 +147,18 @@ Phosphoenolpyruvic acid,166.974553,13.865,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,
 L-Cysteic acid,167.996671,12.15,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C3H7NO5S,C3H7NO5S,72886,cpd:C00506,Cysteic Acid,Cysteic acid,160401,TRUE,Yes
 "2,3-Pyridinedicarboxylic acid",168.029684,10.17,1,HILIC,Mix2,5,[M+H],Aq,Pyrimidine derivative,C7H5NO4,NA,NA,cpd:C03722,Pyridinedicarboxylic acid,Pyridinedicarboxylic acid,190715,TRUE,Yes
 Taurocyamine,168.043738,12.02,1,HILIC,Mix1,5,[M+H],Aq,Sulfur,C3H9N3O3S,C3H9N3O3S,68340,cpd:C01959,Taurocyamine,Taurocyamine,210415,TRUE,Yes
-3-Sulfolactate,168.980687,13.275,-1,HILIC,Mix2,16,[M-H],Aq,Sulfur,C3H6O6S,C3H6O6S,20981094,cpd:C11537,Sulfolactic Acid,Sulfolactate,160401,TRUE,Yes; small peak
+3-Sulfolactate,168.980687,13.27,-1,HILIC,Mix2,16,[M-H],Aq,Sulfur,C3H6O6S,C3H6O6S,20981094,cpd:C11537,Sulfolactic Acid,Sulfolactic acid,160401,TRUE,Yes; small peak
 Dihydroxyacetone phosphate,168.990203,12.86,-1,HILIC,Mix2,6,[M-H],Aq,Calvin cycle intermediate,C3H7O6P,C3H7O6P,668,cpd:C00111,DHAP,DHAP,160401,TRUE,Yes
 Glycerophosphoric acid,171.005853,13.065,-1,HILIC,Mix2,4,[M-H],Aq,Redox,C3H9O6P,C3H9O6P,754,cpd:C00093,glycerol 3 phosphate,G3-phosphate,160401,TRUE,Yes
 "L-Cysteic acid, 2H3",171.0161,12.15,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C3H(2)3H4NO5S,NA,NA,NA,"L-Cysteic Acid, D3","L-Cysteic acid, 2H3",160401,TRUE,Yes
-"3-Sulfolactate, 13C3",171.9913,13.27,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C(13)3H5O4S,NA,NA,NA,"Sulfolactic Acid, 13C3","3-Sulfolactate, 13C3",160401,TRUE,Yes
+"3-Sulfolactate, 13C3",171.9913,13.27,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C(13)2H5O4S,NA,NA,NA,"Sulfolactic Acid, 13C3","3-Sulfolactate, 13C3",160401,TRUE,Yes
 Sulfanilic acid,172.006841,7.23,-1,HILIC,Mix1,4,[M-H],Aq,Environmental contaminant,C6H7NO3S,C6H7NO3S,8479,cpd:C06335,Sulfanilic Acid,Sulfanilic acid,180701,TRUE,Yes
 cis-Aconitic acid,173.008615,14.21,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C6H6O6,C6H6O6,643757,cpd:C00417,Aconitic Acid,Aconitic acid,160401,TRUE,"Problematic; cis-Aconitic acid and Shikimic acid have the same mass, peak order is Shikimic acid and then cis-Aconitic acid"
 Shikimic acid,173.045,10.97,-1,HILIC,Mix1,5,[M-H],Aq,Amino Acid synthesis,C7H10O5,C7H10O5,8742,cpd:C00493,Shikimic Acid,Shikimic acid,160401,TRUE,"Problematic; cis-Aconitic acid and Shikimic acid have the same mass, peak order is Shikimic acid and then cis-Aconitic acid"
-L-Arginine,175.119501,17.93,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C6H14N4O2,NA,NA,cpd:C00062,Arginine,Arginine,160401,TRUE,"Problematic; RT is at the very end of the chromatogram, peak can sometimes be cut off"
+L-Arginine,175.119501,18.24,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C6H14N4O2,NA,NA,cpd:C00062,Arginine,Arginine,160401,TRUE,"Problematic; RT is at the very end of the chromatogram, peak can sometimes be cut off"
 Succinylglycine,176.055899,12.58,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid derivative,C6H9NO5,C6H9NO5,14954082,NA,Succinylglycine,Succinylglycine,190715,TRUE,Yes
 Citrulline,176.103517,12.21,1,HILIC,Mix1,4,[M+H],Aq,Urea cycle,C6H13N3O3,C6H13N3O3,9750,cpd:C00327,Citrulline,Citrulline,170331,TRUE,Yes
-Arsenobetaine,179.005326,7.06,1,HILIC,Mix1,4,[M+H],Aq,Arsenic,C5H11AsO2,C5H11AsO2,47364,cpd:C19331,Arsenobetaine,Arsenobetaine,180701,TRUE,Yes
+Arsenobetaine,179.005326,7.24,1,HILIC,Mix1,4,[M+H],Aq,Arsenic,C5H11AsO2,C5H11AsO2,47364,cpd:C19331,Arsenobetaine,Arsenobetaine,180701,TRUE,Yes
 L-Cysteinylglycine,179.04904,9.53,1,HILIC,Mix1,5,[M+H],Aq,Dipeptide,C5H10N2O3S,NA,NA,cpd:C01419,Cys-Gly,Cys-Gly,170331,FALSE,"No; not currently in HILIC standard mix, analyzed using RP"
 Gonyol,179.074191,10.74,1,HILIC,Mix1,4,[M+H],Aq,Sulfur,C7H14O3S,NA,NA,NA,Gonyol,Gonyol,180701,TRUE,Yes
 Glucosamine,180.087199,9.97,1,HILIC,Mix1,5,[M+H],Aq,Amino sugar,C6H13NO5,NA,NA,NA,Glucosamine,Glucosamine,180130,TRUE,Yes
@@ -230,8 +230,8 @@ Glutathione,308.091634,12,1,HILIC,Mix1,4,[M+H],Aq,Antioxidant,C10H17N3O6S,C10H17
 S-Farnesyl-L-cysteine methyl ester,340.231026,1.58,1,HILIC,NA,NA,[M+H],Aq,Post translational modified amino acid,C19H33NO2S,NA,NA,NA,S-Farnesyl-L-cysteine Methyl Ester,S-Fcme,180130,FALSE,"No; not currently in HILIC standard mix, analyzed using RP"
 Lactose,341.10839,12.53,-1,HILIC,NA,4,[M-H],Aq,Sugar,C12H22O11,NA,NA,cpd:C00243,Lactose,Lactose,180701,TRUE,No; not currently in HILIC standard mix
 Maltose,341.10839,12.31,-1,HILIC,NA,4,[M-H],Aq,Sugar,C12H22O11,C12H22O11,439341,cpd:C00208,Maltose,Maltose,180701,TRUE,No; not currently in HILIC standard mix
-Sucrose,341.10839,11.93,-1,HILIC,Mix1,5,[M-H],Aq,Sugar,C12H22O11,C12H22O11,5988,cpd:C00089,Sucrose,Sucrose,170331,TRUE,"Problematic; Sucrose and Trehalose have the same mass, peak order is Sucrose and then Trehalose"
-Trehalose,341.10839,13,-1,HILIC,Mix2,4,[M-H],Aq,Antioxidant,C12H22O11,C12H22O11,7427,cpd:C01083,Trehalose,Trehalose,160401,TRUE,"Problematic; Sucrose and Trehalose have the same mass, peak order is Sucrose and then Trehalose"
+Sucrose,341.10839,11.77,-1,HILIC,Mix1,5,[M-H],Aq,Sugar,C12H22O11,C12H22O11,5988,cpd:C00089,Sucrose,Sucrose,170331,TRUE,"Problematic; Sucrose and Trehalose have the same mass, peak order is Sucrose and then Trehalose"
+Trehalose,341.10839,12.63,-1,HILIC,Mix2,4,[M-H],Aq,Antioxidant,C12H22O11,C12H22O11,7427,cpd:C01083,Trehalose,Trehalose,160401,TRUE,"Problematic; Sucrose and Trehalose have the same mass, peak order is Sucrose and then Trehalose"
 Lactose,343.12404,12.53,1,HILIC,NA,4,[M+H],Aq,Sugar,C12H22O11,NA,NA,cpd:C00243,Lactose,Lactose,180701,FALSE,No; not currently in HILIC standard mix
 "3',5'-Cyclic GMP",344.039613,8.8,-1,HILIC,Mix2,4,[M-H],Aq,Intracellular signaling,C10H12N5O7P,NA,NA,cpd:C00942,cGMP,cGMP,160401,TRUE,Yes
 Thiamine monophosphate,345.078641,11.5,1,HILIC,Mix1,4,[M],Aq,Vitamin (B1-derivative),C12H18N4O4PS,C12H18N4O4PS+,1131,cpd:C01081,Thiamine monophosphate,TMP,160401,TRUE,Yes; messy peak shape
@@ -276,7 +276,7 @@ Succinyl-CoA,866.123439,12.965,-1,HILIC,NA,4,[M-H],Aq,Co-enzyme A,C25H40N7O19P3S
 Homoserine lactone,102.055504,0.68,1,RP,NA,0.25,[M+H],Aq,Quorum sensing,C4H7NO2,C4H7NO2,73509,cpd:C02926,Homoserine lactone,AHL,180130,TRUE,Problematic; integrate first peak at 0.7 minutes
 Dimethylglycine,104.071154,0.69,1,RP,NA,0.25,[M+H],Aq,Amino Acid derivative,C4H9NO2,NA,NA,cpd:C01026,Dimethyl glycine,DMG,160401,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
 Choline,104.107539,0.69,1,RP,NA,0.25,[M],Aq,Betaine,C5H14NO,C5H14NO+,305,cpd:C00114,Choline,Choline,160401,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
-Glycine betaine,118.086804,0.71,1,RP,NA,0.25,[M+H],Aq,Betaine,C5H11NO2,NA,NA,cpd:C00719,Betaine,Glycine betaine,160401,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
+Glycine betaine,118.086804,7.27,1,RP,NA,0.25,[M+H],Aq,Betaine,C5H11NO2,NA,NA,cpd:C00719,Betaine,Glycine betaine,160401,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
 Nicotinic acid,124.039854,0.88,1,RP,NA,0.25,[M+H],Aq,Vitamin,C6H5NO2,C6H5NO2,938,cpd:C00253,Vitamin B3,Vit B3,160401,TRUE,Yes
 "2,4-Octadienal",125.09664,7.23,1,RP,NA,0.25,[M+H],Aq,PUA,C8H12O,C8H12O,5283329,NA,"2,4 octadienal","2,4-Octadienal",160401,TRUE,Yes
 trans-Cinnamic acid,131.04969,6.2,1,RP,NA,0.25,[M-OH],Aq,Lignin,C9H8O2,NA,NA,cpd:C00423,trans cinnamic acid,trans-Cinnamic acid,160401,TRUE,No; not currently in RP standard mix
@@ -310,7 +310,7 @@ N-Butyryl-L-homoserine lactone,172.097369,1.47,1,RP,NA,0.25,[M+H],Aq,Quorum sens
 Indole-3-acetamide,175.087138,4.02,1,RP,NA,0.25,[M+H],Aq,Phytohormone,C10H10N2O,C10H10N2O,397,cpd:C02693,Indole 3 acetamide,Indole 3 acetamide,160401,TRUE,Yes
 Indole-3-acetic acid,176.071154,5.41,1,RP,NA,0.25,[M+H],Aq,Phytohormone,C10H9NO2,C10H9NO2,802,cpd:C00954,IAA,IAA,160401,TRUE,"Problematic; Methyl indole 3 carboxylate and Indole 3 acetic acid have the same mass, integrate 1st peak at 5.2 minutes"
 Methyl indole-3-carboxylate,176.071154,7.25,1,RP,NA,0.25,[M+H],Aq,Phytohormone,C10H9NO2,C10H9NO2,589098,NA,Methyl indole 3 carboxylate,Methyl indole-3-carboxylate,160401,TRUE,"Problematic; Methyl indole 3 carboxylate and Indole 3 acetic acid have the same mass, integrate 3rd peak at 7.3 minutes"
-Arsenobetaine,179.005326,0.72,1,RP,NA,NA,[M+H],Aq,Arsenic,C5H11AsO2,C5H11AsO2,47364,cpd:C19331,Arsenobetaine,Arsenobetaine,180701,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
+Arsenobetaine,179.005326,7.24,1,RP,NA,NA,[M+H],Aq,Arsenic,C5H11AsO2,C5H11AsO2,47364,cpd:C19331,Arsenobetaine,Arsenobetaine,180701,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
 L-Cysteinylglycine,179.04904,0.72,1,RP,NA,0.25,[M+H],Aq,Dipeptide,C5H10N2O3S,NA,NA,cpd:C01419,Cys-Gly,Cys-Gly,170331,TRUE,Yes
 Glucosamine,180.087199,0.65,1,RP,NA,NA,[M+H],Aq,Amino sugar,C6H13NO5,NA,NA,NA,Glucosamine,Glucosamine,180130,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
 "Indole-3-acetic acid, 2H5",181.1021,5.35,1,RP,NA,5,[M+H],Aq,Internal Standard,C10H(2)5H4NO2,NA,NA,NA,"Indole 3 Acetic Acid, D5","Indole-3-acetic acid, 2H5",160401,TRUE,Yes
