@@ -429,7 +429,7 @@ Docosahexaenoic acid,327.2324,5.8,-1,LipidC18,NA,5,[M-H],Org,Fatty Acid,C22H32O2
 7-Dehydrocholesterol,367.336475,NA,1,LipidC18,NA,0.25,[M-OH],Org,Sterol,C27H44O,C27H44O,439423,cpd:C01164,7-dehydrocholesterol,7-DHC,160401,TRUE,NA
 Ergosterol,379.336475,10.4,1,LipidC18,NA,0.25,[M-OH],Org,Sterol,C28H44O,C28H44O,444679,cpd:C01694,Ergosterol,Ergosterol,160401,TRUE,NA
 Cholesterol,387.36269,NA,1,LipidC18,NA,NA,[M+H],Org,Sterol,C27H46O,C27H46O,5997,cpd:C00187,Cholesterol,Cholesterol,NA,TRUE,NA
-MonoacylglycerolÂ 18:1,395.256368,6.6,1,LipidC18,NA,50,[M+K],Org,MAG,C21H40O4,NA,NA,NA,Monoolein,MAG 18:1,190130,TRUE,Yes; messy peak shape
+Monoacylglycerol 18:1,395.256368,6.6,1,LipidC18,NA,50,[M+K],Org,MAG,C21H40O4,NA,NA,NA,Monoolein,MAG 18:1,190130,TRUE,Yes; messy peak shape
 Calciferol,397.34704,10.2,1,LipidC18,NA,1,[M+H],Org,Vitamin (fat soluble),C28H44O,NA,NA,cpd:C05441,Vitamin D2,Vit D2,160401,TRUE,NA
 Palmitoyl-L-carnitine,400.342684,3.2,1,LipidC18,NA,0.08,[M],Org,ACar,C23H45NO4,NA,NA,cpd:C02990,Palmitoyl-L-carnitine,ACar 16:0,190130,TRUE,Yes
 Squalene,411.399075,19.6,1,LipidC18,NA,0.25,[M+H],Org,Sterol precursor,C30H50,C30H50,638072,cpd:C00751,Squalene,Squalene,160401,TRUE,NA
@@ -451,11 +451,11 @@ Triacylglycerol 12:0-12:0-12:0,677.512248,26.2,1,LipidC18,NA,0.5,[M+K],Org,TAG,C
 Ceramide d18:1-24:0,688.601002,27.4,1,LipidC18,NA,0.75,[M+K],Org,Cer-NS,C42H83NO3,NA,NA,NA,N-lignoceroyl-D-erythro-sphingosine,Cer-NS d18:1-24:0,190130,FALSE,Yes
 Ceramide d18:1-24:0,694.634949,27.4,-1,LipidC18,NA,0.75,[M+FA-H],Org,Cer-NS,C42H83NO3,NA,NA,NA,N-lignoceroyl-D-erythro-sphingosine,Cer-NS d18:1-24:0,190130,TRUE,Yes
 Diether phosphatidylcholine diacylglycerol 16:0-16:0,706.611452,22.6,1,LipidC18,NA,0.5,[M+H],Org,EtherPC,C40H84NO6P,NA,NA,NA,"1,2-Di-O-hexadecyl-sn-glycero-3-phosphocholine",PC 16:0e-16:0e,190130,TRUE,Yes; messy peak shape
-"1,2-Diacylglyceryl-3-O-4'-(N,N,N-trimethyl)-homoserineÂ 16:0-16:0",712.609128,21.4,1,LipidC18,NA,0.05,[M+H],Org,DGTS,C42H81NO7,NA,NA,NA,"1,2-dipalmitoyl-sn-glycero-3-O-4'-(N,N,N-trimethyl)-homoserine",DGTS 16:0-16:0,190130,TRUE,Yes; messy peak shape
+"1,2-Diacylglyceryl-3-O-4'-(N,N,N-trimethyl)-homoserine 16:0-16:0",712.609128,21.4,1,LipidC18,NA,0.05,[M+H],Org,DGTS,C42H81NO7,NA,NA,NA,"1,2-dipalmitoyl-sn-glycero-3-O-4'-(N,N,N-trimethyl)-homoserine",DGTS 16:0-16:0,190130,TRUE,Yes; messy peak shape
 1-Stearoyl-2-oleoyl-sn-glycero-3-phosphoethanolamine,744.554331,16.9,1,LipidC18,NA,0.25,[M],Org,Phospholipid synthesis,C41H79NO8P,C41H79NO8P-,23727969,NA,1-stearoyl-2-oleoyl-sn-glycero-3-phosphoethanolamine,"1,2,3-phosphoethanolamine",160401,TRUE,Yes
 Diacylglycerophosphoglycerol 16:0-18:2,745.501962,17.5,-1,LipidC18,NA,20,[M-H],Org,PG,C40H75O10P,NA,NA,NA,L-Phosphatidylglycerol,PG 16:0-18:2,190130,FALSE,Yes; messy peak shape
 Diether phosphatidylcholine diacylglycerol 16:0-16:0,750.601282,22.6,-1,LipidC18,NA,0.5,[M+FA-H],Org,EtherPC,C40H84NO6P,NA,NA,NA,"1,2-Di-O-hexadecyl-sn-glycero-3-phosphocholine",PC 16:0e-16:0e,190130,FALSE,Yes; messy peak shape
-"1,2-Diacylglyceryl-3-O-4'-(N,N,N-trimethyl)-homoserineÂ 16:0-16:0",756.598959,21.4,-1,LipidC18,NA,0.05,[M+FA-H],Org,DGTS,C42H81NO7,NA,NA,NA,"1,2-dipalmitoyl-sn-glycero-3-O-4'-(N,N,N-trimethyl)-homoserine",DGTS 16:0-16:0,190130,FALSE,Yes; messy peak shape
+"1,2-Diacylglyceryl-3-O-4'-(N,N,N-trimethyl)-homoserine 16:0-16:0",756.598959,21.4,-1,LipidC18,NA,0.05,[M+FA-H],Org,DGTS,C42H81NO7,NA,NA,NA,"1,2-dipalmitoyl-sn-glycero-3-O-4'-(N,N,N-trimethyl)-homoserine",DGTS 16:0-16:0,190130,FALSE,Yes; messy peak shape
 Phosphatidylcholine diacylglycerol 16:0-18:2,758.569982,19.1,1,LipidC18,NA,0.5,[M+H],Org,PC,C42H80NO8P,NA,NA,NA,L-Phosphatidylcholine,PC DAG 16:0-18:2,190130,TRUE,Yes; messy peak shape
 1-Palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine,760.585632,16.3,1,LipidC18,NA,0.25,[M+H],Org,Phospholipid synthesis,C42H82NO8P,C42H82NO8P,5497103,NA,1-palmitoyl-2-oleoyl-sn-glycero-3-phosphocholine,"1,2,3-phosphocholine",160401,TRUE,Yes
 Triacylglycerol 14:0-14:0-14:0,761.606148,29.9,1,LipidC18,NA,0.5,[M+K],Org,TAG,C45H86O6,NA,NA,NA,Glyceryl trimyristate,TAG 14:0-14:0-14:0,190130,TRUE,Yes
