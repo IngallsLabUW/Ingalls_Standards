@@ -147,11 +147,11 @@ Phosphoenolpyruvic acid,166.974553,13.865,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,
 L-Cysteic acid,167.996671,12.15,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C3H7NO5S,C3H7NO5S,72886,cpd:C00506,Cysteic Acid,Cysteic acid,160401,TRUE,Yes
 "2,3-Pyridinedicarboxylic acid",168.029684,10.17,1,HILIC,Mix2,5,[M+H],Aq,Pyrimidine derivative,C7H5NO4,NA,NA,cpd:C03722,Pyridinedicarboxylic acid,Pyridinedicarboxylic acid,190715,TRUE,Yes
 Taurocyamine,168.043738,12.02,1,HILIC,Mix1,5,[M+H],Aq,Sulfur,C3H9N3O3S,C3H9N3O3S,68340,cpd:C01959,Taurocyamine,Taurocyamine,210415,TRUE,Yes
-3-Sulfolactate,168.980687,13.275,-1,HILIC,Mix2,16,[M-H],Aq,Sulfur,C3H6O6S,C3H6O6S,20981094,cpd:C11537,Sulfolactic Acid,Sulfolactic acid,160401,TRUE,Yes; small peak
+3-Sulfolactate,168.980687,13.275,-1,HILIC,Mix2,16,[M-H],Aq,Sulfur,C3H6O6S,C3H6O6S,20981094,cpd:C11537,Sulfolactic Acid,Sulfolactate,160401,TRUE,Yes; small peak
 Dihydroxyacetone phosphate,168.990203,12.86,-1,HILIC,Mix2,6,[M-H],Aq,Calvin cycle intermediate,C3H7O6P,C3H7O6P,668,cpd:C00111,DHAP,DHAP,160401,TRUE,Yes
 Glycerophosphoric acid,171.005853,13.065,-1,HILIC,Mix2,4,[M-H],Aq,Redox,C3H9O6P,C3H9O6P,754,cpd:C00093,glycerol 3 phosphate,G3-phosphate,160401,TRUE,Yes
 "L-Cysteic acid, 2H3",171.0161,12.15,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C3H(2)3H4NO5S,NA,NA,NA,"L-Cysteic Acid, D3","L-Cysteic acid, 2H3",160401,TRUE,Yes
-"3-Sulfolactate, 13C3",171.9913,13.27,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C(13)2H5O4S,NA,NA,NA,"Sulfolactic Acid, 13C3","3-Sulfolactate, 13C3",160401,TRUE,Yes
+"3-Sulfolactate, 13C3",171.9913,13.27,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C(13)3H5O4S,NA,NA,NA,"Sulfolactic Acid, 13C3","3-Sulfolactate, 13C3",160401,TRUE,Yes
 Sulfanilic acid,172.006841,7.23,-1,HILIC,Mix1,4,[M-H],Aq,Environmental contaminant,C6H7NO3S,C6H7NO3S,8479,cpd:C06335,Sulfanilic Acid,Sulfanilic acid,180701,TRUE,Yes
 cis-Aconitic acid,173.008615,14.21,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C6H6O6,C6H6O6,643757,cpd:C00417,Aconitic Acid,Aconitic acid,160401,TRUE,"Problematic; cis-Aconitic acid and Shikimic acid have the same mass, peak order is Shikimic acid and then cis-Aconitic acid"
 Shikimic acid,173.045,10.97,-1,HILIC,Mix1,5,[M-H],Aq,Amino Acid synthesis,C7H10O5,C7H10O5,8742,cpd:C00493,Shikimic Acid,Shikimic acid,160401,TRUE,"Problematic; cis-Aconitic acid and Shikimic acid have the same mass, peak order is Shikimic acid and then cis-Aconitic acid"
