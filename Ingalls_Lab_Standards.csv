@@ -11,7 +11,7 @@ Oxalic acid,88.987485,15.11,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C2H2O4,C2H2O4,
 beta-Alanine,90.055504,11.39,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid derivative,C3H7NO2,C3H7NO2,239,cpd:C00099,beta-Alanine,b-Alanine,180701,TRUE,"Problematic; Sarcosine, Alanine, and beta Alanine all have the same mass, peak order is Sarcosine, Alanine, beta Alanine"
 L-Alanine,90.055504,11.3,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C3H7NO2,NA,NA,cpd:C00041,Alanine,Alanine,160401,TRUE,"Problematic; Sarcosine, Alanine, and beta Alanine all have the same mass, peak order is Sarcosine, Alanine, beta Alanine"
 Sarcosine,90.055504,10.6,1,HILIC,Mix2,4,[M+H],Aq,Glycine metabolite,C3H7NO2,C3H7NO2,1088,cpd:C00213,Sarcosine,Sarcosine,160401,TRUE,"Problematic; Sarcosine, Alanine, and beta Alanine all have the same mass, peak order is Sarcosine, Alanine, beta Alanine"
-"DL-Alanine, 2H3",93.0738,11.3,1,HILIC,NA,5,[M+H],Aq,Internal Standard,C3H4H(2)3NO2,NA,NA,NA,"DL-Alanine, D3","DL-Alanine, 2H3",160401,TRUE,Yes
+"L-Alanine, 2H3",93.0738,11.3,1,HILIC,NA,5,[M+H],Aq,Internal Standard,C3H4H(2)3NO2,NA,NA,NA,"DL-Alanine, D3","DL-Alanine, 2H3",160401,TRUE,Yes
 Methylphosphonic acid,94.989808,11,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,CH5O3P,CH5O3P,13818,cpd:C20396,Methylphosphonic Acid,MPA,160401,TRUE,Yes
 Succinic semialdehyde,101.02387,6.51,-1,HILIC,Mix1,3.5,[M-H],Aq,Amino Acid - degraded,C4H6O3,C4H6O3,1112,cpd:C00232,Succinic semialdehyde,SSA,180701,TRUE,Yes; messy peak shape
 4-Aminobutyric acid,104.071154,11.155,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid - degraded,C4H9NO2,NA,NA,cpd:C00334,Aminobutyric Acid,GABA,160401,TRUE,"Problematic; Dimethylglycine and 4-Aminobutyric acid have the same mass, peak order is Dimethylglycine and then 4-Aminobutyric acid"
@@ -42,7 +42,7 @@ Erythritol,121.050085,7.97,-1,HILIC,Mix2,20,[M-H],Aq,Sugar alchohol,C4H10O4,C4H1
 L-Cysteine,122.027576,7,1,HILIC,NA,NA,[M+H],Aq,Amino Acid,C3H7NO2S,C3H7NO2S,5862,cpd:C00097,Cysteine,Cysteine,NA,TRUE,No; not currently in HILIC standard mix
 Phenylethylamine,122.096974,7.82,1,HILIC,Mix2,5,[M+H],Aq,Alkaloid,C8H11N,C8H11N,1001,cpd:C02455,Phenylethylamine,Phenylethylamine,230511,TRUE,Yes
 1-Propanesulfonate,123.011592,2.81,-1,HILIC,Mix2,4,[M],Aq,Sulfur,C3H7O3S,NA,NA,NA,Propanesulfonate,Propanesulfonate,160401,TRUE,Yes
-"DL-Proline, 2H7",123.1145,9.49,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H3H(2)7NO2,NA,NA,NA,"DL-Proline, D7","DL-Proline, 2H7",170301,TRUE,Yes
+"L-Proline, 2H7",123.1145,9.49,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H3H(2)7NO2,NA,NA,NA,"DL-Proline, D7","DL-Proline, 2H7",170301,TRUE,Yes
 Taurine,124.006841,9.4,-1,HILIC,Mix2,5,[M-H],Aq,Sulfur,C2H7NO3S,C2H7NO3S,1123,cpd:C00245,Taurine,Taurine,160401,TRUE,Yes; RT may shift a bit
 Nicotinic acid,124.039854,2.68,1,HILIC,NA,4,[M+H],Aq,Vitamin,C6H5NO2,C6H5NO2,938,cpd:C00253,Vitamin B3,Vit B3,160401,FALSE,"No; not currently in HILIC standard mix, analyzed using RP"
 Picolinic acid,124.039854,4.51,1,HILIC,Mix2,4,[M+H],Aq,Pyridine derivative,C6H5NO2,C6H5NO2,1018,cpd:C10164  ,Picolinic acid,Picolinic acid,230511,TRUE,"Problematic; not showing up well, keeping this out of the skyline file"
@@ -51,7 +51,7 @@ Isethionic acid,124.990857,7.2,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C2H6O4S,NA,NA,cpd
 Thymine,125.035103,3.02,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C5H6N2O2,C5H6N2O2,1135,cpd:C00178,Thymine,Thymine,160401,TRUE,"Yes; may also see Thymidine, get correct RT from Mix 2"
 Taurine,126.022491,11.12,1,HILIC,Mix2,5,[M+H],Aq,Sulfur,C2H7NO3S,C2H7NO3S,1123,cpd:C00245,Taurine,Taurine,160401,FALSE,Yes; RT may shift a bit
 5-Methylcytosine,126.066737,5.53,1,HILIC,Mix2,4,[M+H],Aq,Pyrimidine derivative,C5H7N3O,C5H7N3O,65040,cpd:C02376,5-Methylcytosine,5-Methylcytosine,190514,TRUE,Yes
-"DL-Valine, 2H8",126.1365,9.09,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H4H(2)8NO2,NA,NA,NA,"DL-Valine, D8","DL-Valine, 2H8",170301,TRUE,Yes
+"L-Valine, 2H8",126.1365,9.09,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H4H(2)8NO2,NA,NA,NA,"DL-Valine, D8","DL-Valine, 2H8",170301,TRUE,Yes
 "Isethionic acid, 13C2",126.9981,7.2,-1,HILIC,NA,0.5,[M-H],Aq,Internal Standard,C(13)2H6O4S,NA,NA,NA,"Isethionic Acid, 13C2","Isethionic acid, 13C2",160401,TRUE,Yes; can have a messy peak shape
 Thymine,127.050753,3.02,1,HILIC,Mix2,4,[M+H],Aq,Nucleic Acid,C5H6N2O2,C5H6N2O2,1135,cpd:C00178,Thymine,Thymine,160401,FALSE,"Yes; may also see Thymidine, get correct RT from Mix 2"
 Melamine,127.073219,6.68,1,HILIC,Mix1,4,[M+H],Aq,Cursed,C3H6N6,C3H6N6,7955,cpd:C08737,Melamine,Melamine,180701,TRUE,Yes
@@ -127,7 +127,7 @@ Orotic acid,155.009283,4.195,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,C5H4N2O4,C5H4
 "Guanine, 13C, 15N2",155.0547,8.18,1,HILIC,NA,2,[M+H],Aq,Internal Standard,C(13)C4H5N(15)2N3O,NA,NA,NA,"Guanine, 13C-15N2","Guanine, 13C, 15N2",190514,TRUE,Yes
 L-Histidine,156.077302,11.45,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C6H9N3O2,NA,NA,cpd:C00135,Histidine,Histidine,160401,TRUE,Yes; can have a messy peak shape
 Allantoin,157.036165,9.48,-1,HILIC,Mix1,5,[M-H],Aq,Purine derivative,C4H6N4O3,C4H6N4O3,204,cpd:C01551,Allantoin,Allantoin,210415,TRUE,Yes
-"DL-Histidine, 15N",157.0738,11.45,1,HILIC,NA,2.5,[M+H],Aq,Internal Standard,C6H9N3N(15)O2,NA,NA,NA,"DL-Histidine, 15N","DL-Histidine, 15N",160401,TRUE,Yes; can have a messy peak shape
+"L-Histidine, 15N",157.0738,11.45,1,HILIC,NA,2.5,[M+H],Aq,Internal Standard,C6H9N3N(15)O2,NA,NA,NA,"DL-Histidine, 15N","DL-Histidine, 15N",160401,TRUE,Yes; can have a messy peak shape
 5-Hydroxyectoine,159.076968,11.07,1,HILIC,Mix2,0.1,[M+H],Aq,Osmolyte,C6H10N2O3,NA,NA,cpd:C16432,Hydroxyectoine,Hydroxyectoine,160401,TRUE,Yes
 (R)-2-(Methylamino)pentanedioic acid,160.060984,9.72,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C6H11NO4,C6H11NO4,13956147,NA,(R)-2-(Methylamino)pentanedioic acid,(R)-2-(Methylamino)pentanedioic acid,230511,FALSE,"Problematic; same mass as L-2-Aminoadipic acid, peak comes out first"
 L-2-Aminoadipic acid,160.060984,10.4,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C6H11NO4,C6H11NO4,92136,cpd:C00956   ,L-2-Aminoadipic acid,L-2-Aminoadipic acid,230511,FALSE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid, peak comes out second"
@@ -147,7 +147,7 @@ Phosphoenolpyruvic acid,166.974553,13.865,-1,HILIC,Mix1,4,[M-H],Aq,Organic Acid,
 L-Cysteic acid,167.996671,12.15,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C3H7NO5S,C3H7NO5S,72886,cpd:C00506,Cysteic Acid,Cysteic acid,160401,TRUE,Yes
 "2,3-Pyridinedicarboxylic acid",168.029684,10.17,1,HILIC,Mix2,5,[M+H],Aq,Pyrimidine derivative,C7H5NO4,NA,NA,cpd:C03722,Pyridinedicarboxylic acid,Pyridinedicarboxylic acid,190715,TRUE,Yes
 Taurocyamine,168.043738,12.02,1,HILIC,Mix1,5,[M+H],Aq,Sulfur,C3H9N3O3S,C3H9N3O3S,68340,cpd:C01959,Taurocyamine,Taurocyamine,210415,TRUE,Yes
-Sulfolactic acid,168.980687,13.275,-1,HILIC,Mix2,16,[M-H],Aq,Sulfur,C3H6O6S,C3H6O6S,20981094,cpd:C11537,Sulfolactic Acid,Sulfolactic acid,160401,TRUE,Yes; small peak
+3-Sulfolactate,168.980687,13.275,-1,HILIC,Mix2,16,[M-H],Aq,Sulfur,C3H6O6S,C3H6O6S,20981094,cpd:C11537,Sulfolactic Acid,Sulfolactic acid,160401,TRUE,Yes; small peak
 Dihydroxyacetone phosphate,168.990203,12.86,-1,HILIC,Mix2,6,[M-H],Aq,Calvin cycle intermediate,C3H7O6P,C3H7O6P,668,cpd:C00111,DHAP,DHAP,160401,TRUE,Yes
 Glycerophosphoric acid,171.005853,13.065,-1,HILIC,Mix2,4,[M-H],Aq,Redox,C3H9O6P,C3H9O6P,754,cpd:C00093,glycerol 3 phosphate,G3-phosphate,160401,TRUE,Yes
 "L-Cysteic acid, 2H3",171.0161,12.15,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C3H(2)3H4NO5S,NA,NA,NA,"L-Cysteic Acid, D3","L-Cysteic acid, 2H3",160401,TRUE,Yes
