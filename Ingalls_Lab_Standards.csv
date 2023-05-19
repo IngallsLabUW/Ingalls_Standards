@@ -38,14 +38,14 @@ L-Homoserine,120.066069,11.32,1,HILIC,Mix2,4,[M+H],Aq,Amino Acid derivative,C4H9
 L-Threonine,120.066069,10.92,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C4H9NO3,NA,NA,cpd:C00188,Threonine,Threonine,160401,TRUE,"Problematic; Homoserine and Threonine have the same mass, peak order is Threonine and then Homoserine"
 Dimethylsulfonioacetate,121.032327,8.39,1,HILIC,Mix1,4,[M],Aq,Sulfur,C4H9O2S,NA,NA,cpd:C03392,Dimethylsulfonioacetate (DMS-Ac),DMS-Ac,180701,TRUE,Yes
 "Succinic acid, 2H4",121.0444,11.9,-1,HILIC,NA,10,[M-H],Aq,Internal Standard,C4H(2)4H2O4,NA,NA,NA,"Succinic Acid, D4","Succinic acid, 2H4",160401,TRUE,Yes
-Erythritol,121.050085,7.97,-1,HILIC,Mix2,20,[M-H],Aq,Sugar alchohol,C4H10O4,C4H10O4,222285,cpd:C00503  ,Erythritol,Erythritol,230511,TRUE,Problematic; small peak
+Erythritol,121.050085,7.97,-1,HILIC,Mix2,20,[M-H],Aq,Sugar alchohol,C4H10O4,C4H10O4,222285,cpd:C00503,Erythritol,Erythritol,230511,TRUE,Problematic; small peak
 L-Cysteine,122.027576,7,1,HILIC,NA,NA,[M+H],Aq,Amino Acid,C3H7NO2S,C3H7NO2S,5862,cpd:C00097,Cysteine,Cysteine,NA,TRUE,No; not currently in HILIC standard mix
 Phenylethylamine,122.096974,7.82,1,HILIC,Mix2,5,[M+H],Aq,Alkaloid,C8H11N,C8H11N,1001,cpd:C02455,Phenylethylamine,Phenylethylamine,230511,TRUE,Yes
 1-Propanesulfonate,123.011592,2.81,-1,HILIC,Mix2,4,[M],Aq,Sulfur,C3H7O3S,NA,NA,NA,Propanesulfonate,Propanesulfonate,160401,TRUE,Yes
 "L-Proline, 2H7",123.1145,9.49,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C5H3H(2)7NO2,NA,NA,NA,"DL-Proline, D7","DL-Proline, 2H7",170301,TRUE,Yes
 Taurine,124.006841,10,-1,HILIC,Mix2,5,[M-H],Aq,Sulfur,C2H7NO3S,C2H7NO3S,1123,cpd:C00245,Taurine,Taurine,160401,TRUE,Yes; RT may shift a bit
 Nicotinic acid,124.039854,2.68,1,HILIC,NA,4,[M+H],Aq,Vitamin,C6H5NO2,C6H5NO2,938,cpd:C00253,Vitamin B3,Vit B3,160401,FALSE,"No; not currently in HILIC standard mix, analyzed using RP"
-Picolinic acid,124.039854,4.51,1,HILIC,Mix2,4,[M+H],Aq,Pyridine derivative,C6H5NO2,C6H5NO2,1018,cpd:C10164  ,Picolinic acid,Picolinic acid,230511,TRUE,"Problematic; not showing up well, keeping this out of the skyline file"
+Picolinic acid,124.039854,4.51,1,HILIC,Mix2,4,[M+H],Aq,Pyridine derivative,C6H5NO2,C6H5NO2,1018,cpd:C10164,Picolinic acid,Picolinic acid,230511,TRUE,"Problematic; not showing up well, keeping this out of the skyline file"
 "Glycine betaine, 13C5, 15N",124.1006,7.27,1,HILIC,NA,1,[M+H],Aq,Internal Standard,C(13)5H11N(15)O2,NA,NA,NA,"Betaine, 13C5-15N","Glycine betaine, 13C5, 15N",190514,TRUE,Yes
 Isethionic acid,124.990857,7.2,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C2H6O4S,NA,NA,cpd:C05123,Isethionic Acid,Isethionic acid,160401,TRUE,Yes; can have a messy peak shape
 Thymine,125.035103,3.06,-1,HILIC,Mix2,4,[M-H],Aq,Nucleic Acid,C5H6N2O2,C5H6N2O2,1135,cpd:C00178,Thymine,Thymine,160401,TRUE,"Yes; may also see Thymidine, get correct RT from Mix 2"
@@ -58,7 +58,7 @@ Melamine,127.073219,6.68,1,HILIC,Mix1,4,[M+H],Aq,Cursed,C3H6N6,C3H6N6,7955,cpd:C
 "Taurine, 2H4",128.0325,10,-1,HILIC,NA,1,[M-H],Aq,Internal Standard,C2H(2)4H3NO3S,NA,NA,NA,"Taurine, D4","Taurine, 2H4",160401,TRUE,Yes
 5-Oxoproline,128.034768,7.97,-1,HILIC,Mix1,4,[M-H],Aq,Amino Acid derivative,C5H7NO3,NA,NA,cpd:C01879,L-Pyroglutamic acid,Pidolic acid,180130,TRUE,Yes; can have a messy peak shape in particulate matrix
 Pipecolic acid,128.071154,10.79,-1,HILIC,Mix1,5,[M-H],Aq,Amino Acid derivative,C6H11NO2,C6H11NO2,849,cpd:C00408,Pipecolic acid,Pipecolic acid,210415,FALSE,Yes
-Itaconic acid,129.018785,11.66,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C5H6O4,C5H6O4,811,cpd:C00490 ,Itaconic acid,Itaconic acid,230511,TRUE,Yes
+Itaconic acid,129.018785,11.66,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C5H6O4,C5H6O4,811,cpd:C00490,Itaconic acid,Itaconic acid,230511,TRUE,Yes
 "Thymine, 2H4",129.0602,3.06,-1,HILIC,NA,6,[M-H],Aq,Internal Standard,C5H(2)4H2N2O2,NA,NA,NA,"Thymine, D4","Thymine, 2H4",190514,TRUE,Yes
 5-Oxoproline,130.050419,7.97,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid derivative,C5H7NO3,NA,NA,cpd:C01879,L-Pyroglutamic acid,Pidolic acid,180130,FALSE,Yes; can have a messy peak shape in particulate matrix
 Propionylglycine,130.050419,3.3,-1,HILIC,Mix2,5,[M-H],Aq,Amino Acid derivative,C5H9NO3,NA,NA,NA,Propionylglycine,Propionylglycine,190715,TRUE,Yes; can have a messy peak shape
@@ -130,11 +130,11 @@ Allantoin,157.036165,9.48,-1,HILIC,Mix1,5,[M-H],Aq,Purine derivative,C4H6N4O3,C4
 "L-Histidine, 15N",157.0738,11.45,1,HILIC,NA,2.5,[M+H],Aq,Internal Standard,C6H9N3N(15)O2,NA,NA,NA,"DL-Histidine, 15N","DL-Histidine, 15N",160401,TRUE,Yes; can have a messy peak shape
 5-Hydroxyectoine,159.076968,11.07,1,HILIC,Mix2,0.1,[M+H],Aq,Osmolyte,C6H10N2O3,NA,NA,cpd:C16432,Hydroxyectoine,Hydroxyectoine,160401,TRUE,Yes
 (R)-2-(Methylamino)pentanedioic acid,160.060984,9.72,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C6H11NO4,C6H11NO4,13956147,NA,(R)-2-(Methylamino)pentanedioic acid,(R)-2-(Methylamino)pentanedioic acid,230511,FALSE,"Problematic; same mass as L-2-Aminoadipic acid, peak comes out first"
-L-2-Aminoadipic acid,160.060984,10.4,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C6H11NO4,C6H11NO4,92136,cpd:C00956   ,L-2-Aminoadipic acid,L-2-Aminoadipic acid,230511,FALSE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid, peak comes out second"
+L-2-Aminoadipic acid,160.060984,10.4,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C6H11NO4,C6H11NO4,92136,cpd:C00956,L-2-Aminoadipic acid,L-2-Aminoadipic acid,230511,FALSE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid, peak comes out second"
 Betonicine,160.097369,8.45,1,HILIC,Mix1,4,[M+H],Aq,Betaine,C7H13NO3,C7H13NO3,164642,cpd:C08269,Betonicine,Betonicine,180701,TRUE,"Problematic; Turicine and Betonicine have the same mass, integrate these two compounds together"
 Turicine,160.097369,8.48,1,HILIC,NA,4,[M+H],Aq,Betaine,C7H13NO3,C7H13NO3,6560290,cpd:C21513,Turicine,Turicine,180701,TRUE,"No; not currently in HILIC standard mix, same mass and coelutes with Betonicine"
 (R)-2-(Methylamino)pentanedioic acid,162.076634,9.72,1,HILIC,Mix2,5,[M+H],Aq,Organic Acid,C6H11NO4,C6H11NO4,13956147,NA,(R)-2-(Methylamino)pentanedioic acid,(R)-2-(Methylamino)pentanedioic acid,230511,TRUE,"Problematic; same mass as L-2-Aminoadipic acid, peak comes out first"
-L-2-Aminoadipic acid,162.076634,10.4,1,HILIC,Mix2,5,[M+H],Aq,Organic Acid,C6H11NO4,C6H11NO4,92136,cpd:C00956   ,L-2-Aminoadipic acid,L-2-Aminoadipic acid,230511,TRUE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid, peak comes out second"
+L-2-Aminoadipic acid,162.076634,10.4,1,HILIC,Mix2,5,[M+H],Aq,Organic Acid,C6H11NO4,C6H11NO4,92136,cpd:C00956,L-2-Aminoadipic acid,L-2-Aminoadipic acid,230511,TRUE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid, peak comes out second"
 Carnitine,162.113019,10.21,1,HILIC,Mix1,1,[M+H],Aq,Betaine,C7H15NO3,C7H15NO3,288,cpd:C00487,Carnitine,Carnitine,170331,TRUE,Yes
 L-Hydroxylysine,163.108268,16.37,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid - collagen,C6H14N2O3,NA,NA,cpd:C16741,Hydroxylysine,Hydroxylysine,160401,TRUE,Yes
 N-Acetyltaurine,166.017406,3.74,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C4H9NO4S,NA,NA,NA,N-acetyltaurine,N-acetyltaurine,160401,TRUE,Yes; can have a messy peak shape
@@ -198,7 +198,7 @@ L-Cystine,241.031677,13.1,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid,C6H12N2O4S2,C6H12N2
 Thymidine,241.082448,3.27,-1,HILIC,Mix1,4,[M-H],Aq,Nucleoside,C10H14N2O5,C10H14N2O5,5789,cpd:C00214,Thymidine,Thymidine,160401,TRUE,Yes
 Anserine,241.130066,8.55,1,HILIC,Mix2,4,[M+H],Aq,Dipeptide,C10H16N4O3,C10H16N4O3,112072,cpd:C01262,Anserine,Anserine,190514,TRUE,Yes
 Cytidine,242.077697,8.55,-1,HILIC,Mix2,4,[M-H],Aq,Nucleoside,C9H13N3O5,C9H13N3O5,6175,cpd:C00475,Cytidine,Cytidine,160401,FALSE,Yes
-Sulfoquinovose,243.017467,10.31,-1,HILIC,Mix2,6,[M-H],Aq,Sulfur,C6H12O8S,C6H11O8S-,86289062,cpd:C20829  ,Sulfoquinovose,Sulfoquinovose,230330,TRUE,Problematic; messy peak shape
+Sulfoquinovose,243.017467,10.31,-1,HILIC,Mix2,6,[M-H],Aq,Sulfur,C6H12O8S,C6H11O8S-,86289062,cpd:C20829,Sulfoquinovose,Sulfoquinovose,230330,TRUE,Problematic; messy peak shape
 Uridine,243.061713,6.02,-1,HILIC,Mix2,4,[M-H],Aq,Nucleoside,C9H12N2O6,C9H12N2O6,6029,cpd:C00299,Uridine,Uridine,160401,TRUE,Yes
 Cytidine,244.093347,8.55,1,HILIC,Mix2,4,[M+H],Aq,Nucleoside,C9H13N3O5,C9H13N3O5,6175,cpd:C00475,Cytidine,Cytidine,160401,TRUE,Yes
 Muramic acid,252.108329,11,1,HILIC,Mix1,4,[M+H],Aq,Peptidoglycan,C9H17NO7,C9H17NO7,441038,cpd:C06470,Muramic Acid,Muramic acid,160401,TRUE,"Problematic; Muramic acid and Deoxyadenosine have the same mass, peak order is Deoxyadenosine and Muramic acid"
@@ -210,11 +210,11 @@ D-Glucose 1-phosphate,259.021897,13.45,-1,HILIC,Mix2,4,[M-H],Aq,Sugar phosphate,
 D-Glucose 6-phosphate,259.021897,14.12,-1,HILIC,Mix2,4,[M-H],Aq,Sugar phosphate,C6H13O9P,C6H13O9P,99058,cpd:C00092,Glucose 6 phosphate,Glucose 6 phosphate,160401,TRUE,"Problematic; Fructose 6 phosphate and Glucose 6 phosphate have the same mass, peak order is Fructose 6 phosphate and then Glucose 6 phosphate"
 2-Heptyl-3-hydroxy-quinolone,260.165054,2.16,1,HILIC,Mix1,4,[M+H],Aq,Quorum sensing,C16H21NO2,NA,NA,cpd:C11848,PQS,PQS,160401,TRUE,Yes
 O-Methylmalonyl-L-carnitine,262.129063,9.67,1,HILIC,Mix1,4,[M+H],Aq,Betaine,C11H19NO6,C11H19NO6,91825610,NA,Methylmalonyl carnitine,MMC,180701,TRUE,Yes
-Deoxyguanosine,266.08893,7.77,-1,HILIC,Mix2,5,[M-H],Aq,Nucleoside derivative,C10H13N5O4,C10H13N5O4,135398592,cpd:C00330  ,Deoxyguanosine,Deoxyguanosine,230511,TRUE,Yes
+Deoxyguanosine,266.08893,7.77,-1,HILIC,Mix2,5,[M-H],Aq,Nucleoside derivative,C10H13N5O4,C10H13N5O4,135398592,cpd:C00330,Deoxyguanosine,Deoxyguanosine,230511,TRUE,Yes
 Adenosine,266.088929,4.46,-1,HILIC,Mix2,4,[M-H],Aq,Nucleoside,C10H13N5O4,C10H13N5O4,60961,cpd:C00212,Adenosine,Adenosine,160401,FALSE,Yes
 Inosine,267.072946,7.57,-1,HILIC,Mix1,4,[M-H],Aq,Purine derivative,C10H12N4O5,C10H12N4O5,135398641,cpd:C00294,Inosine,Inosine,180701,TRUE,Yes
 Adenosine,268.10458,4.46,1,HILIC,Mix2,4,[M+H],Aq,Nucleoside,C10H13N5O4,C10H13N5O4,60961,cpd:C00212,Adenosine,Adenosine,160401,TRUE,Yes
-Deoxyguanosine,268.10458,7.77,1,HILIC,Mix2,5,[M+H],Aq,Nucleoside derivative,C10H13N5O4,C10H13N5O4,135398592,cpd:C00330  ,Deoxyguanosine,Deoxyguanosine,230511,FALSE,Yes
+Deoxyguanosine,268.10458,7.77,1,HILIC,Mix2,5,[M+H],Aq,Nucleoside derivative,C10H13N5O4,C10H13N5O4,135398592,cpd:C00330,Deoxyguanosine,Deoxyguanosine,230511,FALSE,Yes
 L-Homocystine,269.062977,12.58,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid derivative,C8H16N2O4S2,C8H16N2O4S2,439579,cpd:C01817,Homocystine,Homocystine,170331,TRUE,Yes; can have a messy peak shape
 Inosine,269.088596,7.57,1,HILIC,Mix1,4,[M+H],Aq,Purine derivative,C10H12N4O5,C10H12N4O5,135398641,cpd:C00294,Inosine,Inosine,180701,FALSE,Yes
 Guanosine,282.083845,9.06,-1,HILIC,Mix2,4,[M-H],Aq,Nucleoside,C10H13N5O5,C10H13N5O5,135398635,cpd:C00387,Guanosine,Guanosine,160401,FALSE,Yes
@@ -389,7 +389,7 @@ Cholesterol,387.36269,8.5,1,RP,NA,NA,[M+H],Org,Sterol,C27H46O,C27H46O,5997,cpd:C
 Calciferol,397.34704,13.75,1,RP,NA,1,[M+H],Org,Vitamin (fat soluble),C28H44O,NA,NA,cpd:C05441,Vitamin D2,Vit D2,160401,NA,No; currently running on LipidC18 column
 S-Adenosylmethionine,399.145066,0.71,1,RP,NA,0.25,[M+H],Aq,Amino Acid synthesis,C15H22N6O5S,C15H22N6O5S,34755,cpd:C00019,Adenosyl Methionine,SAM,160401,TRUE,Yes
 Squalene,411.399075,15.02,1,RP,NA,0.25,[M+H],Org,Sterol precursor,C30H50,C30H50,638072,cpd:C00751,Squalene,Squalene,160401,NA,No; currently running on LipidC18 column
-beta-Apo-8'-carotenal,417.31574,14.56,1,RP,NA,NA,[M+H],Org,Carotenoid ,C30H40O,C30H40O,101701200,NA,B-apo-8'-carotenal,Apocarotenal,NA,TRUE,No; not currently in RP standard mix
+beta-Apo-8'-carotenal,417.31574,14.56,1,RP,NA,NA,[M+H],Org,Carotenoid,C30H40O,C30H40O,101701200,NA,B-apo-8'-carotenal,Apocarotenal,NA,TRUE,No; not currently in RP standard mix
 Thiamine diphosphate,425.044974,0.67,1,RP,NA,0.25,[M],Aq,Vitamin (B1-derivative),C12H19N4O7P2S,C12H19N4O7P2S+,1132,cpd:C00068,thiamine pyrophosphate,TPP,160401,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
 alpha-Tocotrienol,425.341955,13.88,1,RP,NA,0.25,[M+H],Org,Vitamin (fat soluble),C29H44O2,C29H44O2,5282347,cpd:C14153,Tocotrienol,a-Tocotrienol,160401,NA,No; currently running on LipidC18 column
 alpha-Tocopherol,431.388905,14.725,1,RP,NA,0.25,[M+H],Org,Vitamin (fat soluble),C29H50O2,NA,NA,cpd:C02477,Tocopherol (Vit E),Vit E,160401,NA,No; currently running on LipidC18 column
