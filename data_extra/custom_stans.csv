@@ -18,3 +18,4 @@ Custom,Also Palythene/Usujirene?,Also Palythene/Usujirene?,C13H20N2O5,6.9,285.14
 Custom,Mycosporine-glycine?,Mycosporine-glycine?,C10H15NO6,10,246.0972,[M+H],1,NA,NA,150101,NA,NA,NA,MAA No fragments collected but mass matches
 Custom,Also mycosporine-glycine?,Also mycosporine-glycine?,C10H15NO6,9.5,246.0972,[M+H],1,NA,NA,150101,NA,NA,NA,MAA No fragments collected but mass matches
 Custom,TMAO 2M+H,TMAO 2M+H,C6H19N2O2,7,151.14404,[2M+H],1,NA,NA,150101,NA,NA,NA,"In-source dimer of TMAO, exact same RT and cor. peak areas"
+Custom,TMAO friend,TMAO friend,Unknown,7,151.14404,Unknown,1,NA,NA,150101,NA,NA,NA,Some adduct/dimer related to TMAO - peak areas are correlated across files and elution looks identical
