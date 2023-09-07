@@ -91,6 +91,7 @@ Trigonelline,138.055503,8.36,1,HILIC,Mix1,0.5,[M+H],Aq,Osmolyte,C7H7NO2,C7H7NO2,
 Sulfoacetic acid,138.970122,13.9,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C2H4O5S,C2H4O5S,31257,cpd:C14179,Sulfoacetic Acid,Sulfoacetic acid,160401,TRUE,Yes
 Urocanic acid,139.050753,8.16,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid derivative,C6H6N2O2,C6H6N2O2,736715,cpd:C00785,Imidazoleacrylic Acid,Urocanate,180701,FALSE,Yes
 N-Methyltaurine,140.038141,7.6,1,HILIC,Mix2,4,[M+H],Aq,Sulfur,C3H9NO3S,C3H9NO3S,7882,NA,N-methyltaurine,N-methyltaurine,160401,TRUE,Problematic; integrate the first peak you see around 7 minutes
+Toxopyrimidine,140.082386,3.41,1,HILIC,Mix1,2,[M+H],Aq,Thiamine metabolism,C6H9N3O,C6H9N3O,777,cpd:C01279,Toxopyrimidine,Toxopyrimidine,230718,TRUE,Yes
 Sodium 2-mercaptoethanesulfonate,140.968013,2.67,-1,HILIC,Mix2,4,[M],Aq,Sulfur,C2H5O3S2,NA,NA,NA,MESNA (Sodium 2-mercaptoethanesulfonate),MESNA,160401,TRUE,Yes
 "Sulfoacetic acid, 13C2",140.9774,13.9,-1,HILIC,NA,2.5,[M-H],Aq,Internal Standard,C(13)2H4O5S,NA,NA,NA,"Sulfoacetic Acid, 13C2","Sulfoacetic acid, 13C2",160401,TRUE,Yes
 Ectoine,141.066403,9.25,-1,HILIC,Mix2,8,[M-H],Aq,Osmolyte,C6H10N2O2,C6H10N2O2,126041,cpd:C06231,Ectoine,Ectoine,160401,FALSE,Problematic; messy peak shape in particulate matrix
@@ -134,7 +135,8 @@ L-2-Aminoadipic acid,160.060984,10.4,-1,HILIC,Mix2,5,[M-H],Aq,Organic Acid,C6H11
 Betonicine,160.097369,8.45,1,HILIC,Mix1,4,[M+H],Aq,Betaine,C7H13NO3,C7H13NO3,164642,cpd:C08269,Betonicine,Betonicine,180701,TRUE,"Problematic; Turicine and Betonicine have the same mass, integrate these two compounds together"
 Turicine,160.097369,8.48,1,HILIC,NA,4,[M+H],Aq,Betaine,C7H13NO3,C7H13NO3,6560290,cpd:C21513,Turicine,Turicine,180701,TRUE,"No; not currently in HILIC standard mix, same mass and coelutes with Betonicine"
 (R)-2-(Methylamino)pentanedioic acid,162.076634,9.72,1,HILIC,Mix2,5,[M+H],Aq,Organic Acid,C6H11NO4,C6H11NO4,13956147,NA,(R)-2-(Methylamino)pentanedioic acid,(R)-2-(Methylamino)pentanedioic acid,230511,TRUE,"Problematic; same mass as L-2-Aminoadipic acid, peak comes out first"
-L-2-Aminoadipic acid,162.076634,10.4,1,HILIC,Mix2,5,[M+H],Aq,Organic Acid,C6H11NO4,C6H11NO4,92136,cpd:C00956,L-2-Aminoadipic acid,L-2-Aminoadipic acid,230511,TRUE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid, peak comes out second"
+L-2-Aminoadipic acid,162.076634,10.9,1,HILIC,Mix2,5,[M+H],Aq,Organic Acid,C6H11NO4,C6H11NO4,92136,cpd:C00956,L-2-Aminoadipic acid,L-2-Aminoadipic acid,230511,TRUE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid, peak comes out second"
+N-Methyl-L-glutamic acid,162.076634,8.69,1,HILIC,Mix1,5,[M+H],Aq,Amino Acid derivative,C6H11NO4,C6H11NO4,439377,cpd:C01046 ,N-Methyl-L-glutamic acid,N-Methyl-L-glutamic acid,230718,TRUE,"Problematic; same mass as (R)-2-(Methylamino)pentanedioic acid and L-2-Aminoadipic acid, check RT using Mix1"
 Carnitine,162.113019,10.21,1,HILIC,Mix1,1,[M+H],Aq,Betaine,C7H15NO3,C7H15NO3,288,cpd:C00487,Carnitine,Carnitine,170331,TRUE,Yes
 L-Hydroxylysine,163.108268,16.37,1,HILIC,Mix1,4,[M+H],Aq,Amino Acid - collagen,C6H14N2O3,NA,NA,cpd:C16741,Hydroxylysine,Hydroxylysine,160401,TRUE,Yes
 N-Acetyltaurine,166.017406,3.74,-1,HILIC,Mix2,4,[M-H],Aq,Sulfur,C4H9NO4S,NA,NA,NA,N-acetyltaurine,N-acetyltaurine,160401,TRUE,Yes; can have a messy peak shape
