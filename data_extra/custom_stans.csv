@@ -20,3 +20,5 @@ Custom,Also mycosporine-glycine?,Also mycosporine-glycine?,C10H15NO6,9.5,246.097
 Custom,TMAO 2M+H,TMAO 2M+H,C6H19N2O2,7,151.14404,[2M+H],1,NA,NA,150101,NA,NA,NA,"In-source dimer of TMAO, exact same RT and cor. peak areas"
 Custom,TMAO friend,TMAO friend,Unknown,7,151.14404,Unknown,1,NA,NA,150101,NA,NA,NA,Some adduct/dimer related to TMAO - peak areas are correlated across files and elution looks identical
 Custom,Creatinine from creatine,Creatinine from creatine,C4H7N3O,11,114.066737,[M-H2O+H],1,NA,NA,150101,Mix1,NA,NA,"Creatinine formed in-source from creatine (RT and area match, same mechanism as pyroglutamic acid presumably)"
+Custom,Guanine from guanosine,Guanine from guanosine,C5H5N5O,9.06,152.057235,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Guanine formed in-source from knocking the ribose off guanosine
+Custom,Adenine from adenosine,Adenine from adenosine,C5H5N5,4.46,136.06232,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Adenine formed in-source from knocking the ribose off adenosine
