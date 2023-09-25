@@ -19,4 +19,4 @@ Custom,Mycosporine-glycine?,Mycosporine-glycine?,C10H15NO6,10,246.0972,[M+H],1,N
 Custom,Also mycosporine-glycine?,Also mycosporine-glycine?,C10H15NO6,9.5,246.0972,[M+H],1,NA,NA,150101,NA,NA,NA,MAA No fragments collected but mass matches
 Custom,TMAO 2M+H,TMAO 2M+H,C6H19N2O2,7,151.14404,[2M+H],1,NA,NA,150101,NA,NA,NA,"In-source dimer of TMAO, exact same RT and cor. peak areas"
 Custom,TMAO friend,TMAO friend,Unknown,7,151.14404,Unknown,1,NA,NA,150101,NA,NA,NA,Some adduct/dimer related to TMAO - peak areas are correlated across files and elution looks identical
-Custom,Creatinine from creatine,Creatinine from creatine,C4H7N3O,11,114.066737,[M-H2O+H],1,NA,NA,150101,Mix1,NA,NA,Creatinine formed in-source from creatine (RT and area match, same mechanism as pyroglutamic acid presumably)
+Custom,Creatinine from creatine,Creatinine from creatine,C4H7N3O,11,114.066737,[M-H2O+H],1,NA,NA,150101,Mix1,NA,NA,"Creatinine formed in-source from creatine (RT and area match, same mechanism as pyroglutamic acid presumably)"
