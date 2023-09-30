@@ -22,3 +22,4 @@ Custom,TMAO friend,TMAO friend,Unknown,7,151.14404,Unknown,1,NA,NA,150101,NA,NA,
 Custom,Creatinine from creatine,Creatinine from creatine,C4H7N3O,11,114.066737,[M-H2O+H],1,NA,NA,150101,Mix1,NA,NA,"Creatinine formed in-source from creatine (RT and area match, same mechanism as pyroglutamic acid presumably)"
 Custom,Guanine from guanosine,Guanine from guanosine,C5H5N5O,9.06,152.057235,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Guanine formed in-source from knocking the ribose off guanosine
 Custom,Adenine from adenosine,Adenine from adenosine,C5H5N5,4.46,136.06232,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Adenine formed in-source from knocking the ribose off adenosine
+Custom,Hypoxanthine from inosine,Hypoxanthine from inosine,C5H4N4O,7.8,137.046336,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Hypoxanthine formed in-source from knocking the ribose off inosine
