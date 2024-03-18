@@ -275,6 +275,9 @@ Malonyl-CoA,852.107789,13.525,-1,HILIC,NA,4,[M-H],Aq,Co-enzyme A,C24H38N7O19P3S,
 (S)-3-Hydroxybutyryl-CoA,852.144174,11.545,-1,HILIC,NA,4,[M-H],Aq,Co-enzyme A,C25H42N7O18P3S,C25H42N7O18P3S,439419,cpd:C01144,Hydroxybutyryl CoA,Hydroxybutyryl CoA,160401,TRUE,No; not currently in HILIC standard mix
 D-Methylmalonyl-CoA,866.123439,13.18,-1,HILIC,NA,4,[M-H],Aq,Co-enzyme A,C25H40N7O19P3S,NA,NA,cpd:C00683,Methyl Malonyl CoA,Methylmalonyl CoA,160401,TRUE,No; not currently in HILIC standard mix
 Succinyl-CoA,866.123439,12.965,-1,HILIC,NA,4,[M-H],Aq,Co-enzyme A,C25H40N7O19P3S,C25H35N7O19P3S-5,45266545,cpd:C00091,Succinyl CoA,Succinyl-CoA,160401,TRUE,No; not currently in HILIC standard mix
+Deoxynojirimycin,164.092284,10.34,1,HILIC,__,4,[M+H],Aq,alpha-Glucosidase inhibitor,C6H13NO4,C6H13NO4,29435,cpd:C16843,Deoxynojirimycin,Deoxynojirimycin,240130,TRUE,Yes; not currently in HILIC mix but should be updated
+Deoxynojirimycin,162.076634,10.34,-1,HILIC,__,4,[M-H],Aq,alpha-Glucosidase inhibitor,C6H13NO4,C6H13NO4,29435,cpd:C16843,Deoxynojirimycin,Deoxynojirimycin,240130,FALSE,Yes; not currently in HILIC mix but should be updated
+gamma-Amino-beta-hydroxybutyric acid,120.066069,11.85,1,HILIC,__,5,[M+H],Aq,Demethylated carnitine,C4H9NO3,C4H9NO3,2149,cpd:C03678,GABOB,GABOB,240130,TRUE,Yes; not currently in HILIC mix but should be updated
 Homoserine lactone,102.055504,0.68,1,RP,NA,0.25,[M+H],Aq,Quorum sensing,C4H7NO2,C4H7NO2,73509,cpd:C02926,Homoserine lactone,AHL,180130,TRUE,Problematic; integrate first peak at 0.7 minutes
 Dimethylglycine,104.071154,0.69,1,RP,NA,0.25,[M+H],Aq,Amino Acid derivative,C4H9NO2,NA,NA,cpd:C01026,Dimethyl glycine,DMG,160401,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
 Choline,104.107539,0.69,1,RP,NA,0.25,[M],Aq,Betaine,C5H14NO,C5H14NO+,305,cpd:C00114,Choline,Choline,160401,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
@@ -289,6 +292,8 @@ Allopurinol,137.046336,1.27,1,RP,NA,0.25,[M+H],Aq,Purine derivative,C5H4N4O,C5H4
 Dimethylbenzimidazole,147.092223,3.38,1,RP,NA,0.25,[M+H],Aq,Vitamin synthesis,C9H10N2,NA,NA,cpd:C03114,Dimethyl-benzimidazole,DMB,160401,TRUE,Yes
 "3,4-Dihydroxybenzoic acid",153.018785,2.55,-1,RP,NA,1.25,[M],Aq,Lignin,C7H5O4,C7H6O4,72,cpd:C00230,"3,4-Dihydroxybenzoic acid","3,4-Dihydroxybenzoic acid",160401,TRUE,No; not currently in RP standard mix
 Xanthine,153.041251,1.11,1,RP,NA,0.25,[M+H],Aq,Purine,C5H4N4O2,C5H4N4O2,1188,cpd:C00385,Xanthine,Xanthine,160401,TRUE,Yes
+Xanthine,153.041251,7.26,1,HILIC,__,5,[M+H],Aq,Purine,C5H4N4O2,C5H4N4O2,1188,cpd:C00385,Xanthine,Xanthine,240130,FALSE,Yes; not currently in HILIC mix but should be updated
+Xanthine,151.025601,7.26,-1,HILIC,__,5,[M-H],Aq,Purine,C5H4N4O2,C5H4N4O2,1188,cpd:C00385,Xanthine,Xanthine,240130,TRUE,Yes; not currently in HILIC mix but should be updated
 Vanillin,153.05517,4.69,1,RP,NA,0.25,[M+H],Aq,Lignin,C8H8O3,C8H8O3,1183,cpd:C00755,Vanillin,Vanillin,160401,TRUE,Yes
 "2,4-Decadienal",153.12794,9.855,1,RP,NA,0.25,[M+H],Aq,PUA,C10H16O,C10H16O,5283349,NA,"2,4 decadienal","2,4-Decadienal",160401,TRUE,Yes
 beta-Cyclocitral,153.12794,8.39,1,RP,NA,NA,[M+H],Org,Monoterpenoid,C10H16O,C10H16O,9895,cpd:C20425,B-cyclocitral,b-Cyclocitral,NA,TRUE,No; not currently in RP standard mix
@@ -325,7 +330,7 @@ beta-Ionone,193.15924,9.71,1,RP,NA,NA,[M+H],Org,Carotenoid derivative,C13H20O,C1
 Ferulic acid,195.065735,5.97,1,RP,NA,0.25,[M+H],Aq,Lignin,C10H10O4,C10H10O4,445858,cpd:C01494,Ferulic Acid,Ferulic acid,160401,TRUE,Yes
 Caffeine,195.088201,3.85,1,RP,NA,0.25,[M+H],Aq,Purine,C8H10N4O2,C8H10N4O2,2519,cpd:C07481,Caffeine,Caffeine,160401,TRUE,Yes
 Acetosyringone,197.081385,5.765,1,RP,NA,0.25,[M+H],Aq,Lignin,C10H12O4,C10H12O4,17198,cpd:C10664,Acetosyringone,Acetosyringone,160401,TRUE,Yes
-Dihydroxy-L-phenylalanine,198.076084,0.89,1,RP,NA,0.25,[M+H],Aq,Amino Acid derivative,C9H11NO4,NA,NA,cpd:C00355,Dihydroxy-L-phenylalanine,Dihydroxy-L-phenylalanine,210415,TRUE,Yes
+Dihydroxy-L-phenylalanine,198.076633,0.89,1,RP,NA,0.25,[M+H],Aq,Amino Acid derivative,C9H11NO4,NA,NA,cpd:C00355,Dihydroxy-L-phenylalanine,Dihydroxy-L-phenylalanine,210415,TRUE,Yes; bad peak tailing on HILIC column
 Syringic acid,199.06065,4.88,1,RP,NA,0.25,[M+H],Aq,Lignin,C9H10O5,C9H10O5,10742,cpd:C10833,Syringic Acid,Syringic acid,160401,TRUE,Yes; small peak
 N-Hexanoyl-L-homoserine lactone,200.128669,4.06,1,RP,NA,0.25,[M+H],Aq,Quorum sensing,C10H17NO3,NA,NA,cpd:C21197,C6-HSL,C6-HSL,160401,TRUE,Yes
 Camalexin,201.048645,6.96,1,RP,NA,0.25,[M+H],Aq,Phytohormone,C11H8N2S,C11H8N2S,636970,cpd:C21721,Camalexin,Camalexin,160401,TRUE,Yes
@@ -400,7 +405,7 @@ Folic acid,442.147508,4.51,1,RP,NA,0.25,[M+H],Aq,Vitamin,C19H19N7O6,C19H19N7O6,1
 Menaquinone,445.310655,14.14,1,RP,NA,0.25,[M+H],Org,Quinone,C31H40O2,NA,NA,cpd:C00828,Vitamin K2,Vit K2,160401,NA,No; currently running on LipidC18 column
 Phytonadione,451.357605,14.78,1,RP,NA,0.25,[M+H],Org,Quinone,C31H46O2,C31H46O2,5284607,cpd:C02059,Vitamin K1,Vit K1,160401,NA,No; currently running on LipidC18 column
 Riboflavin-5-phosphate,455.096794,3.1,-1,RP,NA,0.5,[M-H],Aq,Redox,C17H21N4O9P,NA,NA,cpd:C00061,Riboflavin Monophosphate,RMP,180130,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
-Riboflavin-5-phosphate,455.096794,3.1,1,RP,NA,0.5,[M-H],Aq,Redox,C17H21N4O9P,NA,NA,cpd:C00061,Riboflavin Monophosphate,RMP,180130,NA,"No; not currently in RP standard mix, analyzed using HILIC"
+Riboflavin-5-phosphate,457.112444,3.1,1,RP,NA,0.5,[M+H],Aq,Redox,C17H21N4O9P,NA,NA,cpd:C00061,Riboflavin Monophosphate,RMP,180130,TRUE,"No; not currently in RP standard mix, analyzed using HILIC"
 beta-Carotene,536.4382,16.42,1,RP,NA,0.25,[M],Org,Antioxidant pigment,C40H56,C40H56,5280489,cpd:C02094,Carotene,b-Carotene,160401,NA,No; currently running on LipidC18 column
 Glutathione disulfide,613.159793,0.92,1,RP,NA,0.5,[M+H],Aq,Sulfur,C20H32N6O12S2,NA,NA,cpd:C00127,Glutathione Disulfide,GSSG,180130,FALSE,"No; not currently in RP standard mix, analyzed using HILIC"
 Hydroxocobalamin,664.7861,4.35,2,RP,NA,0.25,[2M-OH],Aq,Vitamin B12,C62H89CoN13O15P,C62H90CoN13O15P-2,70678542,cpd:C08230,Hydroxo B12,Hydroxo B12,160401,TRUE,Yes
