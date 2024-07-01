@@ -18,8 +18,10 @@ Custom,Also Palythene/Usujirene?,Also Palythene/Usujirene?,C13H20N2O5,6.9,285.14
 Custom,Mycosporine-glycine?,Mycosporine-glycine?,C10H15NO6,10,246.0972,[M+H],1,NA,NA,150101,NA,NA,NA,MAA No fragments collected but mass matches
 Custom,Also mycosporine-glycine?,Also mycosporine-glycine?,C10H15NO6,9.5,246.0972,[M+H],1,NA,NA,150101,NA,NA,NA,MAA No fragments collected but mass matches
 Custom,TMAO 2M+H,TMAO 2M+H,C6H19N2O2,7,151.14404,[2M+H],1,NA,NA,150101,NA,NA,NA,"In-source dimer of TMAO, exact same RT and cor. peak areas"
-Custom,TMAO friend,TMAO friend,Unknown,7,151.14404,Unknown,1,NA,NA,150101,NA,NA,NA,Some adduct/dimer related to TMAO - peak areas are correlated across files and elution looks identical
 Custom,Creatinine from creatine,Creatinine from creatine,C4H7N3O,11,114.066737,[M-H2O+H],1,NA,NA,150101,Mix1,NA,NA,"Creatinine formed in-source from creatine (RT and area match, same mechanism as pyroglutamic acid presumably)"
 Custom,Guanine from guanosine,Guanine from guanosine,C5H5N5O,9.06,152.057235,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Guanine formed in-source from knocking the ribose off guanosine
 Custom,Adenine from adenosine,Adenine from adenosine,C5H5N5,4.46,136.06232,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Adenine formed in-source from knocking the ribose off adenosine
 Custom,Hypoxanthine from inosine,Hypoxanthine from inosine,C5H4N4O,7.8,137.046336,[M-Rib],1,NA,NA,150101,Mix2,NA,NA,Hypoxanthine formed in-source from knocking the ribose off inosine
+Custom,Iodine,Iodine,I,5.1,126.904,[M-],-1,NA,NA,150101,NA,NA,NA,Matches Iulia's data
+Custom,Sulfite,Sulfite,SO3,14.7,79.95616,[M-],-1,NA,NA,150101,NA,NA,NA,Unclear how ionization works for this one - should be -2 charged
+Custom,Nitrate,Nitrate,NO3,5.2,61.98709,[M-],-1,NA,NA,150101,NA,NA,NA,Often has high background elsewhere
