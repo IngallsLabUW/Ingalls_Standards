@@ -4,7 +4,7 @@ Custom,Bromine81,Bromine upper,Br(81),7,80.91563,[M],-1,NA,NA,150101,NA,NA,NA,Pr
 Custom,Bromine79,Bromine lower,Br(79),7,78.91768,[M],-1,NA,NA,150101,NA,NA,NA,Pretty typical giant peak at the correct mass
 Custom,Pyro from glutamine?,Pyro from glutamine?,C5H7NO3,11,130.050419,[M-NH3+H],-1,NA,NA,150101,NA,NA,NA,Forms in-source from glutamine: https://pubs.acs.org/doi/full/10.1021/ac501451v
 Custom,Pyro from glutamate?,Pyro from glutamate?,C5H7NO3,12,130.050419,[M-H2O+H],-1,NA,NA,150101,NA,NA,NA,Forms in-source from glutamate: https://pubs.acs.org/doi/full/10.1021/ac501451v
-Custom,Deoxycytidine?,Deoxycytidine?,C10H13N5O4,6.6,228.09788,[M+H],1,NA,NA,150101,NA,NA,NA,Mass matches and peak looks like a nucleic acid
+Custom,Deoxycytidine?,Deoxycytidine?,C9H13N3O4,6.6,228.09788,[M+H],1,NA,NA,150101,NA,NA,NA,Mass matches and peak looks like a nucleic acid
 Custom,Homoserine betaine?,Homoserine betaine?,C7H15NO3,6.7,162.1125,[M+H],1,NA,NA,150101,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
 Custom,Threonine betaine?,Threonine betaine?,C7H15NO3,5,162.1125,[M+H],1,NA,NA,150101,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
 Custom,Theanine?,Theanine?,C7H14N2O3,6.8,175.10771,[M+H],1,NA,NA,150101,NA,NA,NA,"Mass and formula matches, conf level 3ish"
