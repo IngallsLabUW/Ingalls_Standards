@@ -25,3 +25,4 @@ Custom,Hypoxanthine from inosine,Hypoxanthine from inosine,C5H4N4O,7.8,137.04633
 Custom,Iodine,Iodine,I,5.1,126.904,[M-],-1,NA,NA,150101,NA,NA,NA,Matches Iulia's data
 Custom,Sulfite,Sulfite,SO3,14.7,79.95616,[M-],-1,NA,NA,150101,NA,NA,NA,Unclear how ionization works for this one - should be -2 charged
 Custom,Nitrate,Nitrate,NO3,5.2,61.98709,[M-],-1,NA,NA,150101,NA,NA,NA,Often has high background elsewhere
+Custom,Taurine betaine,Taurine betaine,C5H13NO3S,8.5,168.0689,[M+H],1,NA,NA,150101,NA,NA,NA,Has 59 betaine fragment at voltage>20
