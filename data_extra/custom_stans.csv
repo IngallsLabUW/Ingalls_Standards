@@ -26,3 +26,8 @@ Custom,Iodine,Iodine,I,5.1,126.904,[M-],-1,NA,NA,150101,NA,NA,NA,Matches Iulia's
 Custom,Sulfite,Sulfite,SO3,14.7,79.95616,[M-],-1,NA,NA,150101,NA,NA,NA,Unclear how ionization works for this one - should be -2 charged
 Custom,Nitrate,Nitrate,NO3,5.2,61.98709,[M-],-1,NA,NA,150101,NA,NA,NA,Often has high background elsewhere
 Custom,Taurine betaine,Taurine betaine,C5H13NO3S,8.5,168.0689,[M+H],1,NA,NA,150101,NA,NA,NA,Has 59 betaine fragment at voltage>20
+Custom,Mycosporine-alanine/Mycosporine-beta alanine,M-Ala,C11H17NO6,,260.113414,[M+H],1,101450154,NA,150508,NA,NA,NA,
+Custom,Mycosporine-methylamine:serine,M-MA:Ser,C11H18N2O5,,259.129398,[M+H],1,171990363,NA,150508,NA,NA,NA,
+Custom,Mycosporine glutaminol/Palythinol/Mycosporine-methylamine:threonine,"Pinol, M-Gly:Ala(OH)",C13H22N2O6,,303.155613,[M+H],1,9948334,NA,150508,NA,NA,NA,
+Custom,Mycosporine-glutamine,M-Gln,C13H20N2O7,,317.134877,[M+H],1,274639211,NA,150508,NA,NA,NA,
+Custom,Palythenic acid,PeA,C14H20N2O7,,329.134877,[M+H],1,NA,NA,150508,NA,NA,NA,
