@@ -74,6 +74,7 @@ con <- dbConnect(duckdb::duckdb(), r"(Z:\1_QEdata\2025\250911_HILIC_StandardMixe
 dbExecute(con, "PRAGMA disable_progress_bar;")
 all_eics <- stan_df %>%
   # slice(1) -> row_data
+  # slice(1:10) %>%
   pmap(function(...){
     row_data <- data.frame(...)
     row_data %>%
@@ -91,28 +92,28 @@ dbDisconnect(con)
 
 
 # Extract peak RTs
-write_csv(data.frame(compound_name=character(), rtmin=numeric(), rtmax=numeric()), "stan_df.csv")
-walk(stan_df$compound_name, function(name_i){
-  print(name_i)
-  mix_i <- stan_df$Mix[stan_df$compound_name==name_i]
-  gp <- all_eics %>%
-    filter(compound_name==name_i) %>%
-    ggplot() +
-    geom_line(aes(x=rt, y=int, group=filename, color=file_type)) +
-    scale_x_continuous(breaks = 0:25) +
-    theme_bw() +
-    theme(plot.title = element_text(color=scales::hue_pal()(8)[mix_i+2][1])) +
-    ggtitle(name_i)
-  x11(width = 16, height = 6)
-  print(gp)
-  rt_vals <- ggmap::gglocator(n = 2, mercator = FALSE)$rt
-  dev.off()
-  write_csv(data.frame(compound_name=name_i, rtmin=rt_vals[1], rtmax=rt_vals[2]), "stan_df.csv", append = TRUE)
-})
+# write_csv(data.frame(compound_name=character(), rtmin=numeric(), rtmax=numeric()), "stan_rt_bounds.csv")
+# walk(stan_df$compound_name, function(name_i){
+#   print(name_i)
+#   mix_i <- stan_df$Mix[stan_df$compound_name==name_i]
+#   gp <- all_eics %>%
+#     filter(compound_name==name_i) %>%
+#     ggplot() +
+#     geom_line(aes(x=rt, y=int, group=filename, color=file_type)) +
+#     scale_x_continuous(breaks = 0:25) +
+#     theme_bw() +
+#     theme(plot.title = element_text(color=scales::hue_pal()(8)[mix_i+2][1])) +
+#     ggtitle(name_i)
+#   x11(width = 16, height = 6)
+#   print(gp)
+#   rt_vals <- ggmap::gglocator(n = 2, mercator = FALSE)$rt
+#   dev.off()
+#   write_csv(data.frame(compound_name=name_i, rtmin=rt_vals[1], rtmax=rt_vals[2]), "stan_rt_bounds.csv", append = TRUE)
+# })
 
 
 # Render peaks for confirmation
-pdf("stan_obs.pdf", width = 8, height=4)
+pdf("stan_chroms.pdf", width = 8, height=4)
 walk(stan_df$compound_name, function(name_i){
   mix_i <- stan_df$Mix[stan_df$compound_name==name_i]
   gp <- all_eics %>%
@@ -131,8 +132,8 @@ dev.off()
 
 # Recalculate masses
 obs_mzs <- stan_df %>%
+  # slice(1:10) %>%
   mutate(file_type=ifelse(is.na(Mix), "IS", paste0("Mix", Mix))) %>%
-  mutate(polarity=ifelse(str_detect(best_adduct, "\\+$"), "pos", "neg")) %>%
   pmap(function(...){
     row_data <- data.frame(...)
     eic_i <- all_eics %>%
@@ -140,7 +141,7 @@ obs_mzs <- stan_df %>%
       filter(rt>row_data$rtmin) %>% 
       filter(rt<row_data$rtmax) %>%
       filter(file_type==row_data$file_type) %>%
-      filter(str_detect(polarity, row_data$polarity))
+      filter(str_detect(polarity, ifelse(str_detect(row_data$best_adduct, "\\+$"), "pos", "neg")))
     eic_i %>%
       summarise(obs_mz=weighted.mean(mz, int), 
                 obs_rt=weighted.mean(rt, int),
@@ -153,4 +154,4 @@ obs_mzs <- stan_df %>%
 
 obs_mzs %>%
   select(compound_name, best_adduct, polarity, rtmin, rtmax, mono_mass, mz, obs_mz, file_type) %>%
-  write_csv("MSMS/MSMS_stan_data.csv")
+  write_csv("MSMS/MSMS_stan_bounds.csv")
