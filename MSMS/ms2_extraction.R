@@ -19,7 +19,7 @@ stan_data <- stan_bounds %>%
 con <- dbConnect(duckdb::duckdb(), r"(Z:\1_QEdata\2025\250911_HILIC_StandardMixes_Separate\msdata_combined.duckdb)")
 dbExecute(con, "PRAGMA disable_progress_bar;")
 stan_data %>%
-  filter(compound_name=="Uracil") %>%
+  filter(compound_name=="Glycine") %>%
   slice(1) %>%
   print() %>%
   mutate(lower_bound=mz*(1-5/1e6), upper_bound=mz*(1+5/1e6)) %>%
