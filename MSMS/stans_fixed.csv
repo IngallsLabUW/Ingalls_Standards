@@ -71,7 +71,7 @@ Butyrylglycine,C6H11NO3,both,[M-H]-,2.44548801,3.412841625
 Proline betaine,C7H13NO2,both,[M+H]+,6.250108966,7.363948188
 2-Ketoglutaric acid,C5H6O5,neg,[M-H]-,12.54015083,13.2165334
 Hydroxyisoleucine,C6H13NO3,both,[M+H]+,8.13948349,9.786168148
-(3-Carboxypropyl)trimethylammonium,C7H15NO2,both,[M+H]+,9.754189366,10.47376154
+(3-Carboxypropyl)trimethylammonium,C7H15NO2,pos,[M+H]+,9.754189366,10.47376154
 Acetylcholine,C7H16NO2+,pos,[M]+,12.1,13.3
 2-keto-4-methylthiobutyric acid,C5H8O3S,neg,[M-H]-,2.071633225,2.58565018
 L-Glutamine,C5H10N2O3,both,[M+H]+,10.64063579,11.64917964
