@@ -12,8 +12,8 @@ stans_fixed %>%
   left_join(best_frags) %>%
   arrange(compound_name, polarity, first_scan, fragmz) %>%
   reframe(text = c("BEGIN IONS",
-                   paste0("NAME=", unique(compound_name)),
-                   paste0("EXACTMASS=", unique(mz)),
+                   paste0("TITLE=", unique(compound_name)),
+                   paste0("PEPMASS=", unique(mz)),
                    paste0("CHARGE=", case_when(
                      polarity[1] == "pos" ~ "1+",
                      polarity[1] == "neg" ~ "1-"
