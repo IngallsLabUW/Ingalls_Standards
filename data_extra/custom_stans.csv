@@ -4,10 +4,10 @@ Custom,Bromine81,Bromine upper,Br(81),7,80.91563,[M],-1,NA,NA,150101,NA,NA,NA,Pr
 Custom,Bromine79,Bromine lower,Br(79),7,78.91768,[M],-1,NA,NA,150101,NA,NA,NA,Pretty typical giant peak at the correct mass
 Custom,Pyro from glutamine?,Pyro from glutamine?,C5H7NO3,11,130.050419,[M-NH3+H],-1,NA,NA,150101,NA,NA,NA,Forms in-source from glutamine: https://pubs.acs.org/doi/full/10.1021/ac501451v
 Custom,Pyro from glutamate?,Pyro from glutamate?,C5H7NO3,12,130.050419,[M-H2O+H],-1,NA,NA,150101,NA,NA,NA,Forms in-source from glutamate: https://pubs.acs.org/doi/full/10.1021/ac501451v
-Custom,Deoxycytidine?,Deoxycytidine?,C9H13N3O4,6.6,228.09788,[M+H],1,NA,NA,150101,NA,NA,NA,Mass matches and peak looks like a nucleic acid
+Custom,Deoxycytidine?,Deoxycytidine?,C9H13N3O4,6.6,228.09788,[M+H],1,cpd:C00881,NA,150101,NA,NA,NA,Mass matches and peak looks like a nucleic acid
 Custom,Homoserine betaine?,Homoserine betaine?,C7H15NO3,6.7,162.1125,[M+H],1,NA,NA,150101,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
 Custom,Threonine betaine?,Threonine betaine?,C7H15NO3,5,162.1125,[M+H],1,NA,NA,150101,NA,NA,NA,Mass matches and fragments kinda match? Definitely a betaine. Carnitine is the last peak
-Custom,Theanine?,Theanine?,C7H14N2O3,6.8,175.10771,[M+H],1,NA,NA,150101,NA,NA,NA,"Mass and formula matches, conf level 3ish"
+Custom,Theanine?,Theanine?,C7H14N2O3,6.8,175.10771,[M+H],1,cpd:C01047,NA,150101,NA,NA,NA,"Mass and formula matches, conf level 3ish"
 Custom,Asterina-330,Asterina-330,C12H20N2O6,10.5,289.1393,[M+H],1,NA,NA,150101,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
 Custom,Shinorine,Shinorine,C13H20N2O8,11.6,333.1292,[M+H],1,NA,NA,150101,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
 Custom,Palythine,Palythine,C10H16N2O5,11,245.1132,[M+H],1,NA,NA,150101,NA,NA,NA,MAA confirmed with fragments from https://doi.org/10.3390/antiox9121185
@@ -26,8 +26,12 @@ Custom,Iodine,Iodine,I,5.1,126.904,[M-],-1,NA,NA,150101,NA,NA,NA,Matches Iulia's
 Custom,Sulfite,Sulfite,SO3,14.7,79.95616,[M-],-1,NA,NA,150101,NA,NA,NA,Unclear how ionization works for this one - should be -2 charged
 Custom,Nitrate,Nitrate,NO3,5.2,61.98709,[M-],-1,NA,NA,150101,NA,NA,NA,Often has high background elsewhere
 Custom,Taurine betaine,Taurine betaine,C5H13NO3S,8.5,168.0689,[M+H],1,NA,NA,150101,NA,NA,NA,Has 59 betaine fragment at voltage>20
-Custom,Mycosporine-alanine/Mycosporine-beta alanine,M-Ala,C11H17NO6,,260.113414,[M+H],1,101450154,NA,150508,NA,NA,NA,
-Custom,Mycosporine-methylamine:serine,M-MA:Ser,C11H18N2O5,,259.129398,[M+H],1,171990363,NA,150508,NA,NA,NA,
-Custom,Mycosporine glutaminol/Palythinol/Mycosporine-methylamine:threonine,"Pinol, M-Gly:Ala(OH)",C13H22N2O6,,303.155613,[M+H],1,9948334,NA,150508,NA,NA,NA,
-Custom,Mycosporine-glutamine,M-Gln,C13H20N2O7,,317.134877,[M+H],1,274639211,NA,150508,NA,NA,NA,
+Custom,Mycosporine-alanine/Mycosporine-beta alanine,M-Ala,C11H17NO6,,260.113414,[M+H],1,NA,NA,150508,NA,NA,NA,
+Custom,Mycosporine-methylamine:serine,M-MA:Ser,C11H18N2O5,,259.129398,[M+H],1,NA,NA,150508,NA,NA,NA,
+Custom,Mycosporine glutaminol/Palythinol/Mycosporine-methylamine:threonine,"Pinol, M-Gly:Ala(OH)",C13H22N2O6,,303.155613,[M+H],1,NA,NA,150508,NA,NA,NA,
+Custom,Mycosporine-glutamine,M-Gln,C13H20N2O7,,317.134877,[M+H],1,NA,NA,150508,NA,NA,NA,
 Custom,Palythenic acid,PeA,C14H20N2O7,,329.134877,[M+H],1,NA,NA,150508,NA,NA,NA,
+Custom,Deoxyinosine?,Deoxyinosine?,C10H12N4O4,,253.09318,[M+H],1,cpd:C05512,NA,150508,NA,NA,NA,
+Custom,Deoxyxanthosine?,Deoxyxanthosine?,C10H12N4O5,,269.08805,[M+H],1,,NA,150508,NA,NA,NA,
+Custom,Deoxyuridine?,Deoxyuridine?,C9H12N2O5,,229.08188,[M+H],1,cpd:C00526,NA,150508,NA,NA,NA,
+Custom,Xanthosine?,Xanthosine?,C10H12N4O6,,285.08298,[M+H],1,cpd:C01762,NA,150508,NA,NA,NA,
