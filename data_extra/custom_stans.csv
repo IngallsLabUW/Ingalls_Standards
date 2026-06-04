@@ -35,3 +35,6 @@ Custom,Deoxyinosine?,Deoxyinosine?,C10H12N4O4,,253.09318,[M+H],1,cpd:C05512,NA,1
 Custom,Deoxyxanthosine?,Deoxyxanthosine?,C10H12N4O5,,269.08805,[M+H],1,,NA,150508,NA,NA,NA,
 Custom,Deoxyuridine?,Deoxyuridine?,C9H12N2O5,,229.08188,[M+H],1,cpd:C00526,NA,150508,NA,NA,NA,
 Custom,Xanthosine?,Xanthosine?,C10H12N4O6,,285.08298,[M+H],1,cpd:C01762,NA,150508,NA,NA,NA,
+Custom,Glycerophosphoglycerol?,Glycerophosphoglycerol?,?,,247.05778,[M+H],1,,NA,150508,NA,NA,NA,
+Custom,Glycerophosphoethanolamine?,Glycerophosphoethanolamine?,?,,216.0631,[M+H],1,,NA,150508,NA,NA,NA,
+
